@@ -1,0 +1,47 @@
+---
+// src/pages/about.astro
+import fs from 'node:fs/promises';
+import TOML from '@iarna/toml';
+import AboutMe from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+
+const tomlText = await fs.readFile('src/assets/about.toml', 'utf-8');
+const parsed = TOML.parse(tomlText);
+const t = parsed.translations;
+
+const tomlText2 = await fs.readFile('src/assets/experience.toml', 'utf-8');
+const parsed2 = TOML.parse(tomlText2);
+const experiences = parsed2.experiences;
+
+const url = new URL(Astro.request.url);
+const lang = url.searchParams.get('lang') || 'ko';
+
+const toggleLang = lang === 'ko' ? 'en' : 'ko';
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <title>About</title>
+  </head>
+
+  <body class="px-6 py-8">
+	
+    <header class="flex justify-between items-center mb-4">
+		<div class="flex gap-4">
+			<a href={`/?lang=${lang}`} class="text-sm text-gray-700 hover:underline">💻 Develop</a>
+			<a href={`/about?lang=${lang}`} class="text-sm text-gray-700 hover:underline">👤 About</a>
+		  </div>
+	
+		<a
+        href={`${url.pathname}?lang=${toggleLang}`}
+        class="text-sm text-blue-600 underline hover:text-blue-800"
+        rel="external"
+      >
+        {toggleLang === 'ko' ? '🇰🇷 한국어로 보기' : '🇺🇸 View in English'}
+      </a>
+	</header>
+    <AboutMe t={t} lang={lang} />
+	<Experience experiences={experiences}  lang={lang}/>
+  </body>
+</html>
