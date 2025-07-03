@@ -3,7 +3,7 @@ category = { en = "Career", ko = "경력" }
 
 [[experiences.entries]]
 company = { en = "fleelance", ko = "프리랜서" }
-location = { en = "not specified", ko = "배정없음" }
+location = { en = "not specified", ko = "자유" }
 period = "2025.02 - 2025.06"
 position = { en = "Android Developer", ko = "Android 개발자" }
 

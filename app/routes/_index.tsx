@@ -9,24 +9,45 @@ import Header from "~/components/Header";
 	return json({ projects: Object.values(data) });
 	}
 
-	export default function Index() {
-	const { projects } = useLoaderData<typeof loader>();
-	const [searchParams] = useSearchParams();
-	const lang = searchParams.get("lang") || "ko";
-	const toggleLang = lang === "ko" ? "en" : "ko";
+export default function Index() {
+  const { projects } = useLoaderData<typeof loader>();
+  const [searchParams] = useSearchParams();
+  const lang = searchParams.get("lang") || "ko";
 
-	return (
-    <div className="p-4">
-      <Header />
+  return (
+    <div className="relative">
+      {/* 고정된 내비 */}
+      <nav className="fixed top-20 left-0 w-48 h-[80vh] overflow-y-auto border-r bg-white z-50 p-4">
+        <ul className="space-y-2">
+          {projects.map((project: any) => (
+            <li key={project.title}>
+              <a
+                href={`#${project.title}`}
+                className="text-blue-600 hover:underline"
+              >
+                {project.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-      <h1 className="text-3xl font-bold mb-4">
-        {lang === "ko" ? "프로젝트" : "Projects"}
-      </h1>
-      <div className="grid gap-4">
-        {projects.map((project: any) => (
-          <ProjectCard key={project.title} project={project} lang={lang} />
+      {/* 오른쪽 콘텐츠: 내비 너비 만큼 좌측 패딩 주고 중앙 정렬 */}
+      <div className="px-4 py-6 max-w-3xl mx-auto font-sans text-gray-800 w-[600px] leading-relaxed text-[17px]">
+        <Header />
+        <div className="text-3xl font-bold mb-4">
+          {lang === "ko" ? "프로젝트" : "Projects"}
+        </div>
+     <div className="space-y-4">
+	 {projects.map((project: any) => (
+          <div key={project.title} id={project.title}>
+            <ProjectCard project={project} lang={lang} />
+          </div>
         ))}
+
+      </div>
       </div>
     </div>
   );
-	}
+}
+
