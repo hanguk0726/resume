@@ -2,29 +2,23 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "@remix-run/react";
 import Experience from "~/components/Experience";
 import Header from "~/components/Header";
-import { MetaFunction } from "@remix-run/node";
+import { useMeta } from "~/hooks/useMeta";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Resume - HanGuk Shin" },
-    { name: "description", content: "Resume of HanGuk Shin." },
-    {
-      name: "keywords",
-      content: "Dev, Resume",
-    },
-    { property: "og:title", content: "About - HanGuk Shin" },
-    {
-      property: "og:description",
-      content: "Resume of HanGuk Shin.",
-    },
-    { property: "og:type", content: "website" },
-  ];
-};
 export default function About() {
   const [translations, setTranslations] = useState<any>(null);
   const [experiences, setExperiences] = useState<any[]>([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
+
+  // 메타 태그 일괄 등록
+  useMeta([
+    { title: "About - HanGuk Shin" },
+    { name: "description", content: "Resume of HanGuk Shin." },
+    { name: "keywords", content: "Dev, Resume, HanGuk Shin" },
+    { property: "og:title", content: "About - HanGuk Shin" },
+    { property: "og:description", content: "Resume of HanGuk Shin." },
+    { property: "og:type", content: "website" },
+  ]);
 
   useEffect(() => {
     const loadData = async () => {
