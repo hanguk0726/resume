@@ -1,22 +1,51 @@
-import { json } from "@remix-run/node";
-import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
-import { loadTomlData } from "~/utils/toml";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "@remix-run/react";
 import Experience from "~/components/Experience";
 import Header from "~/components/Header";
+import { MetaFunction } from "@remix-run/node";
 
-export async function loader() {
-  const aboutData = await loadTomlData("app/data/about.toml");
-  const experienceData = await loadTomlData("app/data/experience.toml");
-  return json({
-    translations: aboutData.translations,
-    experiences: experienceData.experiences,
-  });
-}
-
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Resume - HanGuk Shin" },
+    { name: "description", content: "Resume of HanGuk Shin." },
+    {
+      name: "keywords",
+      content: "Dev, Resume",
+    },
+    { property: "og:title", content: "About - HanGuk Shin" },
+    {
+      property: "og:description",
+      content: "Resume of HanGuk Shin.",
+    },
+    { property: "og:type", content: "website" },
+  ];
+};
 export default function About() {
-  const { translations, experiences } = useLoaderData<typeof loader>();
+  const [translations, setTranslations] = useState<any>(null);
+  const [experiences, setExperiences] = useState<any[]>([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
+
+  useEffect(() => {
+    const loadData = async () => {
+      const [aboutRes, experienceRes] = await Promise.all([
+        fetch("/assets/about.json"),
+        fetch("/assets/experience.json"),
+      ]);
+
+      const aboutData = await aboutRes.json();
+      const experienceData = await experienceRes.json();
+
+      setTranslations(aboutData.translations);
+      setExperiences(experienceData.experiences);
+    };
+
+    loadData();
+  }, []);
+
+  if (!translations) {
+    return <div className="p-6">Loading...</div>;
+  }
 
   return (
     <div className="px-4 py-6 max-w-3xl mx-auto font-sans text-gray-800 w-[600px] leading-relaxed text-[17px]">
@@ -48,4 +77,3 @@ export default function About() {
     </div>
   );
 }
-  

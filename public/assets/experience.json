@@ -1,0 +1,91 @@
+{
+	"experiences": [
+	  {
+		"category": {
+		  "en": "Career",
+		  "ko": "경력"
+		},
+		"entries": [
+		  {
+			"company": { "en": "fleelance", "ko": "프리랜서" },
+			"location": { "en": "not specified", "ko": "자유" },
+			"period": "2025.02 - 2025.06",
+			"position": { "en": "Android Developer", "ko": "Android 개발자" }
+		  },
+		  {
+			"company": { "en": "Phylaxis", "ko": "필락시스" },
+			"location": { "en": "Jung-gu, Seoul", "ko": "서울 중구" },
+			"period": "2023.10 - 2024.01",
+			"position": { "en": "Go Developer", "ko": "Go 개발자" }
+		  },
+		  {
+			"company": { "en": "Togi", "ko": "토기" },
+			"location": { "en": "Yeouido, Seoul", "ko": "서울 여의도" },
+			"period": "2022.01 - 2023.02",
+			"position": { "en": "Android Developer", "ko": "Android 개발자" }
+		  },
+		  {
+			"company": { "en": "Snaptag", "ko": "스냅태그" },
+			"location": { "en": "Pangyo, Gyeonggi", "ko": "경기 판교" },
+			"period": "2021.03 - 2021.06",
+			"position": { "en": "Android & Backend Developer", "ko": "Android 개발자, 백엔드 개발자" }
+		  }
+		]
+	  },
+	  {
+		"category": {
+		  "en": "Bootcamp",
+		  "ko": "부트캠프"
+		},
+		"entries": [
+		  {
+			"company": { "en": "Cloud", "ko": "클라우드" },
+			"location": { "en": "Seocho-gu, Seoul", "ko": "서울 서초구" },
+			"period": "2020.05 - 2020.10",
+			"position": { "en": "Korea Radio Promotion Association", "ko": "한국전파진흥협회" }
+		  },
+		  {
+			"company": { "en": "Java Web", "ko": "자바 웹" },
+			"location": { "en": "Jongno sam-ga, Seoul", "ko": "서울 종로삼가" },
+			"period": "2019.10 - 2020.03",
+			"position": { "en": "Tjoeun Academy, Education", "ko": "더조은 아카데미, 교육" }
+		  }
+		]
+	  },
+	  {
+		"category": {
+		  "en": "Education",
+		  "ko": "교육"
+		},
+		"entries": [
+		  {
+			"company": { "en": "Uiduc University", "ko": "위덕 대학교" },
+			"location": { "en": "Gyeongju, Gyeongbuk", "ko": "경상북도 경주" },
+			"period": "2012.03 - 2018.03",
+			"position": { "en": "Dropped out, Information and Communication Engineering", "ko": "정보통신공학과 중퇴" }
+		  }
+		]
+	  },
+	  {
+		"category": {
+		  "en": "Languages",
+		  "ko": "어학"
+		},
+		"entries": [
+		  {
+			"company": { "en": "EF Language School", "ko": "EF 어학원" },
+			"location": { "en": "Toronto, Canada", "ko": "캐나다 토론토" },
+			"period": "2017.01 - 2017.06",
+			"position": { "en": "English", "ko": "영어" }
+		  },
+		  {
+			"company": { "en": "Meric Japanese School", "ko": "메릭 일본어 학원" },
+			"location": { "en": "Osaka, Japan", "ko": "일본 오사카" },
+			"period": "2015.01 - 2015.06",
+			"position": { "en": "Japanese", "ko": "일본어" }
+		  }
+		]
+	  }
+	]
+  }
+  
