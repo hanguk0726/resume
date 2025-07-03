@@ -15,8 +15,8 @@ export default function Index() {
   const toggleLang = lang === "ko" ? "en" : "ko";
 
   return (
-    <div>
-      <nav className="flex justify-between items-center">
+    <div className="p-4">
+      <nav className="flex justify-between items-center w-[600px]">
         <div className="space-x-4">
           <Link to="/" className="text-blue-600">
             💻 Develop
@@ -30,7 +30,9 @@ export default function Index() {
         </Link>
       </nav>
 
-      <h1 className="text-2xl font-bold my-4">Projects</h1>
+      <h1 className="text-2xl font-bold my-4">
+        {lang === "ko" ? "프로젝트" : "Projects"}
+      </h1>
       <div className="grid gap-4">
         {projects.map((project: any) => (
           <ProjectCard key={project.title} project={project} lang={lang} />

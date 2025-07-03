@@ -19,34 +19,49 @@ export default function About() {
   const toggleLang = lang === "ko" ? "en" : "ko";
 
   return (
-    <div className="container mx-auto p-4">
-      <nav className="flex justify-between items-center">
+    <div className="px-4 py-6 max-w-3xl mx-auto font-sans text-gray-800 leading-relaxed text-[17px]">
+      <nav className="flex justify-between items-center mb-6">
         <div className="space-x-4">
-          <Link to="/" className="text-blue-600">
+          <Link to="/" className="text-blue-600 hover:underline">
             💻 Develop
           </Link>
-          <Link to="/about" className="text-blue-600">
+          <Link to="/about" className="text-blue-600 hover:underline">
             👤 About
           </Link>
         </div>
-        <Link to={`/about?lang=${toggleLang}`} className="text-blue-600">
+        <Link
+          to={`/about?lang=${toggleLang}`}
+          className="text-blue-600 hover:underline"
+        >
           {toggleLang === "ko" ? "🇰🇷 한국어로 보기" : "🇺🇸 View in English"}
         </Link>
       </nav>
 
-      <h1 className="text-2xl font-bold my-4">
+      <h1 className="text-3xl font-bold mb-4">
         {translations.helloText[lang]}
       </h1>
-      <p>{translations.emailText}</p>
-      <p>
-        <a href={translations.githubText} className="text-blue-600">
-          {translations.githubText}
-        </a>
-      </p>
-      <p>{translations.interestedText[lang]}</p>
-      <p>{translations.backgroundText[lang]}</p>
-      <p>{translations.projectText[lang]}</p>
+
+      <div className="space-y-3">
+        <p>📧 {translations.emailText}</p>
+
+        <p>
+          <a
+            href={translations.githubText}
+            className="text-blue-600 hover:underline break-all"
+          >
+            🐙 GitHub Link
+          </a>
+        </p>
+
+        <p>{translations.interestedText[lang]}</p>
+        <p>{translations.backgroundText[lang]}</p>
+        <p>{translations.projectText[lang]}</p>
+      </div>
+
+      <hr className="my-6 border-t border-gray-300" />
+
       <Experience experiences={experiences} lang={lang} />
     </div>
   );
 }
+  
