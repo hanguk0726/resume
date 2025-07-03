@@ -9,7 +9,7 @@ export default function Header() {
   const currentPath = location.pathname;
 
   return (
-    <nav className="flex justify-between items-center w-[600px] mx-auto pb-4">
+    <nav className="flex justify-between items-center w-full max-w-[600px] mx-auto pb-4">
       <div className="space-x-4">
         <Link to={`/resume/?lang=${lang}`} className="text-blue-600">
           💻 Develop

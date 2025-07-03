@@ -7,7 +7,7 @@ interface Props {
 
 export default function ProjectCard({ project, lang }: Props) {
   return (
-    <div className="border p-8 rounded-2xl shadow-md space-y-8 bg-white w-[600px] mx-auto text-[17px] leading-[1.75] text-gray-800 font-sans">
+    <div className="border p-8 rounded-2xl shadow-md space-y-8 bg-white w-full max-w-[600px] mx-auto text-[17px] leading-[1.75] text-gray-800 font-sans">
       {/* 타이틀 및 요약 */}
       <div>
         <h2 className="text-3xl font-bold text-gray-900">{project.title}</h2>
