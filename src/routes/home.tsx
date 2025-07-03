@@ -2,11 +2,20 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom"; // react-router-dom 훅
 import Header from "../components/Header";
 import ProjectCard from "../components/ProjectCard";
+import { useMeta } from "../hooks/useMeta";
 export default function Home() {
   const [projects, setProjects] = useState<any[]>([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
-
+  
+useMeta([
+	{ title: "Projects - HanGuk Shin" },
+	{ name: "description", content: "Resume of HanGuk Shin." },
+	{ name: "keywords", content: "Dev, Resume, HanGuk Shin" },
+	{ property: "og:title", content: "About - HanGuk Shin" },
+	{ property: "og:description", content: "Resume of HanGuk Shin." },
+	{ property: "og:type", content: "website" },
+  ]);
   useEffect(() => {
     const loadJson = async () => {
       try {

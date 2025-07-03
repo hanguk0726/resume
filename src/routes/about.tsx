@@ -40,7 +40,7 @@ export default function About() {
   }, []);
 
   if (!translations) {
-    return <div className="p-6">Loading...</div>;
+    return <br />;
   }
 
   return (
