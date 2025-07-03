@@ -1,4 +1,4 @@
-import { ExperienceGroup } from "~/types";
+import type { ExperienceGroup } from "../types";
 
 interface Props {
   experiences: ExperienceGroup[];

@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "@remix-run/react";
-import ProjectCard from "~/components/ProjectCard";
-import Header from "~/components/Header";
-import { useMeta } from "~/hooks/useMeta";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom"; // react-router-dom 훅
+import Header from "../components/Header";
+import ProjectCard from "../components/ProjectCard";
 
 export default function Home() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState<any[]>([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
-
-  // 메타 태그 일괄 등록
-//   useMeta([
-//     { title: "Resume - HanGuk Shin" },
-//     { name: "description", content: "Resume of HanGuk Shin." },
-//     { name: "keywords", content: "Dev, Resume" },
-//     { property: "og:title", content: "Resume - HanGuk Shin" },
-//     { property: "og:description", content: "Resume of HanGuk Shin." },
-//     { property: "og:type", content: "website" },
-//   ]);
 
   useEffect(() => {
     const loadJson = async () => {
@@ -41,6 +30,7 @@ export default function Home() {
       });
     }
   };
+
   return (
     <div className="bg-gray-100">
       {/* 고정된 내비 */}
@@ -49,7 +39,7 @@ export default function Home() {
                 hidden lg:block"
       >
         <div className="space-y-2 mt-16">
-          {projects.map((project: any) => (
+          {projects.map((project) => (
             <div key={project.title}>
               <button
                 onClick={() => handleNavClick(project.title)}
@@ -73,7 +63,7 @@ export default function Home() {
             </h1>
 
             <div className="space-y-6">
-              {projects.map((project: any) => (
+              {projects.map((project) => (
                 <div key={project.title} id={project.title}>
                   <ProjectCard project={project} lang={lang} />
                 </div>

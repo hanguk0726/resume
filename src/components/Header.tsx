@@ -1,4 +1,4 @@
-import { Link, useLocation, useSearchParams } from "@remix-run/react";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 export default function Header() {
   const [searchParams] = useSearchParams();
@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <nav className="flex justify-between items-center w-[600px] mx-auto pb-4">
       <div className="space-x-4">
-        <Link to={`/home/?lang=${lang}`} className="text-blue-600">
+        <Link to={`/?lang=${lang}`} className="text-blue-600">
           💻 Develop
         </Link>
         <Link to={`/about?lang=${lang}`} className="text-blue-600">

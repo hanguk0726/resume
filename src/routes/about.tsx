@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "@remix-run/react";
-import Experience from "~/components/Experience";
-import Header from "~/components/Header";
-import { useMeta } from "~/hooks/useMeta";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useMeta } from "../hooks/useMeta";
+import Experience from "../components/Experience";
+import Header from "../components/Header";
 
 export default function About() {
   const [translations, setTranslations] = useState<any>(null);
   const [experiences, setExperiences] = useState<any[]>([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
-  // 메타 태그 일괄 등록
+
   useMeta([
     { title: "About - HanGuk Shin" },
     { name: "description", content: "Resume of HanGuk Shin." },
@@ -21,16 +21,20 @@ export default function About() {
 
   useEffect(() => {
     const loadData = async () => {
-      const [aboutRes, experienceRes] = await Promise.all([
-        fetch("/resume/assets/about.json"),
-        fetch("/resume/assets/experience.json"),
-      ]);
+      try {
+        const [aboutRes, experienceRes] = await Promise.all([
+          fetch("/resume/assets/about.json"),
+          fetch("/resume/assets/experience.json"),
+        ]);
 
-      const aboutData = await aboutRes.json();
-      const experienceData = await experienceRes.json();
+        const aboutData = await aboutRes.json();
+        const experienceData = await experienceRes.json();
 
-      setTranslations(aboutData.translations);
-      setExperiences(experienceData.experiences);
+        setTranslations(aboutData.translations);
+        setExperiences(experienceData.experiences);
+      } catch (error) {
+        console.error("Error loading data:", error);
+      }
     };
 
     loadData();
@@ -54,6 +58,8 @@ export default function About() {
           <a
             href={translations.githubText}
             className="text-blue-600 hover:underline break-all"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             🐙 GitHub Link
           </a>
