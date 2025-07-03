@@ -11,7 +11,7 @@ export default function ProjectCard({ project, lang }: Props) {
       {/* 타이틀 및 요약 */}
       <div>
         <h2 className="text-3xl font-bold text-gray-900">{project.title}</h2>
-        <p className="mt-3 text-[18px] text-gray-900 leading-[1.8]">
+        <p className="mt-3 text-[18px] text-gray-600 leading-[1.8]">
           {project.description[lang]}
         </p>
       </div>
@@ -85,7 +85,7 @@ export default function ProjectCard({ project, lang }: Props) {
         <h3 className="text-xl font-semibold text-gray-900">
           📝 {lang === "ko" ? "프로젝트 설명" : "Project Description"}
         </h3>
-        <div className="whitespace-pre-wrap text-[17px] text-gray-900 leading-[1.85] mt-3">
+        <div className="whitespace-pre-wrap text-[17px] text-gray-800 leading-[1.85] mt-3">
           {project.article[lang]}
         </div>
       </div>
