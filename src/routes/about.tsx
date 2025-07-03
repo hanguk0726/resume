@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import { useMeta } from "../hooks/useMeta";
 import Experience from "../components/Experience";
 import Header from "../components/Header";
-
 export default function About() {
   const [translations, setTranslations] = useState<any>(null);
   const [experiences, setExperiences] = useState<any[]>([]);

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom"; // react-router-dom 훅
 import Header from "../components/Header";
 import ProjectCard from "../components/ProjectCard";
-
 export default function Home() {
   const [projects, setProjects] = useState<any[]>([]);
   const [searchParams] = useSearchParams();
