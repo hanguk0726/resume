@@ -9,7 +9,6 @@ export default function About() {
   const [experiences, setExperiences] = useState<any[]>([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
-
   // 메타 태그 일괄 등록
   useMeta([
     { title: "About - HanGuk Shin" },
@@ -23,8 +22,8 @@ export default function About() {
   useEffect(() => {
     const loadData = async () => {
       const [aboutRes, experienceRes] = await Promise.all([
-        fetch("/assets/about.json"),
-        fetch("/assets/experience.json"),
+        fetch("/resume/assets/about.json"),
+        fetch("/resume/assets/experience.json"),
       ]);
 
       const aboutData = await aboutRes.json();

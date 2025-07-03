@@ -9,7 +9,9 @@
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js",
     "typecheck": "tsc",
-	"deploy": "gh-pages -d build/client"
+	"deploy": "gh-pages -d build/client",
+	"build:gh": "remix build && npm run copy404",
+    "copy404": "cp ./build/client/index.html ./build/client/404.html"
   },
   "dependencies": {
     "@remix-run/node": "^2.16.8",

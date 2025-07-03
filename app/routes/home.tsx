@@ -4,7 +4,7 @@ import ProjectCard from "~/components/ProjectCard";
 import Header from "~/components/Header";
 import { useMeta } from "~/hooks/useMeta";
 
-export default function Index() {
+export default function Home() {
   const [projects, setProjects] = useState([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
