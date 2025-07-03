@@ -1,13 +1,20 @@
-	import { json } from "@remix-run/node";
-	import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
-	import { loadTomlData } from "~/utils/toml";
-	import ProjectCard from "~/components/ProjectCard";
+import { json, MetaFunction } from "@remix-run/node";
+import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
+import { loadTomlData } from "~/utils/toml";
+import ProjectCard from "~/components/ProjectCard";
 import Header from "~/components/Header";
 
-	export async function loader() {
-	const data = await loadTomlData("app/data/projects.toml");
-	return json({ projects: Object.values(data) });
-	}
+export const meta: MetaFunction = () => {
+  return [
+    { title: "HanGuk Shin Resume" },
+    { name: "HanGuk Shin Resume" },
+  ];
+};
+
+export async function loader() {
+  const data = await loadTomlData("app/data/projects.toml");
+  return json({ projects: Object.values(data) });
+}
 
 export default function Index() {
   const { projects } = useLoaderData<typeof loader>();
@@ -38,16 +45,14 @@ export default function Index() {
         <div className="text-3xl font-bold mb-4">
           {lang === "ko" ? "프로젝트" : "Projects"}
         </div>
-     <div className="space-y-4">
-	 {projects.map((project: any) => (
-          <div key={project.title} id={project.title}>
-            <ProjectCard project={project} lang={lang} />
-          </div>
-        ))}
-
-      </div>
+        <div className="space-y-4">
+          {projects.map((project: any) => (
+            <div key={project.title} id={project.title}>
+              <ProjectCard project={project} lang={lang} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
-
