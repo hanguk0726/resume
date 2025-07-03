@@ -1,1 +1,0 @@
-import{r as e,g as a,j as n}from"./index-BKf0RA9c.js";function p(){const[c,t]=e.useState([]),[o]=a();return o.get("lang"),e.useEffect(()=>{(async()=>{try{const r=await(await fetch("/resume/assets/projects.json")).json();t(r)}catch(s){console.error("Error loading JSON:",s)}})()},[]),n.jsx("div",{children:"test"})}export{p as default};
