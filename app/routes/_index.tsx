@@ -5,7 +5,7 @@ import Header from "~/components/Header";
 import { useMeta } from "~/hooks/useMeta";
 
 export default function Index() {
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
 
@@ -43,40 +43,40 @@ export default function Index() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="bg-gray-100">
       {/* 고정된 내비 */}
-      <nav className="fixed top-0 left-0 w-48 h-screen overflow-y-auto border-r bg-white z-50 p-4 pt-24">
-        <ul className="space-y-2">
+      <div className="fixed left-0 top-0 w-64 h-full bg-gray-100 shadow-lg overflow-y-auto p-4 z-10">
+        <div className="space-y-2 mt-16">
           {projects.map((project: any) => (
-            <li key={project.title}>
+            <div key={project.title}>
               <button
                 onClick={() => handleNavClick(project.title)}
                 className="text-blue-600 hover:underline text-left w-full"
               >
                 {project.title}
               </button>
-            </li>
+            </div>
           ))}
-        </ul>
-      </nav>
+        </div>
+      </div>
 
-      {/* 오른쪽 콘텐츠 */}
-      <div className="ml-48 flex-1">
+      {/* 메인 콘텐츠 - 전체 화면 너비 기준 중앙 정렬 */}
+      <div className="flex justify-center bg-gray-100 min-h-screen">
         <div className="px-4 py-6 max-w-3xl mx-auto font-sans text-gray-800 w-[600px] leading-relaxed text-[17px]">
           <Header />
-          <div className="text-3xl font-bold mb-4">
-            {lang === "ko" ? "프로젝트" : "Projects"}
-          </div>
-          <div className="space-y-8">
-            {projects.map((project: any) => (
-              <div
-                key={project.title}
-                id={project.title}
-                className="scroll-mt-6"
-              >
-                <ProjectCard project={project} lang={lang} />
-              </div>
-            ))}
+
+          <div>
+            <h1 className="text-3xl font-bold text-left mb-8">
+              {lang === "ko" ? "프로젝트" : "Projects"}
+            </h1>
+
+            <div className="space-y-6">
+              {projects.map((project: any) => (
+                <div key={project.title} id={project.title}>
+                  <ProjectCard project={project} lang={lang} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
