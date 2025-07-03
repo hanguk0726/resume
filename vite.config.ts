@@ -9,6 +9,7 @@ declare module "@remix-run/node" {
 }
 
 export default defineConfig({
+  base: "/resume/",
   plugins: [
     remix({
       ssr: false,
