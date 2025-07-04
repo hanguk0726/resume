@@ -44,7 +44,7 @@ export default function About() {
   }
 
   return (
-    <div className="px-4 py-6 max-w-3xl mx-auto font-sans text-gray-800 w-[600px] leading-relaxed text-[17px]">
+    <div className="px-4 py-6 w-full max-w-[600px] mx-auto font-sans text-gray-800 leading-relaxed text-[17px]">
       <Header />
       <h1 className="text-3xl font-bold mb-4">
         {translations.helloText[lang]}
