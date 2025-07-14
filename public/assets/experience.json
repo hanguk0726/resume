@@ -7,7 +7,7 @@
 		},
 		"entries": [
 		  {
-			"company": { "en": "fleelance", "ko": "프리랜서" },
+			"company": { "en": "freelance", "ko": "프리랜서" },
 			"location": { "en": "not specified", "ko": "자유" },
 			"period": "2025.02 - 2025.06",
 			"position": { "en": "Android Developer", "ko": "Android 개발자" }
@@ -16,7 +16,7 @@
 			"company": { "en": "Phylaxis", "ko": "필락시스" },
 			"location": { "en": "Jung-gu, Seoul", "ko": "서울 중구" },
 			"period": "2023.10 - 2024.01",
-			"position": { "en": "Go Developer", "ko": "Go 개발자" }
+			"position": { "en": "Backend Go Developer", "ko": "Go 개발자" }
 		  },
 		  {
 			"company": { "en": "Togi", "ko": "토기" },
