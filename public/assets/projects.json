@@ -1,6 +1,6 @@
 [
     {
-        "title": "VocalBridge (Real-Time Voice Translator)",
+        "title": "VocalBridge",
         "description": {
             "ko": "WebRTC 기반 실시간 음성 통역 앱",
             "en": "Real-time voice translation app built with React Native and WebRTC"
