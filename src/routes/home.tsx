@@ -7,14 +7,14 @@ export default function Home() {
   const [projects, setProjects] = useState<any[]>([]);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
-  
-useMeta([
-	{ title: "Projects - HanGuk Shin" },
-	{ name: "description", content: "Resume of HanGuk Shin." },
-	{ name: "keywords", content: "Dev, Resume, HanGuk Shin" },
-	{ property: "og:title", content: "About - HanGuk Shin" },
-	{ property: "og:description", content: "Resume of HanGuk Shin." },
-	{ property: "og:type", content: "website" },
+
+  useMeta([
+    { title: "Projects - HanGuk Shin" },
+    { name: "description", content: "Resume of HanGuk Shin." },
+    { name: "keywords", content: "Dev, Resume, HanGuk Shin" },
+    { property: "og:title", content: "About - HanGuk Shin" },
+    { property: "og:description", content: "Resume of HanGuk Shin." },
+    { property: "og:type", content: "website" },
   ]);
   useEffect(() => {
     const loadJson = async () => {
@@ -51,7 +51,7 @@ useMeta([
             <div key={project.title}>
               <button
                 onClick={() => handleNavClick(project.title)}
-                className="text-blue-600 hover:underline text-left w-full"
+                className="text-gray-600 hover:text-blue-600 transition-colors text-left w-full"
               >
                 {project.title}
               </button>
