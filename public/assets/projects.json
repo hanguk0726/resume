@@ -1,5 +1,39 @@
 [
     {
+        "title": "REVITA",
+        "description": {
+            "ko": "야외용 컴퓨터비전 IoT 프로젝트",
+            "en": "Outdoor Computer Vision IoT Project"
+        },
+        "keyword": [
+            "ComputerVision",
+            "IoT",
+            "Pannellum",
+            "OpenCV",
+            "BackOffice",
+            "Automation"
+        ],
+        "techStacks": [
+            "React Native",
+            "TypeScript",
+            "Next.js",
+            "OpenCV",
+            "Pannellum"
+        ],
+        "personal": false,
+        "links": [],
+        "date": {
+            "startMonth": 10,
+            "startYear": 2025,
+            "endMonth": null,
+            "endYear": null
+        },
+        "article": {
+            "ko": "야외용 컴퓨터비전 IoT 프로젝트에 프로덕트 엔지니어로 참여하여 모바일앱(Android, iOS), 대외용 웹사이트, 백오피스 등 전반적인 소프트웨어를 처음부터 개발했습니다.\n\n15분 이상 소요되던 파노라마 이미지 생성을 OpenCV를 활용해 2분으로 단축하며 성능을 대폭 개선했습니다. 현장 파노라마를 몰입감 있게 확인할 수 있도록 웹 라이브러리 Pannellum을 모바일에 적용하고, 줌 레벨에 따른 동적 타일 요청과 정밀 촬영을 위한 좌표 마커 기능 등 커스텀 로직을 통합했습니다.\n\n백오피스에서는 GeoTIFF raster 오버레이, 컨설팅 아티클 등 반복적인 콘텐츠 생성을 자동화했습니다. 소규모 팀의 리소스 한계를 극복하기 위해 백오피스 프로젝트를 주도하여 워크플로우를 자동화하고, 누구나 다른 역할의 작업을 쉽게 수행할 수 있도록 진입장벽을 낮췄습니다.\n\n조직문화 개선 측면에서 기획·구현·전달 단계가 혼재되어 발생하던 비효율을 해소하였습니다. 또한 개인에게 의존하던 반복 작업을 워크플로우화하여 소통 비용을 줄이고 팀의 효율성과 결과물의 품질을 높였습니다.",
+            "en": "Joined as a product engineer on an outdoor computer vision IoT project, building mobile apps (Android, iOS), public-facing websites, and back-office systems from scratch.\n\nReduced panorama image generation time from over 15 minutes to 2 minutes by leveraging OpenCV, significantly improving performance. Integrated the Pannellum web library into mobile for immersive panorama viewing, adding custom features like dynamic tile requests based on zoom level and coordinate markers for precise shooting.\n\nAutomated repetitive content generation in the back-office, including GeoTIFF raster overlays and consulting articles. To overcome resource constraints in a small team, led the back-office initiative to automate workflows and lower barriers, enabling anyone to easily take on tasks across different roles.\n\nIn terms of organizational culture improvement, resolved inefficiencies caused by overlapping planning, implementation, and delivery phases. Transformed individual-dependent repetitive tasks into standardized workflows, reducing communication costs and enhancing team efficiency and output quality."
+        }
+    },
+    {
         "title": "VocalBridge",
         "description": {
             "ko": "WebRTC 기반 실시간 음성 통역 앱",
@@ -31,8 +65,8 @@
             "endYear": 2025
         },
         "article": {
-            "ko": "Mobile Device에서 음성을 WebRTC로 전송해 실시간 STT→번역→TTS 파이프라인을 구성했습니다. UI는 Expo/React Native로 구축했습니다. 한국어, 영어, 일본어 간의 음성 통역을 지원하며 음성의 파형 애니메이션에 필요한 데이터를 네이티브에서 처리했습니다.",
-            "en": "Sent audio over WebRTC to build a real-time STT → translation → TTS pipeline. Built the UI with Expo/React Native, supporting Korean, English, and Japanese voice translation with native-processed waveform data."
+            "ko": "Mobile Device에서 음성을 WebRTC로 전송해 실시간 STT→번역→TTS 파이프라인을 구성했습니다. UI는 Expo/React Native로 구축했습니다.\n\n한국어, 영어, 일본어 간의 음성 통역을 지원하며 음성의 파형 애니메이션에 필요한 데이터를 네이티브에서 처리했습니다.",
+            "en": "Sent audio over WebRTC to build a real-time STT → translation → TTS pipeline. Built the UI with Expo/React Native.\n\nSupporting Korean, English, and Japanese voice translation with native-processed waveform data."
         }
     },
     {
@@ -62,8 +96,8 @@
             "endYear": 2025
         },
         "article": {
-            "ko": "OpenGL과 Android MediaCodec을 결합해 영상 디코딩, 렌더링, 인코딩 과정을 구현했습니다. EGL을 통해 OpenGL 프레임을 바로 인코더로 전달하여 YUV 변환 없이 효율적으로 처리했습니다. 텍스트나 멀티 소스 영상 처리를 경험하였고, 오디오는 PCM 변환 후 AAC로 재인코딩해 병합했습니다. 처리 효율과 확장성을 위해 FBO, 셰이더, 타임라인 제어 등을 활용했고, 구조화의 중요성을 크게 느꼈습니다. 링크에 자세한 과정을 상세히 설명했습니다. (한국어와 영어 버전)",
-            "en": "I built a video editor by combining OpenGL and Android’s MediaCodec for decoding, rendering, and encoding. Using EGL, I sent OpenGL frames directly to the encoder, which made the process more efficient by skipping YUV conversion. Trying to process text and multiple video sources, and for audio, I converted PCM to AAC and added it to the final video. I used tools like FBOs, shaders, and timeline control to build the needed features and manage the rendering process properly. You can read more about the full process in the link.(In Korean and English versions)"
+            "ko": "OpenGL과 Android MediaCodec을 결합해 영상 디코딩, 렌더링, 인코딩 과정을 구현했습니다. EGL을 통해 OpenGL 프레임을 바로 인코더로 전달하여 YUV 변환 없이 효율적으로 처리했습니다.\n\n텍스트나 멀티 소스 영상 처리를 경험하였고, 오디오는 PCM 변환 후 AAC로 재인코딩해 병합했습니다. 처리 효율과 확장성을 위해 FBO, 셰이더, 타임라인 제어 등을 활용했고, 구조화의 중요성을 크게 느꼈습니다.\n\n링크에 자세한 과정을 상세히 설명했습니다. (한국어와 영어 버전)",
+            "en": "I built a video editor by combining OpenGL and Android's MediaCodec for decoding, rendering, and encoding. Using EGL, I sent OpenGL frames directly to the encoder, which made the process more efficient by skipping YUV conversion.\n\nTrying to process text and multiple video sources, and for audio, I converted PCM to AAC and added it to the final video. I used tools like FBOs, shaders, and timeline control to build the needed features and manage the rendering process properly.\n\nYou can read more about the full process in the link. (In Korean and English versions)"
         }
     },
     {
@@ -104,8 +138,8 @@
             "endYear": 2024
         },
         "article": {
-            "ko": "Cloudflare를 떠올릴 수 있는 역방향 프록시입니다. 호스트 도메인에 대한 공격을 여러 설정으로 방어하고 자원 관리를 돕는 CDN/WAF 서비스입니다. 도전적인 과제였지만 뛰어난 동료들과 함께하여 개발을 해나갈 수 있었습니다. 저는 RateLimit, Cache, SEO 파트를 중심으로 다음 내용을 개발했습니다. RateLimit, Cache와 관련해 램, 디스크 간의 LRU, ttl 관리, 요청 헤더 파싱, 'Avatar Vision'의 이미지 처리 경험에서 비롯한 압축 및 캐시를 개발했습니다. ClickHouse, Kafka로 로그 및 통계 처리, SQLi, XSS 방어를 위한 요청의 쿼리, 바디 파싱, HAProxy를 통한 인증서, Fingerprint와 로드 밸런싱 처리, 도커 패키징과 배포와 이외 나머지 기능들의 설정(waf, ddos, cache rules)을 적용하는 개발을 했습니다. 이 프로젝트를 통해 여러 단계의 거치며 필터링, 가공되는 네트워크 요청의 유기적인 흐름과 공격과 방어 주제를 통한 컴퓨팅 자원에 대한 민감성을 키울 수 있었습니다. 또한 잊고 있던 Golang의 직관적 프로그래밍의 즐거움을 다시 느낄 수 있었습니다.",
-            "en": "This is a reverse proxy like Cloudflare. It's a CDN/WAF service that defends against attacks on host domains with various settings and assists with resource management. It was a challenging task, but I was able to develop it with excellent colleagues. I focused on the RateLimit, Cache, and SEO parts. For RateLimit and Cache, I developed LRU management between RAM and disk, ttl management, request header parsing, and compression and caching through experience with image processing like 'Avatar Vision'. I handled log and statistic processing with Clickhouse and Kafka, query and body parsing for defense against SQLi and XSS, authentication with Haproxy, fingerprinting, and load balancing, Docker packaging and deployment, and applying settings for other features like WAF, DDOS, and cache rules. Through this project, I was able to learn sensitivity to computing resources through the flow of filtered and processed network requests and the themes of attack and defense. I also rediscovered the joy of intuitive programming in Golang, which I had forgotten."
+            "ko": "Cloudflare를 떠올릴 수 있는 역방향 프록시입니다. 호스트 도메인에 대한 공격을 여러 설정으로 방어하고 자원 관리를 돕는 CDN/WAF 서비스입니다. 도전적인 과제였지만 뛰어난 동료들과 함께하여 개발을 해나갈 수 있었습니다.\n\n저는 RateLimit, Cache, SEO 파트를 중심으로 다음 내용을 개발했습니다. RateLimit, Cache와 관련해 램, 디스크 간의 LRU, ttl 관리, 요청 헤더 파싱, 'Avatar Vision'의 이미지 처리 경험에서 비롯한 압축 및 캐시를 개발했습니다.\n\nClickHouse, Kafka로 로그 및 통계 처리, SQLi, XSS 방어를 위한 요청의 쿼리, 바디 파싱, HAProxy를 통한 인증서, Fingerprint와 로드 밸런싱 처리, 도커 패키징과 배포와 이외 나머지 기능들의 설정(waf, ddos, cache rules)을 적용하는 개발을 했습니다.\n\n이 프로젝트를 통해 여러 단계의 거치며 필터링, 가공되는 네트워크 요청의 유기적인 흐름과 공격과 방어 주제를 통한 컴퓨팅 자원에 대한 민감성을 키울 수 있었습니다. 또한 잊고 있던 Golang의 직관적 프로그래밍의 즐거움을 다시 느낄 수 있었습니다.",
+            "en": "This is a reverse proxy like Cloudflare. It's a CDN/WAF service that defends against attacks on host domains with various settings and assists with resource management. It was a challenging task, but I was able to develop it with excellent colleagues.\n\nI focused on the RateLimit, Cache, and SEO parts. For RateLimit and Cache, I developed LRU management between RAM and disk, ttl management, request header parsing, and compression and caching through experience with image processing like 'Avatar Vision'.\n\nI handled log and statistic processing with Clickhouse and Kafka, query and body parsing for defense against SQLi and XSS, authentication with Haproxy, fingerprinting, and load balancing, Docker packaging and deployment, and applying settings for other features like WAF, DDOS, and cache rules.\n\nThrough this project, I was able to learn sensitivity to computing resources through the flow of filtered and processed network requests and the themes of attack and defense. I also rediscovered the joy of intuitive programming in Golang, which I had forgotten."
         }
     },
     {
@@ -136,8 +170,8 @@
             "endYear": 2023
         },
         "article": {
-            "ko": "영화 아바타의 한 장면에서 영감을 받아 이 앱을 만들었습니다. 이 앱은 SF같은 UI/UX를 제공하고 사용자에게 비디오 일기 기능을 제공합니다. 웹캠과 마이크 장치의 입력을 디코딩하여 사용자에게 표시하고, 데이터를 MP4 형식으로 muxing하는 데 필요한 단계를 처리합니다. 모든 세부 사항은 아래에 링크된 Medium 아티클에서 찾을 수 있습니다.",
-            "en": "I created this app after being inspired by a scene from the movie Avatar. The app has a sci-fi UI/UX and provides users with a video diary function. It decodes input from the webcam and microphone devices, displaying it to the user, and processes the necessary steps to mux the data into an MP4 format. You can find all the details in the Medium article linked below."
+            "ko": "영화 아바타의 한 장면에서 영감을 받아 이 앱을 만들었습니다. 이 앱은 SF같은 UI/UX를 제공하고 사용자에게 비디오 일기 기능을 제공합니다.\n\n웹캠과 마이크 장치의 입력을 디코딩하여 사용자에게 표시하고, 데이터를 MP4 형식으로 muxing하는 데 필요한 단계를 처리합니다.\n\n모든 세부 사항은 아래에 링크된 Medium 아티클에서 찾을 수 있습니다.",
+            "en": "I created this app after being inspired by a scene from the movie Avatar. The app has a sci-fi UI/UX and provides users with a video diary function.\n\nIt decodes input from the webcam and microphone devices, displaying it to the user, and processes the necessary steps to mux the data into an MP4 format.\n\nYou can find all the details in the Medium article linked below."
         }
     },
     {
@@ -165,8 +199,8 @@
             "endYear": 2021
         },
         "article": {
-            "ko": "당시 저는 멋지고 인상적인 사용자 인터페이스를 만드는 것에 빠져있었습니다. 그리고 저는 개인적으로 자체 생산성 앱을 출시하고 싶었습니다. 멋진 프로그레스 바가 아래로 이동하는 타이머를 만드는 아이디어를 가지고 있었습니다. 이 앱을 사용하면 사용자는 타이머로 일련의 작업을 예약할 수 있습니다. 타이머가 시작되면 사용자는 시각적으로 프로그레스 바룰 볼 수 있습니다. 앱을 닫더라도 사용자는 알림을 통해 타이머와 작업을 계속 볼 수 있습니다.",
-            "en": "Back then, I was really fascinated by creating a cool and impressive user interface. And I also had a personal desire to launch my own productivity app. I had this idea of making a timer that shows a fancy progress bar moving down. With this app, users can schedule a series of tasks as a timer. When the timer starts, a user will see a visually appealing progress bar. Even if they close the app, a user can still see the timer and tasks through notifications."
+            "ko": "당시 저는 멋지고 인상적인 사용자 인터페이스를 만드는 것에 빠져있었습니다. 그리고 저는 개인적으로 자체 생산성 앱을 출시하고 싶었습니다. 멋진 프로그레스 바가 아래로 이동하는 타이머를 만드는 아이디어를 가지고 있었습니다.\n\n이 앱을 사용하면 사용자는 타이머로 일련의 작업을 예약할 수 있습니다. 타이머가 시작되면 사용자는 시각적으로 프로그레스 바룰 볼 수 있습니다. 앱을 닫더라도 사용자는 알림을 통해 타이머와 작업을 계속 볼 수 있습니다.",
+            "en": "Back then, I was really fascinated by creating a cool and impressive user interface. And I also had a personal desire to launch my own productivity app. I had this idea of making a timer that shows a fancy progress bar moving down.\n\nWith this app, users can schedule a series of tasks as a timer. When the timer starts, a user will see a visually appealing progress bar. Even if they close the app, a user can still see the timer and tasks through notifications."
         }
     },
     {
@@ -197,8 +231,8 @@
             "endYear": 2024
         },
         "article": {
-            "ko": "스마트 컨트랙트를 사용해 본 저의 첫 시도입니다. 메타마스크 연결 및 프로필, 펀딩 캠페인 개설, 펀딩과 취소, claim 기능을 구현했습니다. 프론트에서 컨텐츠 crud와 스마트 컨트랙트 트랜잭션를 싱크하는게 주요 태스크였습니다.",
-            "en": "This is my first attempt to interact with a smart contract. I implemented features such as connecting MetaMask, creating profiles and funding campaigns, as well as funding cancellation and claiming. The main task was to synchronize content CRUD and smart contract transactions on the frontend."
+            "ko": "스마트 컨트랙트를 사용해 본 저의 첫 시도입니다.\n\n메타마스크 연결 및 프로필, 펀딩 캠페인 개설, 펀딩과 취소, claim 기능을 구현했습니다. 프론트에서 컨텐츠 crud와 스마트 컨트랙트 트랜잭션를 싱크하는게 주요 태스크였습니다.",
+            "en": "This is my first attempt to interact with a smart contract.\n\nI implemented features such as connecting MetaMask, creating profiles and funding campaigns, as well as funding cancellation and claiming. The main task was to synchronize content CRUD and smart contract transactions on the frontend."
         }
     },
     {
@@ -226,8 +260,8 @@
             "endYear": 2021
         },
         "article": {
-            "ko": "저는 실시간으로 메시지를 처리하는 서비스를 만들고자 했습니다. 그래서 여러 채널에서 여러 사람들과 채팅할 수 있는 실시간 메시징 플랫폼을 개발했습니다. 이 채널은 웹소켓 풀을 이용하여 관리되며, 메시지의 읽음 상태를 추적합니다. 회원가입 및 로그인 과정을 간편하게 만들기 위해 비밀번호 없이 매직 링크 방식을 구현했습니다.",
-            "en": "I wanted to create a service that processed messages in real time. So, I developed a real-time messaging platform that allows users to chat with multiple people on different channels. The channels are managed using a websocket pool, and the service also tracks the read status of messages. To make the sign-in/sign-up process simpler, I implemented a passwordless and magic link method."
+            "ko": "저는 실시간으로 메시지를 처리하는 서비스를 만들고자 했습니다. 그래서 여러 채널에서 여러 사람들과 채팅할 수 있는 실시간 메시징 플랫폼을 개발했습니다.\n\n이 채널은 웹소켓 풀을 이용하여 관리되며, 메시지의 읽음 상태를 추적합니다. 회원가입 및 로그인 과정을 간편하게 만들기 위해 비밀번호 없이 매직 링크 방식을 구현했습니다.",
+            "en": "I wanted to create a service that processed messages in real time. So, I developed a real-time messaging platform that allows users to chat with multiple people on different channels.\n\nThe channels are managed using a websocket pool, and the service also tracks the read status of messages. To make the sign-in/sign-up process simpler, I implemented a passwordless and magic link method."
         }
     },
     {
@@ -254,8 +288,8 @@
             "endYear": 2020
         },
         "article": {
-            "ko": "저는 중학교 때부터 가수 윤하의 팬이었습니다. 그래서 그녀의 팬 사이트를 만들었습니다. 이 사이트에서 사용자는 YouTube, Twitter, Instagram에서의 윤하의 최신 업데이트를 쉽게 확인하고, 모든 앨범의 트랙, 이미지, 음악 비디오 링크를 찾을 수 있습니다. 팬들이 게시물과 댓글을 남길 수 있는 커뮤니티 기능도 있습니다.",
-            "en": "Ever since I was in middle school, I've been a fan of the singer Younha. So I made a fan site of her. On the site, a user can easily access Younha's latest updates from YouTube, Twitter, and Instagram and can explore her albums and find tracks, images, and links to her music videos. The fan site also includes a community feature where fans can write posts and leave comments."
+            "ko": "저는 중학교 때부터 가수 윤하의 팬이었습니다. 그래서 그녀의 팬 사이트를 만들었습니다.\n\n이 사이트에서 사용자는 YouTube, Twitter, Instagram에서의 윤하의 최신 업데이트를 쉽게 확인하고, 모든 앨범의 트랙, 이미지, 음악 비디오 링크를 찾을 수 있습니다. 팬들이 게시물과 댓글을 남길 수 있는 커뮤니티 기능도 있습니다.",
+            "en": "Ever since I was in middle school, I've been a fan of the singer Younha. So I made a fan site of her.\n\nOn the site, a user can easily access Younha's latest updates from YouTube, Twitter, and Instagram and can explore her albums and find tracks, images, and links to her music videos. The fan site also includes a community feature where fans can write posts and leave comments."
         }
     },
     {
@@ -280,8 +314,8 @@
             "endYear": 2023
         },
         "article": {
-            "ko": "저는 Android 개발자로서 1년 2개월 동안 홀로 안드로이드 클라이언트를 개발하고 운영했습니다. 빠른 템포의 개발 과정에서 앱은 여러 번의 변경을 거쳤고, 그 중에는 몇 가지 크고 중요한 전환도 포함되었습니다. 앱 개발에는 캘린더, cropper 도구, 틴더 같은 스와이프 위젯, 드래그 앤 드롭 기능, 중첩 스크롤링과 탭이 있는 기타 복잡한 위젯 등의 다양한 구성 요소를 Jetpack Compose를 통해 구현했습니다. 클린 아키텍처 원칙을 따라 개발을 진행하고, 이벤트 기반 시스템을 활용했으며, 반응형 프로그래밍을 통합했습니다. 성능 최적화를 위한 네트워크 캐싱을 적용했고, 또한 국제화, 웹뷰 통합, 카메라 기능, PDF 처리, 다중 모듈 시스템, 인증 등도 지원했습니다. 당시 저는 Jetpack Compose와 Android 개발을 정말 즐겼지만, iOS 개발에 사용되는 TCA(The Composable Architecture)에서도 영감을 얻어 앱의 상태 관리를 지속적으로 개선했습니다. 타 개발자들과 협력하면서 프로덕트의 생명 주기를 전체적으로 경험했습니다.",
-            "en": "I developed and ran this project from scratch as an Android developer for fourteen months. During the fast-paced development process, the app went through multiple changes, including several significant pivots. I believe the app covered a wide range of topics of Jetpack Compose and Android app development. The app included various components like a calendar, cropper, swipe widget like tinder, drag and drop functionality, and other complex widgets with nested scrolling and tabs, among others. The architecture followed clean architecture principles, utilized event-driven systems, and incorporated reactive programming. I cached network data and images for performance optimization. Additionally, the app supported internationalization, webview integration, camera functionality, PDF handling, a multi-module system, authentication, and more. At that time, I really enjoyed working with Jetpack Compose and Android development. I continuously focused on enhancing the app's state management, drawing inspiration from TCA (The Composable Architecture) used in iOS development and the latest Android resources. This project allowed me to experience the entire product lifecycle while collaborating with other role groups at a company level. check out the app on the Play Store using the link below."
+            "ko": "저는 Android 개발자로서 1년 2개월 동안 홀로 안드로이드 클라이언트를 개발하고 운영했습니다. 빠른 템포의 개발 과정에서 앱은 여러 번의 변경을 거쳤고, 그 중에는 몇 가지 크고 중요한 전환도 포함되었습니다.\n\n앱 개발에는 캘린더, cropper 도구, 틴더 같은 스와이프 위젯, 드래그 앤 드롭 기능, 중첩 스크롤링과 탭이 있는 기타 복잡한 위젯 등의 다양한 구성 요소를 Jetpack Compose를 통해 구현했습니다. 클린 아키텍처 원칙을 따라 개발을 진행하고, 이벤트 기반 시스템을 활용했으며, 반응형 프로그래밍을 통합했습니다.\n\n성능 최적화를 위한 네트워크 캐싱을 적용했고, 또한 국제화, 웹뷰 통합, 카메라 기능, PDF 처리, 다중 모듈 시스템, 인증 등도 지원했습니다.\n\n당시 저는 Jetpack Compose와 Android 개발을 정말 즐겼지만, iOS 개발에 사용되는 TCA(The Composable Architecture)에서도 영감을 얻어 앱의 상태 관리를 지속적으로 개선했습니다. 타 개발자들과 협력하면서 프로덕트의 생명 주기를 전체적으로 경험했습니다.",
+            "en": "I developed and ran this project from scratch as an Android developer for fourteen months. During the fast-paced development process, the app went through multiple changes, including several significant pivots.\n\nI believe the app covered a wide range of topics of Jetpack Compose and Android app development. The app included various components like a calendar, cropper, swipe widget like tinder, drag and drop functionality, and other complex widgets with nested scrolling and tabs, among others. The architecture followed clean architecture principles, utilized event-driven systems, and incorporated reactive programming.\n\nI cached network data and images for performance optimization. Additionally, the app supported internationalization, webview integration, camera functionality, PDF handling, a multi-module system, authentication, and more.\n\nAt that time, I really enjoyed working with Jetpack Compose and Android development. I continuously focused on enhancing the app's state management, drawing inspiration from TCA (The Composable Architecture) used in iOS development and the latest Android resources. This project allowed me to experience the entire product lifecycle while collaborating with other role groups at a company level. check out the app on the Play Store using the link below."
         }
     },
     {
@@ -307,8 +341,8 @@
             "endYear": 2021
         },
         "article": {
-            "ko": "이 앱은 안드로이드 카메라로 촬영된 픽셀에서 미리 적용해둔 특정 정보를 얻습니다. 제 역할은 안드로이드 카메라 파트를 최적화하여 픽셀 캡처에서 정보 추출까지의 과정을 최적화 하는 것이었습니다. 캡처된 카메라 프레임은 JNI를 통해 연결된 C++ 모듈로 전달됩니다. 이 앱 개발한 것은 안드로이드 카메라 기능에 대한 깊은 분석을 할 수 있는 귀중한 경험이었습니다. 이 경험은 나중에 제가 아바타 비전 프로젝트를 시작하는데 영향을 주었습니다.",
-            "en": "This app extracts certain information from pixels captured by an Android camera. My role was to optimize the Android camera module to improve the process from pixel capture to information extraction. The captured camera frame is passed to a C++ module connected via JNI. Developing this app was a valuable experience that allowed me to analyze the Android camera features in depth. This experience influenced me to start the Avatar Vision project later."
+            "ko": "이 앱은 안드로이드 카메라로 촬영된 픽셀에서 미리 적용해둔 특정 정보를 얻습니다. 제 역할은 안드로이드 카메라 파트를 최적화하여 픽셀 캡처에서 정보 추출까지의 과정을 최적화 하는 것이었습니다. 캡처된 카메라 프레임은 JNI를 통해 연결된 C++ 모듈로 전달됩니다.\n\n이 앱 개발한 것은 안드로이드 카메라 기능에 대한 깊은 분석을 할 수 있는 귀중한 경험이었습니다. 이 경험은 나중에 제가 아바타 비전 프로젝트를 시작하는데 영향을 주었습니다.",
+            "en": "This app extracts certain information from pixels captured by an Android camera. My role was to optimize the Android camera module to improve the process from pixel capture to information extraction. The captured camera frame is passed to a C++ module connected via JNI.\n\nDeveloping this app was a valuable experience that allowed me to analyze the Android camera features in depth. This experience influenced me to start the Avatar Vision project later."
         }
     },
     {
@@ -334,8 +368,8 @@
             "endYear": 2020
         },
         "article": {
-            "ko": "오픈스택 프로젝트는 규모나 복잡성 등에서 저에게 강한 첫 인상을 남겼으며 인프라 측면을 탐색할 수 있는 좋은 기회를 제공했습니다. 우리 팀은 Spring과 openstack4j 키트를 사용하여 OpenStack 웹 컨트롤러를 개발했습니다. 이 웹 인터페이스를 통해 사용자는 openstack API로 인스턴스를 생성하고 관리할 수 있습니다. 프로젝트에서 저는 스프링 작업을 메인으로 담당했습니다.",
-            "en": "The OpenStack project has left a strong impression on me in terms of its scale and complexity, and it provided me with a good opportunity to explore the infrastructure side. Our team developed an OpenStack web controller using Spring and the openstack4j kit. Through this web interface, users can create and manage instances with the OpenStack API. In the project, I was mainly responsible for the Spring work."
+            "ko": "오픈스택 프로젝트는 규모나 복잡성 등에서 저에게 강한 첫 인상을 남겼으며 인프라 측면을 탐색할 수 있는 좋은 기회를 제공했습니다.\n\n우리 팀은 Spring과 openstack4j 키트를 사용하여 OpenStack 웹 컨트롤러를 개발했습니다. 이 웹 인터페이스를 통해 사용자는 openstack API로 인스턴스를 생성하고 관리할 수 있습니다. 프로젝트에서 저는 스프링 작업을 메인으로 담당했습니다.",
+            "en": "The OpenStack project has left a strong impression on me in terms of its scale and complexity, and it provided me with a good opportunity to explore the infrastructure side.\n\nOur team developed an OpenStack web controller using Spring and the openstack4j kit. Through this web interface, users can create and manage instances with the OpenStack API. In the project, I was mainly responsible for the Spring work."
         }
     },
     {
@@ -387,8 +421,8 @@
             "endYear": 2019
         },
         "article": {
-            "ko": "이건 제가 자바를 배운 후 처음으로 작업한 프로젝트였습니다. 부루마블에서의 기능을 가능한 한 많이 포함하는 것을 목표로했습니다. 각 차례마다 주사위를 굴리고 우주선이나 무인도, 황금열쇠 등의 변수와 함께 게임 말을 이동하여 취할 행동을 결정할 수 있습니다. 처음에 예상했던 것 보다 커버해야하는 시나리오가 훨씬 많아서 당황하면서도 재밌게 개발했던 기억이 있습니다. 팀원은 터미널에 게임판을 그리는데 집중했고 저는 게임의 로직를 개발하는데 집중했습니다.",
-            "en": "This was the first project I worked on after learning Java. I aimed to include as many features from the original game(Monoploy) as possible. Each turn, you can roll the dice and move the game piece, and then decide what action to take, along with variables such as spaceships, deserted islands, and golden keys. I remember being surprised and having fun developing it, as there were many more scenarios to cover than I had originally expected. My team member focused on drawing the game board on the terminal, and I focused on developing the logic of the game."
+            "ko": "이건 제가 자바를 배운 후 처음으로 작업한 프로젝트였습니다. 부루마블에서의 기능을 가능한 한 많이 포함하는 것을 목표로했습니다.\n\n각 차례마다 주사위를 굴리고 우주선이나 무인도, 황금열쇠 등의 변수와 함께 게임 말을 이동하여 취할 행동을 결정할 수 있습니다.\n\n처음에 예상했던 것 보다 커버해야하는 시나리오가 훨씬 많아서 당황하면서도 재밌게 개발했던 기억이 있습니다. 팀원은 터미널에 게임판을 그리는데 집중했고 저는 게임의 로직를 개발하는데 집중했습니다.",
+            "en": "This was the first project I worked on after learning Java. I aimed to include as many features from the original game(Monoploy) as possible.\n\nEach turn, you can roll the dice and move the game piece, and then decide what action to take, along with variables such as spaceships, deserted islands, and golden keys.\n\nI remember being surprised and having fun developing it, as there were many more scenarios to cover than I had originally expected. My team member focused on drawing the game board on the terminal, and I focused on developing the logic of the game."
         }
     }
 ]

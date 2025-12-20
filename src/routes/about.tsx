@@ -3,6 +3,8 @@ import { useSearchParams } from "react-router-dom";
 import { useMeta } from "../hooks/useMeta";
 import Experience from "../components/Experience";
 import Header from "../components/Header";
+import { Mail, Github } from "lucide-react";
+
 export default function About() {
   const [translations, setTranslations] = useState<any>(null);
   const [experiences, setExperiences] = useState<any[]>([]);
@@ -46,30 +48,36 @@ export default function About() {
   return (
     <div className="px-4 py-6 w-full max-w-[600px] mx-auto font-sans text-gray-800 leading-relaxed text-[17px]">
       <Header />
-      <h1 className="text-3xl font-bold mb-4">
-        {translations.helloText[lang]}
-      </h1>
 
-      <div className="space-y-3">
-        <p>📧 {translations.emailText}</p>
+      {/* 프로필 카드 */}
+      <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm mb-8">
+        <h1 className="text-2xl font-bold mb-4 text-gray-900">
+          {translations.helloText[lang]}
+        </h1>
 
-        <p>
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-gray-600">
+            <Mail size={18} strokeWidth={1.5} />
+            <span>{translations.emailText}</span>
+          </div>
+
           <a
             href={translations.githubText}
-            className="text-blue-600 hover:underline break-all"
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors underline"
             target="_blank"
             rel="noopener noreferrer"
           >
-            🐙 GitHub Link
+            <Github size={18} strokeWidth={1.5} />
+            <span>GitHub</span>
           </a>
-        </p>
+        </div>
 
-        <p>{translations.interestedText[lang]}</p>
-        <p>{translations.backgroundText[lang]}</p>
-        <p>{translations.projectText[lang]}</p>
+        <div className="mt-6 space-y-3 text-gray-700">
+          <p>{translations.interestedText[lang]}</p>
+          <p>{translations.backgroundText[lang]}</p>
+          <p>{translations.projectText[lang]}</p>
+        </div>
       </div>
-
-      <hr className="my-6 border-t border-gray-300" />
 
       <Experience experiences={experiences} lang={lang} />
     </div>
