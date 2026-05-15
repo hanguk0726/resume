@@ -3,11 +3,14 @@ import { useSearchParams } from "react-router-dom";
 import { useMeta } from "../hooks/useMeta";
 import Experience from "../components/Experience";
 import Header from "../components/Header";
+import TechSummary from "../components/TechSummary";
 import { Mail, Github } from "lucide-react";
+import type { AboutTranslations, ExperienceGroup } from "../types";
 
 export default function About() {
-  const [translations, setTranslations] = useState<any>(null);
-  const [experiences, setExperiences] = useState<any[]>([]);
+  const [translations, setTranslations] = useState<AboutTranslations | null>(null);
+  const [experiences, setExperiences] = useState<ExperienceGroup[]>([]);
+  const [error, setError] = useState(false);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
 
@@ -28,28 +31,39 @@ export default function About() {
           fetch("/resume/assets/experience.json"),
         ]);
 
+        if (!aboutRes.ok || !experienceRes.ok) throw new Error("Failed");
+
         const aboutData = await aboutRes.json();
         const experienceData = await experienceRes.json();
 
         setTranslations(aboutData.translations);
         setExperiences(experienceData.experiences);
-      } catch (error) {
-        console.error("Error loading data:", error);
+      } catch {
+        setError(true);
       }
     };
 
     loadData();
   }, []);
 
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-gray-500">
+          {lang === "ko" ? "데이터를 불러올 수 없습니다." : "Failed to load data."}
+        </p>
+      </div>
+    );
+  }
+
   if (!translations) {
-    return <br />;
+    return <div className="min-h-screen" />;
   }
 
   return (
     <div className="px-4 py-6 w-full max-w-[600px] mx-auto font-sans text-gray-800 leading-relaxed text-[17px]">
       <Header />
 
-      {/* 프로필 카드 */}
       <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm mb-8">
         <h1 className="text-2xl font-bold mb-4 text-gray-900">
           {translations.helloText[lang]}
@@ -78,6 +92,8 @@ export default function About() {
           <p>{translations.projectText[lang]}</p>
         </div>
       </div>
+
+      <TechSummary lang={lang} />
 
       <Experience experiences={experiences} lang={lang} />
     </div>

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom"; // react-router-dom 훅
+import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import ProjectCard from "../components/ProjectCard";
 import { useMeta } from "../hooks/useMeta";
+import type { Project } from "../types";
+
 export default function Home() {
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [error, setError] = useState(false);
   const [searchParams] = useSearchParams();
   const lang = searchParams.get("lang") || "ko";
 
@@ -12,18 +15,20 @@ export default function Home() {
     { title: "Projects - HanGuk Shin" },
     { name: "description", content: "Resume of HanGuk Shin." },
     { name: "keywords", content: "Dev, Resume, HanGuk Shin" },
-    { property: "og:title", content: "About - HanGuk Shin" },
+    { property: "og:title", content: "Projects - HanGuk Shin" },
     { property: "og:description", content: "Resume of HanGuk Shin." },
     { property: "og:type", content: "website" },
   ]);
+
   useEffect(() => {
     const loadJson = async () => {
       try {
         const response = await fetch("/resume/assets/projects.json");
+        if (!response.ok) throw new Error("Failed to load");
         const data = await response.json();
         setProjects(data);
-      } catch (error) {
-        console.error("Error loading JSON:", error);
+      } catch {
+        setError(true);
       }
     };
     loadJson();
@@ -32,16 +37,22 @@ export default function Home() {
   const handleNavClick = (projectTitle: string) => {
     const element = document.getElementById(projectTitle);
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <p className="text-gray-500">
+          {lang === "ko" ? "데이터를 불러올 수 없습니다." : "Failed to load data."}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-gray-100">
-      {/* 고정된 내비 */}
       <div
         className="fixed left-0 top-0 w-64 h-full bg-gray-100 shadow-lg overflow-y-auto p-4 z-10
                 hidden lg:block"
@@ -51,16 +62,24 @@ export default function Home() {
             <div key={project.title}>
               <button
                 onClick={() => handleNavClick(project.title)}
-                className="text-gray-600 hover:text-blue-600 transition-colors text-left w-full"
+                className="text-gray-600 hover:text-blue-600 transition-colors text-left w-full text-sm"
               >
+                {project.personal && (
+                  <span className="text-xs text-blue-500 mr-1">●</span>
+                )}
                 {project.title}
               </button>
             </div>
           ))}
+          <div className="mt-4 pt-4 border-t border-gray-200">
+            <div className="flex items-center gap-2 text-xs text-gray-400">
+              <span className="text-blue-500">●</span>
+              <span>{lang === "ko" ? "개인 프로젝트" : "Personal"}</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* 메인 콘텐츠 - 전체 화면 너비 기준 중앙 정렬 */}
       <div className="flex justify-center bg-gray-100 min-h-screen">
         <div className="px-4 py-6 max-w-3xl mx-auto font-sans text-gray-800 w-[600px] leading-relaxed text-[17px]">
           <Header />
