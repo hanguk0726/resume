@@ -4,6 +4,7 @@ import { useMeta } from "../hooks/useMeta";
 import Experience from "../components/Experience";
 import Header from "../components/Header";
 import TechSummary from "../components/TechSummary";
+import AiEngineering from "../components/AiEngineering";
 import { Mail, Github } from "lucide-react";
 import type { AboutTranslations, ExperienceGroup } from "../types";
 
@@ -94,6 +95,8 @@ export default function About() {
       </div>
 
       <TechSummary lang={lang} />
+
+      <AiEngineering lang={lang} />
 
       <Experience experiences={experiences} lang={lang} />
     </div>
