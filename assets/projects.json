@@ -8,17 +8,27 @@
         "keyword": [
             "ComputerVision",
             "IoT",
+            "DistributedSystems",
+            "MQTT",
+            "LoRa",
             "Pannellum",
             "OpenCV",
+            "Observability",
+            "OTA",
             "BackOffice",
             "Automation"
         ],
         "techStacks": [
             "React Native",
+            "Expo",
             "TypeScript",
             "Next.js",
             "OpenCV",
-            "Pannellum"
+            "Pannellum",
+            "MQTT",
+            "PostgreSQL",
+            "Airflow",
+            "Python"
         ],
         "personal": false,
         "links": [],
@@ -29,8 +39,8 @@
             "endYear": null
         },
         "article": {
-            "ko": "야외용 컴퓨터비전 IoT 프로젝트에 프로덕트 엔지니어로 참여하여 모바일앱(Android, iOS), 대외용 웹사이트, 백오피스 등 전반적인 소프트웨어를 처음부터 개발했습니다.\n\n15분 이상 소요되던 파노라마 이미지 생성을 OpenCV를 활용해 2분으로 단축하고 이미지 기반 스티칭에서 영상 기반 스캔으로 전환하여 성능을 대폭 개선했습니다. 현장 파노라마를 몰입감 있게 확인할 수 있도록 웹 라이브러리 Pannellum을 모바일에 적용하고, 줌 레벨에 따른 동적 타일 요청과 정밀 촬영을 위한 좌표 마커 기능 등 커스텀 로직을 통합했습니다.\n\n백오피스에서는 GeoTIFF raster 오버레이, 컨설팅 아티클 등 반복적인 콘텐츠 생성을 자동화했습니다. 소규모 팀의 리소스 한계를 극복하기 위해 백오피스 프로젝트를 주도하여 워크플로우를 자동화하고, 누구나 다른 역할의 작업을 쉽게 수행할 수 있도록 진입장벽을 낮췄습니다.\n\n조직문화 개선 측면에서 기획·구현·전달 단계가 혼재되어 발생하던 비효율을 해소하였습니다. 또한 개인에게 의존하던 반복 작업을 워크플로우화하여 소통 비용을 줄이고 팀의 효율성과 결과물의 품질을 높였습니다.",
-            "en": "Joined as a product engineer on an outdoor computer vision IoT project, building mobile apps (Android, iOS), public-facing websites, and back-office systems from scratch.\n\nReduced panorama image generation time from over 15 minutes to 2 minutes by leveraging OpenCV, significantly improving performance. Integrated the Pannellum web library into mobile for immersive panorama viewing, adding custom features like dynamic tile requests based on zoom level and coordinate markers for precise shooting.\n\nAutomated repetitive content generation in the back-office, including GeoTIFF raster overlays and consulting articles. To overcome resource constraints in a small team, led the back-office initiative to automate workflows and lower barriers, enabling anyone to easily take on tasks across different roles.\n\nIn terms of organizational culture improvement, resolved inefficiencies caused by overlapping planning, implementation, and delivery phases. Transformed individual-dependent repetitive tasks into standardized workflows, reducing communication costs and enhancing team efficiency and output quality."
+            "ko": "야외용 컴퓨터비전 IoT 프로젝트에 프로덕트 엔지니어로 참여하여 모바일앱(Android, iOS), 대외용 웹사이트, 백오피스, 그리고 현장 장치를 제어하는 백엔드까지 처음부터 개발했습니다.\n\n15분 이상 소요되던 파노라마 이미지 생성을 OpenCV를 활용해 2분으로 단축하고, 이미지 기반 스티칭에서 영상 기반 스캔으로 전환하여 성능을 대폭 개선했습니다. 웹 라이브러리 Pannellum을 모바일에 적용하고 줌 레벨에 따른 동적 타일 요청, 정밀 촬영을 위한 좌표 마커 등 커스텀 로직을 통합해 현장 파노라마를 몰입감 있게 확인할 수 있도록 했습니다.\n\n밭에 설치된 밸브를 앱으로 여닫는 관수(irrigation) 시스템을 만들면서, 단순해 보이던 기능이 분산 시스템 문제임을 알게 되었습니다. 장치는 MQTT(QoS 2)와 LoRa로 통신하는데 명령은 중간에 유실될 수 있어, \"서버가 믿는 상태\"와 \"밸브가 실제로 열린 상태\"를 구분하는 상태 기계(FSM)로 세션을 모델링했습니다. ACK·NOTIFY를 받기 전에는 솔직하게 pending 상태로 두고, 하드웨어가 직접 보고하는 상태를 항상 기준으로 삼았습니다.\n\n안정성은 완벽한 명령이 아니라 어긋나도 결국 수렴하는 구조에서 나왔습니다. 매분 도는 모니터가 막힌 세션을 정상으로 밀어붙이고, 모든 정체 상태에 시간제한을 뒀습니다. 영원히 닫히지 않아 다음 관수를 막던 유령 세션(밸브당 단일 활성 세션 유니크 제약)은 보호장치인 제약을 건드리는 대신 이미 있던 안전 종료의 지연을 현실적인 수준으로 줄여 해결했습니다. 여러 구역 예약 관수는 공유 펌프가 빈 배관을 미는 순간을 없애기 위해 다음 밸브를 먼저 열고 현재 밸브를 닫는 Make-Before-Break로 구성했고, 펌프 시작은 CAS 기반으로 멱등하게 만들었습니다. 센서값이 임계치를 넘으면 자동으로 물을 트는 조건부 관수에는 하루 최대 횟수·쿨다운·강우 스킵·발화 전 알림 등 여러 안전 가드를 두었습니다. 오케스트레이터(Airflow 운영, Temporal 검증)는 갈아 끼우되 DB를 단일 기준으로 유지했습니다.\n\n백오피스에서는 GeoTIFF raster 오버레이, 컨설팅 아티클 등 반복적인 콘텐츠 생성을 자동화했습니다. 소규모 팀의 리소스 한계를 극복하기 위해 백오피스를 주도해 워크플로우를 자동화하고 진입장벽을 낮췄으며, 개인에게 의존하던 반복 작업을 워크플로우화하여 소통 비용을 줄이고 팀의 효율성과 결과물의 품질을 높였습니다.\n\n운영 측면에서는 MapLibre 네이티브 지도로 전환한 크로스플랫폼 앱을 OTA(EAS) 단계적 배포로 출시하고, Sentry 레벨별 관찰가능성을 구축했습니다. 프로덕션 이슈는 증상이 아닌 근본 원인까지 추적해 수정하고, 실제 기기에서 검증한 뒤 회귀 방지 가드(린트 규칙, 이상치 검증 등)를 더해 재발을 구조적으로 막았습니다.",
+            "en": "Joined as a product engineer on an outdoor computer vision IoT project, building mobile apps (Android, iOS), public-facing websites, the back-office, and the backend that controls field hardware — all from scratch.\n\nReduced panorama image generation time from over 15 minutes to 2 minutes with OpenCV, switching from image-based stitching to video-based scanning. Integrated the Pannellum web library into mobile with custom logic — dynamic tile requests by zoom level and coordinate markers for precise shooting — for immersive on-site panorama viewing.\n\nBuilding the irrigation system that opens and closes valves planted out in the field turned a deceptively simple feature into a distributed-systems problem. Devices talk over MQTT (QoS 2) and LoRa, where commands can be lost in transit, so I modeled each session as a finite state machine that separates \"what the server believes\" from \"whether the valve is physically open.\" States stay honestly pending until an ACK/NOTIFY arrives, and the hardware's self-reported state is always the source of truth.\n\nStability came not from perfect commands but from a structure that converges even when things drift. A per-minute monitor nudges stuck sessions back toward correctness, and every stalled state has a timeout. A ghost session that never closed — blocked by the one-active-session-per-valve unique constraint and stalling the next watering — was fixed not by weakening that protective constraint but by tightening the latency of an existing safety sweep. Multi-zone scheduled watering uses Make-Before-Break (open the next valve before closing the current one) to avoid deadheading a shared pump, with idempotent CAS-based pump start. Sensor-triggered conditional watering is wrapped in layered guardrails — daily caps, cooldowns, rain skips, and a pre-fire notification. The orchestrator is swappable (Airflow in operation, Temporal under evaluation) while the database stays the single source of truth.\n\nIn the back-office, automated repetitive content generation such as GeoTIFF raster overlays and consulting articles. To overcome a small team's resource limits, led the back-office initiative to automate workflows and lower barriers, turning individual-dependent repetitive tasks into shared workflows — reducing communication cost and raising both team efficiency and output quality.\n\nOn the operations side, shipped a cross-platform app (migrated to MapLibre native maps) through staged OTA releases on EAS and built level-tiered Sentry observability. Traced production issues to their root cause rather than the symptom, verified fixes on real devices, and added regression guardrails (lint rules, outlier validation) to structurally prevent recurrence."
         }
     },
     {
