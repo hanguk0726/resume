@@ -11,7 +11,20 @@ export default function ProjectCard({ project, lang }: Props) {
     <div className="border border-gray-200 p-8 rounded-2xl shadow-sm space-y-6 bg-white w-full max-w-[600px] mx-auto text-[17px] leading-[1.75] text-gray-800 font-sans">
       {/* 타이틀 및 요약 */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">{project.title}</h2>
+        <div className="flex items-center gap-3">
+          <h2 className="text-2xl font-bold text-gray-900">{project.title}</h2>
+          <span
+            className={`text-xs px-2 py-0.5 rounded-full ${
+              project.personal
+                ? "bg-blue-50 text-blue-600 border border-blue-200"
+                : "bg-gray-50 text-gray-500 border border-gray-200"
+            }`}
+          >
+            {project.personal
+              ? lang === "ko" ? "개인" : "Personal"
+              : lang === "ko" ? "회사" : "Company"}
+          </span>
+        </div>
         <p className="mt-2 text-gray-600 leading-relaxed">
           {project.description[lang]}
         </p>
@@ -73,18 +86,25 @@ export default function ProjectCard({ project, lang }: Props) {
             {lang === "ko" ? "관련 링크" : "Links"}
           </h3>
           <ul className="space-y-1">
-            {project.links.map((link, idx) => (
-              <li key={link}>
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 underline text-sm break-all"
-                >
-                  Link {idx + 1}
-                </a>
-              </li>
-            ))}
+            {project.links.map((link) => {
+              const label = link.includes("github.com")
+                ? "GitHub"
+                : link.includes("medium.com")
+                ? "Medium"
+                : new URL(link).hostname.replace("www.", "");
+              return (
+                <li key={link}>
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-gray-900 underline text-sm"
+                  >
+                    {label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

@@ -20,8 +20,25 @@ export interface Project {
   date: {
     startMonth: number;
     startYear: number;
-    endMonth: number;
-    endYear: number;
+    endMonth: number | null;
+    endYear: number | null;
   };
   article: Record<string, string>;
+}
+
+export interface AboutTranslations {
+  helloText: Record<string, string>;
+  emailText: string;
+  githubText: string;
+  interestedText: Record<string, string>;
+  backgroundText: Record<string, string>;
+  projectText: Record<string, string>;
+  linkText: string;
+  contributingText: Record<string, string>;
+  contributingMinimp4Text: Record<string, string>;
+  contributingNokhwaText: Record<string, string>;
+  linkMinimp4Text: string;
+  linkNokhwaText: string;
+  linkOpenGlTextEn: string;
+  linkOpenGlTextKo: string;
 }
