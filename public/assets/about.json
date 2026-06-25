@@ -7,16 +7,16 @@
 	  "emailText": "hanguk0726@gmail.com",
 	  "githubText": "https://www.github.com/hanguk0726",
 	  "interestedText": {
-		"en": "I am especially interested in media (image, video, audio) processing and editor app development.",
-		"ko": "저는 미디어(이미지, 비디오, 오디오) 처리나 에디터 앱 개발에 특히 관심을 갖고 있습니다."
+		"en": "I started from media (image, video, audio) processing and editor apps, and these days I'm drawn to product engineering for an outdoor computer-vision IoT product — especially the distributed-systems problems of reliably controlling physical devices out in the field.",
+		"ko": "저는 미디어(이미지, 비디오, 오디오) 처리와 에디터 앱 개발에서 출발했고, 요즘은 야외용 컴퓨터비전 IoT 제품의 프로덕트 엔지니어링 — 특히 현장의 물리 장치를 신뢰성 있게 제어하는 분산 시스템 문제에 관심을 갖고 있습니다."
 	  },
 	  "backgroundText": {
-		"en": "I enjoy mobile engineering and I am familiar with Android native development.",
-		"ko": "저는 모바일 엔지니어링을 좋아하고 안드로이드 네이티브에 익숙합니다."
+		"en": "I enjoy mobile engineering and am at home with Android native, while increasingly working across the stack — from cross-platform React Native apps to the backend that keeps far-field hardware converging to a correct state.",
+		"ko": "저는 모바일 엔지니어링을 좋아하고 안드로이드 네이티브에 익숙하며, 점점 더 풀스택으로 — 크로스플랫폼 React Native 앱부터 멀리 떨어진 하드웨어를 올바른 상태로 수렴시키는 백엔드까지 — 폭을 넓혀가고 있습니다."
 	  },
 	  "projectText": {
-		"en": "Check out my development trace in projects like real-time video processing, reverse proxy and more. ",
-		"ko": "실시간 비디오 처리, 역방향 프록시 등의 프로젝트로 저의 개발 발자취를 확인해보세요."
+		"en": "Check out my development trace — from real-time video processing and a reverse proxy to a smart-farm irrigation control system.",
+		"ko": "실시간 비디오 처리와 역방향 프록시부터 스마트팜 관수 제어 시스템까지, 저의 개발 발자취를 확인해보세요."
 	  },
 	  "linkText": "https://medium.com/@hangukshin/building-a-video-diary-app-written-in-flutter-and-rust-without-ffmpeg-8eb97a97fb49",
 	  "contributingText": {
