@@ -1,0 +1,213 @@
+# HanGuk Shin — Resume
+
+> Software engineer. I started from media (image, video, audio) processing and editor apps. What draws me is solving problems in software and taming complexity; lately I've focused on the distributed-systems problem of making a system converge to a correct state even when commands and signals get lost.
+
+I enjoy mobile engineering and am at home with Android native, while increasingly working across the stack — from cross-platform React Native apps to the backend that has to stay correct even when commands and signals get lost.
+
+## Contact
+- Email: hanguk0726@gmail.com
+- GitHub: https://www.github.com/hanguk0726
+- Medium: https://medium.com/@hangukshin
+- Site: https://hanguk0726.github.io/resume/
+
+## Projects
+
+### REVITA (2025.10 – Present) — Company
+
+**Outdoor Computer Vision IoT Project**
+
+- Tech stack: React Native, Expo, TypeScript, Next.js, OpenCV, Pannellum, MQTT, PostgreSQL, Airflow, Python
+- Keywords: ComputerVision, IoT, DistributedSystems, MQTT, LoRa, Pannellum, OpenCV, Observability, OTA, BackOffice, Automation
+- Links: https://medium.com/@hangukshin/%ED%95%84%EB%93%9C%EC%9D%98-%EB%B0%B8%EB%B8%8C%EB%8A%94-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%ED%96%89%EC%9D%B4-%EC%95%84%EB%8B%88%EB%8B%A4-%EC%95%BC%EC%99%B8-%EA%B4%80%EC%88%98-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%84-%EB%A7%8C%EB%93%A4%EB%A9%B0-d807466868dc
+
+Joined as a product engineer on an outdoor computer vision IoT project, building mobile apps (Android, iOS), public-facing websites, the back-office, and the backend that controls field hardware — all from scratch.
+
+Reduced panorama image generation time from over 15 minutes to 2 minutes with OpenCV, switching from image-based stitching to video-based scanning. Integrated the Pannellum web library into mobile with custom logic — dynamic tile requests by zoom level and coordinate markers for precise shooting — for immersive on-site panorama viewing.
+
+Building the irrigation system that opens and closes valves planted out in the field turned a deceptively simple feature into a distributed-systems problem. Devices talk over MQTT (QoS 2) and LoRa, where commands can be lost in transit, so I modeled each session as a finite state machine that separates "what the server believes" from "whether the valve is physically open." States stay honestly pending until an ACK/NOTIFY arrives, and the hardware's self-reported state is always the source of truth.
+
+Stability came not from perfect commands but from a structure that converges even when things drift. A per-minute monitor nudges stuck sessions back toward correctness, and every stalled state has a timeout. A ghost session that never closed — blocked by the one-active-session-per-valve unique constraint and stalling the next watering — was fixed not by weakening that protective constraint but by tightening the latency of an existing safety sweep. Multi-zone scheduled watering uses Make-Before-Break (open the next valve before closing the current one) to avoid deadheading a shared pump, with idempotent CAS-based pump start. Sensor-triggered conditional watering is wrapped in layered guardrails — daily caps, cooldowns, rain skips, and a pre-fire notification. The orchestrator is swappable (Airflow in operation, Temporal under evaluation) while the database stays the single source of truth.
+
+In the back-office, automated repetitive content generation such as GeoTIFF raster overlays and consulting articles. To overcome a small team's resource limits, led the back-office initiative to automate workflows and lower barriers, turning individual-dependent repetitive tasks into shared workflows — reducing communication cost and raising both team efficiency and output quality.
+
+On the operations side, shipped a cross-platform app (migrated to MapLibre native maps) through staged OTA releases on EAS and built level-tiered Sentry observability. Traced production issues to their root cause rather than the symptom, verified fixes on real devices, and added regression guardrails (lint rules, outlier validation) to structurally prevent recurrence.
+
+### VocalBridge (2025.08 – 2025.08) — Personal
+
+**Real-time voice translation app built with React Native and WebRTC**
+
+- Tech stack: React Native, Expo, TypeScript, WebRTC, FastApi, Supabase
+- Keywords: ReactNative, WebRTC, STT, Translation, TTS
+- Links: https://github.com/hanguk0726/VocalBridge
+
+Sent audio over WebRTC to build a real-time STT → translation → TTS pipeline. Built the UI with Expo/React Native.
+
+Supporting Korean, English, and Japanese voice translation with native-processed waveform data.
+
+### Android Video Editor (2025.02 – 2025.06) — Company
+
+**Android Video Editor with OpenGL**
+
+- Tech stack: Android, OpenGL
+- Keywords: Android, VideoEditor, Opengl
+- Links: https://medium.com/@hangukshin/my-first-experience-with-a-video-editor-android-app-using-opengl-7fb88765ad0d , https://medium.com/@hangukshin/opengl%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%98%81%EC%83%81-%ED%8E%B8%EC%A7%91-%EC%95%B1-%EB%82%98%EC%9D%98-%EC%B2%AB-%EB%8F%84%EC%A0%84%EA%B8%B0-6a686ee71c0c
+
+I built a video editor by combining OpenGL and Android's MediaCodec for decoding, rendering, and encoding. Using EGL, I sent OpenGL frames directly to the encoder, which made the process more efficient by skipping YUV conversion.
+
+Trying to process text and multiple video sources, and for audio, I converted PCM to AAC and added it to the final video. I used tools like FBOs, shaders, and timeline control to build the needed features and manage the rendering process properly.
+
+You can read more about the full process in the link. (In Korean and English versions)
+
+### Phylaxis Proxy (2023.10 – 2024.01) — Company
+
+**Reverse proxy for network security and resource management**
+
+- Tech stack: go, aerospike, clickhouse, kafka, haproxy, docker
+- Keywords: WAF, RateLimit, DDos, Cache, ReverseProxy, SEO, ACME, Logger, SQLi, XSS, JA3-Fingerprint
+- Links: https://phylaxis.net/
+
+This is a reverse proxy like Cloudflare. It's a CDN/WAF service that defends against attacks on host domains with various settings and assists with resource management. It was a challenging task, but I was able to develop it with excellent colleagues.
+
+I focused on the RateLimit, Cache, and SEO parts. For RateLimit and Cache, I developed LRU management between RAM and disk, ttl management, request header parsing, and compression and caching through experience with image processing like 'Avatar Vision'.
+
+I handled log and statistic processing with Clickhouse and Kafka, query and body parsing for defense against SQLi and XSS, authentication with Haproxy, fingerprinting, and load balancing, Docker packaging and deployment, and applying settings for other features like WAF, DDOS, and cache rules.
+
+Through this project, I was able to learn sensitivity to computing resources through the flow of filtered and processed network requests and the themes of attack and defense. I also rediscovered the joy of intuitive programming in Golang, which I had forgotten.
+
+### Avatar Vision (2023.02 – 2023.05) — Personal
+
+**A video diary app written in flutter and rust without ffmpeg**
+
+- Tech stack: flutter, rust
+- Keywords: windows, encoding, decoding, mp4
+- Links: https://github.com/hanguk0726/Avatar-Vision , https://medium.com/@hangukshin/building-a-video-diary-app-written-in-flutter-and-rust-without-ffmpeg-8eb97a97fb49
+
+I created this app after being inspired by a scene from the movie Avatar. The app has a sci-fi UI/UX and provides users with a video diary function.
+
+It decodes input from the webcam and microphone devices, displaying it to the user, and processes the necessary steps to mux the data into an MP4 format.
+
+You can find all the details in the Medium article linked below.
+
+### Plantimer (2021.09 – 2021.10) — Personal
+
+**Timer schedulers with progress bar**
+
+- Tech stack: flutter, kotlin
+- Keywords: android, background task, animation, timer
+
+Back then, I was really fascinated by creating a cool and impressive user interface. And I also had a personal desire to launch my own productivity app. I had this idea of making a timer that shows a fancy progress bar moving down.
+
+With this app, users can schedule a series of tasks as a timer. When the timer starts, a user will see a visually appealing progress bar. Even if they close the app, a user can still see the timer and tasks through notifications.
+
+### CrowdFunding (2024.01 – 2024.03) — Personal
+
+**Crowdfunding with smart contract**
+
+- Tech stack: svelte, solidity
+- Keywords: smart contract, metamask, ethers, supabase, sepolia
+- Links: https://github.com/hanguk0726/crowd-funding
+
+This is my first attempt to interact with a smart contract.
+
+I implemented features such as connecting MetaMask, creating profiles and funding campaigns, as well as funding cancellation and claiming. The main task was to synchronize content CRUD and smart contract transactions on the frontend.
+
+### Realtime Chat (2021.01 – 2021.02) — Personal
+
+**Multi-Channel Multi-Chat Service**
+
+- Tech stack: go, reactJs, cassandra
+- Keywords: web, websocket, chat
+
+I wanted to create a service that processed messages in real time. So, I developed a real-time messaging platform that allows users to chat with multiple people on different channels.
+
+The channels are managed using a websocket pool, and the service also tracks the read status of messages. To make the sign-in/sign-up process simpler, I implemented a passwordless and magic link method.
+
+### Strawberry Days (2020.11 – 2020.12) — Personal
+
+**A fan site for singer Younha**
+
+- Tech stack: django, vueJs, postgreSQL
+- Keywords: web, scraping
+
+Ever since I was in middle school, I've been a fan of the singer Younha. So I made a fan site of her.
+
+On the site, a user can easily access Younha's latest updates from YouTube, Twitter, and Instagram and can explore her albums and find tracks, images, and links to her music videos. The fan site also includes a community feature where fans can write posts and leave comments.
+
+### Togispace (2022.01 – 2023.02) — Company
+
+**A commercial app for diet and food**
+
+- Tech stack: kotlin
+- Keywords: android, jetpack compose
+
+I developed and ran this project from scratch as an Android developer for fourteen months. During the fast-paced development process, the app went through multiple changes, including several significant pivots.
+
+I believe the app covered a wide range of topics of Jetpack Compose and Android app development. The app included various components like a calendar, cropper, swipe widget like tinder, drag and drop functionality, and other complex widgets with nested scrolling and tabs, among others. The architecture followed clean architecture principles, utilized event-driven systems, and incorporated reactive programming.
+
+I cached network data and images for performance optimization. Additionally, the app supported internationalization, webview integration, camera functionality, PDF handling, a multi-module system, authentication, and more.
+
+At that time, I really enjoyed working with Jetpack Compose and Android development. I continuously focused on enhancing the app's state management, drawing inspiration from TCA (The Composable Architecture) used in iOS development and the latest Android resources. This project allowed me to experience the entire product lifecycle while collaborating with other role groups at a company level. check out the app on the Play Store using the link below.
+
+### Snaptag (2021.03 – 2021.06) — Company
+
+**An app scanning invisible QR code with camera**
+
+- Tech stack: kotlin, java
+- Keywords: android, jni
+
+This app extracts certain information from pixels captured by an Android camera. My role was to optimize the Android camera module to improve the process from pixel capture to information extraction. The captured camera frame is passed to a C++ module connected via JNI.
+
+Developing this app was a valuable experience that allowed me to analyze the Android camera features in depth. This experience influenced me to start the Avatar Vision project later.
+
+### Openshy4J (2020.09 – 2020.09) — Company
+
+**A web controller for Openstack**
+
+- Tech stack: java
+- Keywords: web, openstack, spring boot
+
+The OpenStack project has left a strong impression on me in terms of its scale and complexity, and it provided me with a good opportunity to explore the infrastructure side.
+
+Our team developed an OpenStack web controller using Spring and the openstack4j kit. Through this web interface, users can create and manage instances with the OpenStack API. In the project, I was mainly responsible for the Spring work.
+
+### Fivestar recipe (2020.02 – 2020.03) — Company
+
+**A webstie that provides recipes**
+
+- Tech stack: java, vueJs
+- Keywords: web, springMVC
+
+This is a cooking recipe website. We created fun features that we could imagine at that time, such as bookmarks, logins, search, and ranking systems. I developed both the Spring MVC and Vue.js parts.
+
+### Blue Marble (2019.12 – 2019.12) — Company
+
+**A game like Monopoly**
+
+- Tech stack: java
+- Keywords: game, terminal
+
+This was the first project I worked on after learning Java. I aimed to include as many features from the original game(Monoploy) as possible.
+
+Each turn, you can roll the dice and move the game piece, and then decide what action to take, along with variables such as spaceships, deserted islands, and golden keys.
+
+I remember being surprised and having fun developing it, as there were many more scenarios to cover than I had originally expected. My team member focused on drawing the game board on the terminal, and I focused on developing the logic of the game.
+
+## Experience
+
+### Career
+- **REVITA** — Product Engineer · Yongsan, Seoul · 2025.10 ~
+- **freelance** — Android Developer · not specified · 2025.02 - 2025.06
+- **Phylaxis** — Backend Go Developer · Jung-gu, Seoul · 2023.10 - 2024.01
+- **Togi** — Android Developer · Yeouido, Seoul · 2022.01 - 2023.02
+- **Snaptag** — Android & Backend Developer · Pangyo, Gyeonggi · 2021.03 - 2021.06
+
+### Bootcamp
+- **Cloud** — Korea Radio Promotion Association · Seocho-gu, Seoul · 2020.05 - 2020.10
+- **Java Web** — Tjoeun Academy, Education · Jongno sam-ga, Seoul · 2019.10 - 2020.03
+
+### Education
+- **Uiduc University** — Dropped out, Information and Communication Engineering · Gyeongju, Gyeongbuk · 2012.03 - 2018.03
+
+### Languages
+- **EF Language School** — English · Toronto, Canada · 2017.01 - 2017.06
+- **Meric Japanese School** — Japanese · Osaka, Japan · 2015.01 - 2015.06
