@@ -51,8 +51,6 @@ export default function Hero({ site, lang }: Props) {
           <MapPin size={15} strokeWidth={1.75} />
           {site.meta.location[lang]}
         </span>
-        <span className="hidden text-[var(--line)] sm:inline">/</span>
-        <span>{site.meta.languages[lang]}</span>
       </div>
 
       <div className="mt-8 flex flex-wrap gap-3">

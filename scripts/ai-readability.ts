@@ -129,9 +129,7 @@ function buildNoscript(): string {
   out.push(`<p><strong>${escapeHtml(site.headline[L])}</strong></p>`);
   out.push(`<p>${escapeHtml(site.valueProp[L])}</p>`);
   out.push(`<p>${escapeHtml(site.intro[L])}</p>`);
-  out.push(
-    `<p>${escapeHtml(site.meta.location[L])} · ${escapeHtml(site.meta.languages[L])}</p>`
-  );
+  out.push(`<p>${escapeHtml(site.meta.location[L])}</p>`);
   out.push(
     `<p>Email: <a href="mailto:${site.email}">${site.email}</a> · ` +
       `<a href="${site.github}">GitHub</a> · <a href="${site.medium}">Medium</a></p>`
@@ -237,7 +235,7 @@ function buildLlmsTxt(): string {
   out.push(`- Email: ${site.email}`);
   out.push(`- GitHub: ${site.github}`);
   out.push(`- Medium: ${site.medium}`);
-  out.push(`- ${site.meta.location.en} · ${site.meta.languages.en}`);
+  out.push(`- ${site.meta.location.en}`);
   out.push("");
 
   out.push("## Core capabilities");

@@ -14,10 +14,6 @@
   },
   "meta": {
     "location": { "ko": "서울 기반", "en": "Based in Seoul" },
-    "languages": {
-      "ko": "캐나다 영어·일본 일본어 어학연수",
-      "en": "English study in Canada · Japanese study in Japan"
-    },
     "focus": {
       "ko": "모바일·프로덕트 엔지니어링 중심 · AI·미디어·실시간 인터랙션 제품에 관심",
       "en": "Mobile & product engineering · interested in AI, media, and real-time products"
@@ -62,8 +58,8 @@
     {
       "repository": "l1npengtul/nokhwa#105",
       "title": {
-        "ko": "YUYV 이미지 YUV→RGB 디코딩 개선",
-        "en": "Fixed YUYV image decoding to RGB"
+        "ko": "YUV 이미지의 RGB 변환 오류 수정",
+        "en": "Fixed YUV-to-RGB image decoding"
       },
       "meta": { "ko": "GitHub PR · 2023.02 병합", "en": "GitHub PR · merged 2023.02" },
       "url": "https://github.com/l1npengtul/nokhwa/pull/105"

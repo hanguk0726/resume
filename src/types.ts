@@ -46,7 +46,6 @@ export interface Site {
   intro: Localized; // hero paragraph
   meta: {
     location: Localized;
-    languages: Localized;
     focus: Localized;
   };
   email: string;
