@@ -32,6 +32,13 @@ export interface Interests {
   preference: Localized;
 }
 
+export interface OpenSourceContribution {
+  repository: string;
+  title: Localized;
+  meta: Localized;
+  url: string;
+}
+
 export interface Site {
   name: Localized;
   headline: Localized; // Product Engineer · Mobile, Media & Distributed Systems
@@ -47,6 +54,7 @@ export interface Site {
   medium: string;
   resume: { ko: string; en: string }; // paths to generated PDFs
   ctas: CtaLink[];
+  openSourceContributions: OpenSourceContribution[];
   capabilities: Capability[];
   fullTechStack: string[];
   signatureOutcomes: SignatureOutcome[];
@@ -83,7 +91,7 @@ export interface Project {
 }
 
 export interface Experience {
-  company: string;
+  company: string | Localized;
   title: Localized;
   start: string; // "YYYY.MM"
   end: string | null;

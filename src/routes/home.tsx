@@ -40,7 +40,11 @@ export default function Home() {
         <Capabilities site={site} lang={lang} />
         <Outcomes site={site} lang={lang} />
         <FeaturedProjects projects={projects} lang={lang} />
-        <Career experiences={experiences} lang={lang} />
+        <Career
+          experiences={experiences}
+          contributions={site.openSourceContributions}
+          lang={lang}
+        />
         <Archive projects={projects} lang={lang} />
         <Interests site={site} lang={lang} />
         <Contact site={site} lang={lang} />

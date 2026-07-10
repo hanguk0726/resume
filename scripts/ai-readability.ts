@@ -22,6 +22,7 @@ import type {
   Project,
   Site,
 } from "../src/types";
+import { localizedText } from "../src/format";
 
 const SITE_URL = "https://hanguk0726.github.io/resume/";
 const ASSETS_DIR = path.resolve(process.cwd(), "public/assets");
@@ -173,13 +174,30 @@ function buildNoscript(): string {
 
   out.push("<h2>경력</h2>");
   for (const g of experiences) {
-    out.push(`<h3>${escapeHtml(g.category[L])}</h3><ul>`);
+    if (g.category[L] !== "경력") {
+      out.push(`<h3>${escapeHtml(g.category[L])}</h3>`);
+    }
+    out.push("<ul>");
     for (const e of g.entries)
       out.push(
-        `<li>${escapeHtml(e.company)} — ${escapeHtml(e.title[L])} (${escapeHtml(
+        `<li>${escapeHtml(localizedText(e.company, L))} — ${escapeHtml(e.title[L])} (${escapeHtml(
           e.location[L]
         )}, ${formatPeriod(e)})</li>`
       );
+    out.push("</ul>");
+  }
+
+  if (site.openSourceContributions.length) {
+    out.push("<h3>오픈소스 기여</h3><ul>");
+    for (const contribution of site.openSourceContributions) {
+      out.push(
+        `<li><a href="${contribution.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(
+          contribution.repository
+        )}</a> — ${escapeHtml(contribution.title[L])} (${escapeHtml(
+          contribution.meta[L]
+        )})</li>`
+      );
+    }
     out.push("</ul>");
   }
 
@@ -257,13 +275,23 @@ function buildLlmsTxt(): string {
   out.push("## Experience");
   out.push("");
   for (const g of experiences) {
-    out.push(`### ${g.category.en}`);
+    if (g.category.en !== "Career") out.push(`### ${g.category.en}`);
     for (const e of g.entries) {
       const resp = e.responsibilities.length
         ? ` — ${e.responsibilities.map((r) => r.en).join("; ")}`
         : "";
       out.push(
-        `- **${e.company}** — ${e.title.en} · ${e.location.en} · ${formatPeriod(e as Experience)}${resp}`
+        `- **${localizedText(e.company, "en")}** — ${e.title.en} · ${e.location.en} · ${formatPeriod(e as Experience)}${resp}`
+      );
+    }
+    out.push("");
+  }
+
+  if (site.openSourceContributions.length) {
+    out.push("### Open Source Contributions");
+    for (const contribution of site.openSourceContributions) {
+      out.push(
+        `- **${contribution.repository}** — ${contribution.title.en} · ${contribution.meta.en} · ${contribution.url}`
       );
     }
     out.push("");

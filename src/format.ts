@@ -1,4 +1,8 @@
-import type { Lang, Project } from "./types";
+import type { Lang, Localized, Project } from "./types";
+
+export function localizedText(value: string | Localized, lang: Lang): string {
+  return typeof value === "string" ? value : value[lang];
+}
 
 export function periodLabel(
   p: { start: string; end: string | null },

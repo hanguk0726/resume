@@ -21,7 +21,7 @@
     ],
     "contributions": [
       { "ko": "React Native·Next.js·Python·PostgreSQL 기반으로 제품 전반을 구현", "en": "Built the product end to end on React Native, Next.js, Python, and PostgreSQL" },
-      { "ko": "MQTT(QoS 2)·LoRa 환경의 밸브 제어를 상태 머신으로 모델링하고, ACK·NOTIFY 이전까지 상태를 정직하게 pending으로 유지", "en": "Modeled valve control over MQTT (QoS 2) and LoRa as a state machine, keeping state honestly pending until an ACK/NOTIFY arrives" },
+      { "ko": "MQTT·LoRa 기반 원격 장비 환경의 밸브 제어를 상태 머신으로 모델링하고, ACK·NOTIFY 이전까지 상태를 정직하게 pending으로 유지", "en": "Modeled valve control in a remote MQTT/LoRa device environment as a state machine, keeping state honestly pending until an ACK/NOTIFY arrives" },
       { "ko": "타임아웃·안전 스윕·주기 모니터링으로 정체된 세션을 올바른 상태로 밀어붙이는 복구 경로 마련", "en": "Added recovery via timeouts, a safety sweep, and per-minute monitoring that nudges stalled sessions back toward correctness" },
       { "ko": "공유 펌프의 빈 배관 구동을 없애는 Make-Before-Break 다구역 제어와 CAS 기반 멱등 펌프 시작", "en": "Make-Before-Break multi-zone control to avoid deadheading a shared pump, with idempotent CAS-based pump start" },
       { "ko": "OpenCV로 파노라마 생성을 이미지 스티칭에서 비디오 스캔 기반으로 전환", "en": "Switched panorama generation from image stitching to video-based scanning with OpenCV" },
@@ -30,8 +30,8 @@
     ],
     "outcomes": [
       { "label": { "ko": "파노라마 생성 시간", "en": "Panorama generation time" }, "before": "15 min+", "after": "~2 min" },
-      { "label": { "ko": "상태 불일치 복구", "en": "State-drift recovery" }, "detail": { "ko": "장비와 서버 상태가 어긋나도 구조적으로 수렴하는 복구 경로를 마련.", "en": "A recovery path that structurally converges even when device and server state drift." } },
-      { "label": { "ko": "반복 작업 제거", "en": "Repetitive work removed" }, "detail": { "ko": "개인에게 의존하던 반복 작업을 팀 공용 워크플로로 전환.", "en": "Individual-dependent repetitive work turned into shared team workflows." } }
+      { "label": { "ko": "종료 신호 유실로 다음 관수가 막히던 세션 복구", "en": "Recovered sessions that blocked the next irrigation after a lost end signal" }, "detail": { "ko": "end_pending 세션을 타임아웃과 safety sweep으로 정리하는 복구 경로를 구성.", "en": "Added a timeout and safety-sweep recovery path for stuck end_pending sessions." } },
+      { "label": { "ko": "GeoTIFF·콘텐츠 등록을 팀 공용 워크플로로 전환", "en": "Moved GeoTIFF and content registration into shared team workflows" }, "detail": { "ko": "개인에게 의존하던 백오피스 반복 작업을 팀이 함께 실행할 수 있도록 자동화.", "en": "Automated repetitive back-office work so the team could run it without relying on one person." } }
     ],
     "techStacks": ["React Native", "Expo", "TypeScript", "Next.js", "OpenCV", "Pannellum", "MQTT", "LoRa", "PostgreSQL", "Airflow", "Python"],
     "keywords": ["ComputerVision", "IoT", "DistributedSystems", "StateMachine", "MQTT", "LoRa", "Observability", "Automation"],
@@ -105,10 +105,7 @@
       { "ko": "Kafka·ClickHouse 기반 로그 및 통계 처리", "en": "Log and statistics processing with Kafka and ClickHouse" },
       { "ko": "HAProxy 연동(인증서·핑거프린트·로드밸런싱)과 Docker 패키징·배포", "en": "HAProxy integration (certs, fingerprint, load balancing) and Docker packaging and deploy" }
     ],
-    "outcomes": [
-      { "label": { "ko": "자원에 민감한 요청 처리 경로 설계", "en": "Resource-aware request path" }, "detail": { "ko": "여러 단계로 필터링·가공되는 네트워크 요청의 흐름을 자원 사용량 관점에서 설계.", "en": "Designed the multi-stage flow of filtered and processed requests with resource usage in mind." } },
-      { "label": { "ko": "성능·보안·운영을 함께 고려", "en": "Performance, security, and operations together" } }
-    ],
+    "outcomes": [],
     "techStacks": ["Go", "Aerospike", "ClickHouse", "Kafka", "HAProxy", "Docker"],
     "keywords": ["ReverseProxy", "WAF", "RateLimit", "Cache", "Kafka", "ClickHouse", "SQLi", "XSS"],
     "capabilities": ["backend-distributed"],
@@ -141,8 +138,7 @@
       { "ko": "타 직군과 협업하며 제품 생명주기 전반을 경험", "en": "Collaborated with other roles across the full product lifecycle" }
     ],
     "outcomes": [
-      { "label": { "ko": "상용 B2C 앱 14개월 운영", "en": "14 months operating a B2C app" } },
-      { "label": { "ko": "반복 피벗에도 유지되는 구조", "en": "Structure resilient to repeated pivots" }, "detail": { "ko": "여러 번의 큰 전환에도 상태 관리를 지속적으로 개선하며 구조를 유지.", "en": "Kept the structure intact through several major pivots by continually improving state management." } }
+      { "label": { "ko": "상용 B2C 앱 14개월 운영", "en": "14 months operating a B2C app" } }
     ],
     "techStacks": ["Kotlin", "Jetpack Compose"],
     "keywords": ["Android", "JetpackCompose", "CleanArchitecture", "MultiModule"],

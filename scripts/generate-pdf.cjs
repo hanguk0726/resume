@@ -47,6 +47,8 @@ const esc = (value) =>
 const period = (value, lang) =>
   `${value.start} - ${value.end ?? (lang === "ko" ? "현재" : "Present")}`;
 const t = (lang, ko, en) => (lang === "ko" ? ko : en);
+const localizedText = (value, lang) =>
+  typeof value === "string" ? value : value[lang];
 
 function outcomeLine(outcome, lang) {
   const metric =
@@ -103,7 +105,7 @@ function renderExperience(entry, lang) {
 
   return `<article class="experience">
     <div class="row-head">
-      <h3>${esc(entry.company)} <span>· ${esc(entry.title[lang])}</span></h3>
+      <h3>${esc(localizedText(entry.company, lang))} <span>· ${esc(entry.title[lang])}</span></h3>
       <span class="date">${esc(period(entry, lang))}</span>
     </div>
     <p class="location">${esc(entry.location[lang])}</p>
@@ -135,11 +137,15 @@ function buildHtml(lang) {
   const trainingBlocks = training
     .map(
       (group) => `<section class="compact-group">
-        <h3 class="group-label">${esc(group.category[lang])}</h3>
+        ${
+          group.category[lang] !== t(lang, "교육", "Education")
+            ? `<h3 class="group-label">${esc(group.category[lang])}</h3>`
+            : ""
+        }
         ${group.entries
           .map(
             (entry) => `<div class="compact-row">
-              <span><strong>${esc(entry.company)}</strong> · ${esc(entry.title[lang])}</span>
+              <span><strong>${esc(localizedText(entry.company, lang))}</strong> · ${esc(entry.title[lang])}</span>
               <span class="date">${esc(period(entry, lang))}</span>
             </div>`
           )
@@ -147,6 +153,20 @@ function buildHtml(lang) {
       </section>`
     )
     .join("");
+
+  const openSourceBlock = site.openSourceContributions.length
+    ? `<section class="compact-group open-source-block">
+        <h3 class="group-label">${t(lang, "오픈소스 기여", "Open Source")}</h3>
+        ${site.openSourceContributions
+          .map(
+            (contribution) => `<div class="compact-contribution">
+              <a href="${esc(contribution.url)}"><strong>${esc(contribution.repository)}</strong></a>
+              <span> · ${esc(contribution.title[lang])}</span>
+            </div>`
+          )
+          .join("")}
+      </section>`
+    : "";
 
   const archiveItems = archive
     .map(
@@ -237,6 +257,9 @@ function buildHtml(lang) {
       .compact-group + .compact-group { margin-top: 3mm; }
       .group-label { color: #7a4638; font-size: 8.25pt; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.2mm; }
       .compact-row { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; font-size: 8.2pt; margin: 1.2mm 0; }
+      .open-source-block { margin-top: 3mm; }
+      .compact-contribution { color: #475569; font-size: 8.2pt; line-height: 1.35; margin: 1.2mm 0; }
+      .compact-contribution a { display: inline-block; border-bottom: 0.25mm solid #c7d2e2; }
       .archive-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 6mm; row-gap: 1.7mm; padding-left: 4mm; }
       .archive-list li { break-inside: avoid; font-size: 8.2pt; }
       .archive-list strong { color: #263244; }
@@ -294,8 +317,9 @@ function buildHtml(lang) {
 
         <div class="bottom-grid">
           <div>
-            <h2 class="section-title">${t(lang, "교육", "Education")}</h2>
+            <h2 class="section-title">${t(lang, "교육·어학", "Education & Languages")}</h2>
             ${trainingBlocks}
+            ${openSourceBlock}
           </div>
           <div>
             <h2 class="section-title">${t(lang, "추가 프로젝트", "Additional Projects")}</h2>
