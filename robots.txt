@@ -1,4 +1,4 @@
-# Resume site — crawlers and AI agents welcome.
+# Portfolio site — crawlers and AI agents welcome.
 User-agent: *
 Allow: /
 
