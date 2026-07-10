@@ -8,7 +8,7 @@ Starting from Android-native apps and media processing, I've widened my scope in
 - Email: hanguk0726@gmail.com
 - GitHub: https://github.com/hanguk0726
 - Medium: https://medium.com/@hangukshin
-- Based in Seoul · English study in Canada · Japanese study in Japan
+- Based in Seoul
 
 ## Core capabilities
 - **Product Engineering**: 0→1 product building, Structuring requirements, App / web / back-office / backend integration, Shipping and operating, Automating a small team's repetitive work
@@ -123,7 +123,7 @@ Starting from Android-native apps and media processing, I've widened my scope in
 
 ### Open Source Contributions
 - **darkskygit/minimp4.rs#3** — Added audio-track support to MP4 muxing · GitHub PR · merged 2023.04 · https://github.com/darkskygit/minimp4.rs/pull/3
-- **l1npengtul/nokhwa#105** — Fixed YUYV image decoding to RGB · GitHub PR · merged 2023.02 · https://github.com/l1npengtul/nokhwa/pull/105
+- **l1npengtul/nokhwa#105** — Fixed YUV-to-RGB image decoding · GitHub PR · merged 2023.02 · https://github.com/l1npengtul/nokhwa/pull/105
 
 ## Project archive
 - **Avatar Vision** (2023.02 – 2023.05) — A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4.
