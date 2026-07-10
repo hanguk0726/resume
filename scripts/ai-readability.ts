@@ -312,7 +312,17 @@ export default function aiReadability(): Plugin {
   return {
     name: "ai-readability",
     transformIndexHtml(html) {
-      const withNoscript = html.replace("</body>", `${buildNoscript()}\n  </body>`);
+      const { site } = load();
+      const title = `${site.name.ko} | ${site.headline.ko}`;
+      // Set the static title and default language so non-JS crawlers see the
+      // positioned identity (the runtime app keeps them in sync per language).
+      const withTitle = html
+        .replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`)
+        .replace(/<html lang="[^"]*">/, '<html lang="ko">');
+      const withNoscript = withTitle.replace(
+        "</body>",
+        `${buildNoscript()}\n  </body>`
+      );
       return { html: withNoscript, tags: buildHeadTags() };
     },
     generateBundle() {
