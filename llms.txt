@@ -2,13 +2,13 @@
 
 > I build complex products across mobile, media, and backend systems, designing them to converge toward the correct state even when operations fail.
 
-Starting from Android-native apps and media processing, I've widened my scope into React Native, web, backend, and IoT systems. My strength is designing systems to converge toward the correct state even when the network or hardware fails, and turning issues found in operation into observability and automation so they don't recur.
+Starting from Android-native apps and media processing, I've widened my scope into React Native, web, backend, and IoT systems. My strength is reproducing operational failures in real environments, then using observability and automation to reduce the risk of recurrence.
 
 ## Contact
 - Email: hanguk0726@gmail.com
 - GitHub: https://github.com/hanguk0726
 - Medium: https://medium.com/@hangukshin
-- Based in Seoul · Korean · English · Japanese
+- Based in Seoul · English study in Canada · Japanese study in Japan
 
 ## Core capabilities
 - **Product Engineering**: 0→1 product building, Structuring requirements, App / web / back-office / backend integration, Shipping and operating, Automating a small team's repetitive work
@@ -27,7 +27,7 @@ Starting from Android-native apps and media processing, I've widened my scope in
 - Problems: Field devices had to be controlled remotely over an unreliable connection / Server commands and the valve's real physical state could diverge / Panorama generation was too slow to be useful on-site / A small team's repetitive work depended on individuals
 - Contributions:
   - Built the product end to end on React Native, Next.js, Python, and PostgreSQL
-  - Modeled valve control over MQTT (QoS 2) and LoRa as a state machine, keeping state honestly pending until an ACK/NOTIFY arrives
+  - Modeled valve control in a remote MQTT/LoRa device environment as a state machine, keeping state honestly pending until an ACK/NOTIFY arrives
   - Added recovery via timeouts, a safety sweep, and per-minute monitoring that nudges stalled sessions back toward correctness
   - Make-Before-Break multi-zone control to avoid deadheading a shared pump, with idempotent CAS-based pump start
   - Switched panorama generation from image stitching to video-based scanning with OpenCV
@@ -35,8 +35,8 @@ Starting from Android-native apps and media processing, I've widened my scope in
   - Built tiered Sentry observability, reproduced issues on real devices, and added regression guards
 - Outcomes:
   - Panorama generation time (15 min+ → ~2 min)
-  - State-drift recovery — A recovery path that structurally converges even when device and server state drift.
-  - Repetitive work removed — Individual-dependent repetitive work turned into shared team workflows.
+  - Recovered sessions that blocked the next irrigation after a lost end signal — Added a timeout and safety-sweep recovery path for stuck end_pending sessions.
+  - Moved GeoTIFF and content registration into shared team workflows — Automated repetitive back-office work so the team could run it without relying on one person.
 - Tech: React Native, Expo, TypeScript, Next.js, OpenCV, Pannellum, MQTT, LoRa, PostgreSQL, Airflow, Python
 - Links: Medium https://medium.com/@hangukshin/%ED%95%84%EB%93%9C%EC%9D%98-%EB%B0%B8%EB%B8%8C%EB%8A%94-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%ED%96%89%EC%9D%B4-%EC%95%84%EB%8B%88%EB%8B%A4-%EC%95%BC%EC%99%B8-%EA%B4%80%EC%88%98-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%84-%EB%A7%8C%EB%93%A4%EB%A9%B0-d807466868dc
 
@@ -69,9 +69,6 @@ Starting from Android-native apps and media processing, I've widened my scope in
   - Parsed request headers/query/body and analyzed input to defend against SQLi and XSS
   - Log and statistics processing with Kafka and ClickHouse
   - HAProxy integration (certs, fingerprint, load balancing) and Docker packaging and deploy
-- Outcomes:
-  - Resource-aware request path — Designed the multi-stage flow of filtered and processed requests with resource usage in mind.
-  - Performance, security, and operations together
 - Tech: Go, Aerospike, ClickHouse, Kafka, HAProxy, Docker
 - Links: phylaxis.net https://phylaxis.net/
 
@@ -89,7 +86,6 @@ Starting from Android-native apps and media processing, I've widened my scope in
   - Collaborated with other roles across the full product lifecycle
 - Outcomes:
   - 14 months operating a B2C app
-  - Structure resilient to repeated pivots — Kept the structure intact through several major pivots by continually improving state management.
 - Tech: Kotlin, Jetpack Compose
 
 ### VocalBridge (2025.08 – 2025.08) — personal
@@ -110,19 +106,24 @@ Starting from Android-native apps and media processing, I've widened my scope in
 
 ## Experience
 
-### Career
 - **REVITA** — Product Engineer · Yongsan, Seoul · 2025.10 – Present — React Native Android & iOS apps; Next.js web and back-office; MQTT/LoRa-based IoT control; Observability and operations automation
 - **Freelance** — Android Developer · Project contract · 2025.02 – 2025.06 — Designed and built the decode/compose/encode pipeline; Passed render frames to the encoder via EGLSurface
 - **Phylaxis** — Backend Go Developer · Jung-gu, Seoul · 2023.10 – 2024.01 — Rate limit and LRU cache / TTL management; Input analysis for SQLi/XSS defense; Kafka/ClickHouse logs and statistics
 - **Togispace** — Android Developer · Yeouido, Seoul · 2022.01 – 2023.02 — Built a Clean Architecture, multi-module structure; Auth, camera, PDF, WebView, and i18n; Improved app state management through repeated pivots
 - **Snaptag** — Android & Backend Developer · Pangyo, Gyeonggi · 2021.03 – 2021.06 — Optimized from camera capture to information extraction; Passed camera frames to a C++ module via JNI
 
-### Bootcamp
-- **Cloud — Korea Radio Promotion Association** — Cloud training program · Seocho-gu, Seoul · 2020.05 – 2020.10
-- **Java Web — Tjoeun Academy** — Java web development training · Jongno, Seoul · 2019.10 – 2020.03
-
 ### Education
-- **Uiduc University** — Information & Communication Engineering (dropped out) · Gyeongju, Gyeongbuk · 2012.03 – 2018.03
+- **Uiduk University** — Information & Communication Engineering (dropped out) · Gyeongju, Gyeongbuk · 2012.03 – 2018.03
+- **Korea Radio Promotion Association** — Cloud training program · Seocho-gu, Seoul · 2020.05 – 2020.10
+- **Tjoeun Academy** — Java web development training · Jongno, Seoul · 2019.10 – 2020.03
+
+### Languages
+- **EF Language School** — English · Toronto, Canada · 2017.01 – 2017.06
+- **Meric Japanese School** — Japanese · Osaka, Japan · 2015.01 – 2015.06
+
+### Open Source Contributions
+- **darkskygit/minimp4.rs#3** — Added audio-track support to MP4 muxing · GitHub PR · merged 2023.04 · https://github.com/darkskygit/minimp4.rs/pull/3
+- **l1npengtul/nokhwa#105** — Fixed YUYV image decoding to RGB · GitHub PR · merged 2023.02 · https://github.com/l1npengtul/nokhwa/pull/105
 
 ## Project archive
 - **Avatar Vision** (2023.02 – 2023.05) — A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4.

@@ -95,10 +95,21 @@
       ]
     },
     {
-      "category": { "ko": "부트캠프", "en": "Bootcamp" },
+      "category": { "ko": "교육", "en": "Education" },
       "entries": [
         {
-          "company": "Cloud — Korea Radio Promotion Association",
+          "company": { "ko": "위덕대학교", "en": "Uiduk University" },
+          "title": { "ko": "정보통신공학과 (중퇴)", "en": "Information & Communication Engineering (dropped out)" },
+          "start": "2012.03",
+          "end": "2018.03",
+          "location": { "ko": "경북 경주", "en": "Gyeongju, Gyeongbuk" },
+          "employmentType": "education",
+          "summary": { "ko": "", "en": "" },
+          "responsibilities": [],
+          "relatedProjectSlugs": []
+        },
+        {
+          "company": { "ko": "한국전파진흥협회", "en": "Korea Radio Promotion Association" },
           "title": { "ko": "클라우드 교육 과정", "en": "Cloud training program" },
           "start": "2020.05",
           "end": "2020.10",
@@ -109,7 +120,7 @@
           "relatedProjectSlugs": []
         },
         {
-          "company": "Java Web — Tjoeun Academy",
+          "company": { "ko": "더조은 아카데미", "en": "Tjoeun Academy" },
           "title": { "ko": "자바 웹 개발 교육", "en": "Java web development training" },
           "start": "2019.10",
           "end": "2020.03",
@@ -122,14 +133,25 @@
       ]
     },
     {
-      "category": { "ko": "교육", "en": "Education" },
+      "category": { "ko": "어학", "en": "Languages" },
       "entries": [
         {
-          "company": "Uiduc University",
-          "title": { "ko": "정보통신공학과 (중퇴)", "en": "Information & Communication Engineering (dropped out)" },
-          "start": "2012.03",
-          "end": "2018.03",
-          "location": { "ko": "경북 경주", "en": "Gyeongju, Gyeongbuk" },
+          "company": { "ko": "EF 어학원", "en": "EF Language School" },
+          "title": { "ko": "영어", "en": "English" },
+          "start": "2017.01",
+          "end": "2017.06",
+          "location": { "ko": "캐나다 토론토", "en": "Toronto, Canada" },
+          "employmentType": "education",
+          "summary": { "ko": "", "en": "" },
+          "responsibilities": [],
+          "relatedProjectSlugs": []
+        },
+        {
+          "company": { "ko": "메릭 일본어 학원", "en": "Meric Japanese School" },
+          "title": { "ko": "일본어", "en": "Japanese" },
+          "start": "2015.01",
+          "end": "2015.06",
+          "location": { "ko": "일본 오사카", "en": "Osaka, Japan" },
           "employmentType": "education",
           "summary": { "ko": "", "en": "" },
           "responsibilities": [],

@@ -9,14 +9,14 @@
     "en": "I build complex products across mobile, media, and backend systems, designing them to converge toward the correct state even when operations fail."
   },
   "intro": {
-    "ko": "Android 네이티브 앱과 영상 처리에서 출발해 React Native, 웹, 백엔드, IoT 시스템으로 책임 범위를 넓혀 왔습니다. 네트워크와 장비가 실패하더라도 시스템이 올바른 상태로 수렴하도록 설계하고, 운영 중 발견한 문제를 관측성과 자동화로 재발 방지하는 데 강점이 있습니다.",
-    "en": "Starting from Android-native apps and media processing, I've widened my scope into React Native, web, backend, and IoT systems. My strength is designing systems to converge toward the correct state even when the network or hardware fails, and turning issues found in operation into observability and automation so they don't recur."
+    "ko": "Android 네이티브 앱과 영상 처리에서 출발해 React Native, 웹, 백엔드, IoT 시스템으로 책임 범위를 넓혀 왔습니다. 운영 장애를 실제 환경에서 재현하고, 관측성과 자동화로 재발 가능성을 낮추는 데 강점이 있습니다.",
+    "en": "Starting from Android-native apps and media processing, I've widened my scope into React Native, web, backend, and IoT systems. My strength is reproducing operational failures in real environments, then using observability and automation to reduce the risk of recurrence."
   },
   "meta": {
     "location": { "ko": "서울 기반", "en": "Based in Seoul" },
     "languages": {
-      "ko": "한국어 · 영어 · 일본어 환경 경험",
-      "en": "Korean · English · Japanese"
+      "ko": "캐나다 영어·일본 일본어 어학연수",
+      "en": "English study in Canada · Japanese study in Japan"
     },
     "focus": {
       "ko": "모바일·프로덕트 엔지니어링 중심 · AI·미디어·실시간 인터랙션 제품에 관심",
@@ -47,6 +47,26 @@
       "kind": "email",
       "label": { "ko": "이메일 복사", "en": "Copy email" },
       "href": ""
+    }
+  ],
+  "openSourceContributions": [
+    {
+      "repository": "darkskygit/minimp4.rs#3",
+      "title": {
+        "ko": "MP4 muxing 오디오 트랙 지원 추가",
+        "en": "Added audio-track support to MP4 muxing"
+      },
+      "meta": { "ko": "GitHub PR · 2023.04 병합", "en": "GitHub PR · merged 2023.04" },
+      "url": "https://github.com/darkskygit/minimp4.rs/pull/3"
+    },
+    {
+      "repository": "l1npengtul/nokhwa#105",
+      "title": {
+        "ko": "YUYV 이미지 YUV→RGB 디코딩 개선",
+        "en": "Fixed YUYV image decoding to RGB"
+      },
+      "meta": { "ko": "GitHub PR · 2023.02 병합", "en": "GitHub PR · merged 2023.02" },
+      "url": "https://github.com/l1npengtul/nokhwa/pull/105"
     }
   ],
   "capabilities": [
