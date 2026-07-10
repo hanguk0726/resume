@@ -1,0 +1,187 @@
+{
+  "name": { "ko": "신한국", "en": "HanGuk Shin" },
+  "headline": {
+    "ko": "프로덕트 엔지니어 · 모바일, 미디어, 분산 시스템",
+    "en": "Product Engineer · Mobile, Media & Distributed Systems"
+  },
+  "valueProp": {
+    "ko": "모바일·미디어·백엔드를 연결해 복잡한 제품을 처음부터 만들고, 실패 가능한 시스템이 올바른 상태로 수렴하도록 설계합니다.",
+    "en": "I build complex products across mobile, media, and backend systems, designing them to converge toward the correct state even when operations fail."
+  },
+  "intro": {
+    "ko": "Android 네이티브 앱과 영상 처리에서 출발해 React Native, 웹, 백엔드, IoT 시스템으로 책임 범위를 넓혀 왔습니다. 네트워크와 장비가 실패하더라도 시스템이 올바른 상태로 수렴하도록 설계하고, 운영 중 발견한 문제를 관측성과 자동화로 재발 방지하는 데 강점이 있습니다.",
+    "en": "Starting from Android-native apps and media processing, I've widened my scope into React Native, web, backend, and IoT systems. My strength is designing systems to converge toward the correct state even when the network or hardware fails, and turning issues found in operation into observability and automation so they don't recur."
+  },
+  "meta": {
+    "location": { "ko": "서울 기반", "en": "Based in Seoul" },
+    "languages": {
+      "ko": "한국어 · 영어 · 일본어 환경 경험",
+      "en": "Korean · English · Japanese"
+    },
+    "focus": {
+      "ko": "모바일·프로덕트 엔지니어링 중심 · AI·미디어·실시간 인터랙션 제품에 관심",
+      "en": "Mobile & product engineering · interested in AI, media, and real-time products"
+    }
+  },
+  "email": "hanguk0726@gmail.com",
+  "github": "https://github.com/hanguk0726",
+  "medium": "https://medium.com/@hangukshin",
+  "resume": { "ko": "resume-ko.pdf", "en": "resume-en.pdf" },
+  "ctas": [
+    {
+      "kind": "projects",
+      "label": { "ko": "대표 프로젝트 보기", "en": "View featured work" },
+      "href": "#featured"
+    },
+    {
+      "kind": "resume",
+      "label": { "ko": "이력서 PDF", "en": "Resume (PDF)" },
+      "href": ""
+    },
+    {
+      "kind": "github",
+      "label": { "ko": "GitHub", "en": "GitHub" },
+      "href": "https://github.com/hanguk0726"
+    },
+    {
+      "kind": "email",
+      "label": { "ko": "이메일", "en": "Email" },
+      "href": "mailto:hanguk0726@gmail.com"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "product-engineering",
+      "title": { "ko": "프로덕트 엔지니어링", "en": "Product Engineering" },
+      "items": [
+        { "ko": "0→1 제품 구축", "en": "0→1 product building" },
+        { "ko": "요구사항 구조화", "en": "Structuring requirements" },
+        { "ko": "앱·웹·백오피스·백엔드 통합", "en": "App / web / back-office / backend integration" },
+        { "ko": "출시 및 운영", "en": "Shipping and operating" },
+        { "ko": "작은 팀의 반복 업무 자동화", "en": "Automating a small team's repetitive work" }
+      ]
+    },
+    {
+      "id": "mobile",
+      "title": { "ko": "모바일", "en": "Mobile" },
+      "items": [
+        { "ko": "Android / Kotlin", "en": "Android / Kotlin" },
+        { "ko": "Jetpack Compose", "en": "Jetpack Compose" },
+        { "ko": "React Native / Expo", "en": "React Native / Expo" },
+        { "ko": "Flutter", "en": "Flutter" },
+        { "ko": "카메라 · 백그라운드 작업", "en": "Camera · background tasks" },
+        { "ko": "앱 배포와 OTA", "en": "App distribution and OTA" }
+      ]
+    },
+    {
+      "id": "media-realtime",
+      "title": { "ko": "미디어 · 실시간", "en": "Media & Realtime" },
+      "items": [
+        { "ko": "OpenGL ES · EGL", "en": "OpenGL ES · EGL" },
+        { "ko": "MediaCodec", "en": "MediaCodec" },
+        { "ko": "영상 디코딩·렌더링·인코딩", "en": "Video decode / render / encode" },
+        { "ko": "WebRTC", "en": "WebRTC" },
+        { "ko": "STT / TTS", "en": "STT / TTS" },
+        { "ko": "실시간 오디오 처리", "en": "Real-time audio processing" }
+      ]
+    },
+    {
+      "id": "backend-distributed",
+      "title": { "ko": "백엔드 · 분산 시스템", "en": "Backend & Distributed Systems" },
+      "items": [
+        { "ko": "Go · TypeScript · Python", "en": "Go · TypeScript · Python" },
+        { "ko": "PostgreSQL", "en": "PostgreSQL" },
+        { "ko": "MQTT · LoRa", "en": "MQTT · LoRa" },
+        { "ko": "Kafka · ClickHouse", "en": "Kafka · ClickHouse" },
+        { "ko": "상태 머신 · 멱등성", "en": "State machines · idempotency" },
+        { "ko": "재시도 · 타임아웃 · 복구 · 관측성", "en": "Retry · timeout · recovery · observability" }
+      ]
+    },
+    {
+      "id": "web-visualization",
+      "title": { "ko": "웹 · 시각화", "en": "Web & Visualization" },
+      "items": [
+        { "ko": "React · Next.js", "en": "React · Next.js" },
+        { "ko": "WebGL", "en": "WebGL" },
+        { "ko": "Pannellum", "en": "Pannellum" },
+        { "ko": "백오피스", "en": "Back-office" },
+        { "ko": "데이터 시각화", "en": "Data visualization" }
+      ]
+    }
+  ],
+  "fullTechStack": [
+    "Android", "Kotlin", "Java", "Jetpack Compose", "React Native", "Expo",
+    "Flutter", "TypeScript", "Next.js", "React", "Svelte", "Vue.js",
+    "OpenGL ES", "EGL", "MediaCodec", "OpenCV", "Pannellum", "WebRTC", "WebGL",
+    "Go", "Python", "Rust", "Solidity",
+    "PostgreSQL", "Supabase", "Cassandra", "Aerospike", "ClickHouse",
+    "Kafka", "MQTT", "LoRa", "Airflow", "HAProxy", "Docker", "JNI"
+  ],
+  "signatureOutcomes": [
+    {
+      "label": { "ko": "파노라마 생성 시간 단축", "en": "Cut panorama generation time" },
+      "before": "15 min+",
+      "after": "~2 min",
+      "context": {
+        "ko": "이미지 기반 스티칭을 비디오 스캔 기반으로 바꿔 현장 파노라마 생성을 대폭 단축했습니다.",
+        "en": "Switched from image-based stitching to video-based scanning to drastically cut on-site panorama generation."
+      },
+      "projectSlug": "revita"
+    },
+    {
+      "label": { "ko": "실패 가능한 현장 제어를 수렴하도록 설계", "en": "Field control that converges despite failure" },
+      "context": {
+        "ko": "서버의 의도와 실제 장비 상태를 분리한 상태 머신을 구성하고, ACK·타임아웃·주기 모니터링으로 시스템이 올바른 상태에 수렴하도록 설계했습니다.",
+        "en": "Modeled a state machine separating server intent from physical device state, and made the system converge to the correct state via ACK, timeouts, and periodic monitoring."
+      },
+      "projectSlug": "revita"
+    },
+    {
+      "label": { "ko": "Android 영상 파이프라인 구현", "en": "Built an Android video pipeline" },
+      "context": {
+        "ko": "MediaCodec·OpenGL ES·EGL을 연결해 디코딩·합성·인코딩 파이프라인을 구현하고 중간 YUV 변환 단계를 제거했습니다.",
+        "en": "Wired MediaCodec, OpenGL ES, and EGL into a decode/compose/encode pipeline, eliminating the intermediate YUV conversion step."
+      },
+      "projectSlug": "android-video-editor"
+    },
+    {
+      "label": { "ko": "실시간 음성 변환 프로토타입 구축", "en": "Built a real-time voice translation prototype" },
+      "context": {
+        "ko": "React Native와 WebRTC로 음성을 전송하고 STT→번역→TTS로 이어지는 파이프라인을 구축했습니다.",
+        "en": "Streamed audio over React Native and WebRTC into an STT → translation → TTS pipeline."
+      },
+      "projectSlug": "vocalbridge"
+    },
+    {
+      "label": { "ko": "상용 Android 제품을 0→1로 개발·운영", "en": "Shipped and ran a commercial Android product 0→1" },
+      "context": {
+        "ko": "B2C 앱을 처음부터 개발하고 14개월간 반복적인 피벗과 운영 요구사항에 대응했습니다.",
+        "en": "Built a B2C app from scratch and handled repeated pivots and operational demands over 14 months."
+      },
+      "projectSlug": "togispace"
+    }
+  ],
+  "interests": {
+    "problems": [
+      { "ko": "AI와 사용자가 장기적으로 상호작용하는 제품", "en": "Products where users interact with AI over the long term" },
+      { "ko": "영상·이미지·음성이 결합된 멀티모달 도구", "en": "Multimodal tools combining video, image, and voice" },
+      { "ko": "실시간 커뮤니케이션과 미디어 처리", "en": "Real-time communication and media processing" },
+      { "ko": "모바일이 제품의 핵심 인터페이스인 서비스", "en": "Services where mobile is the core interface" },
+      { "ko": "현실 세계 장비와 소프트웨어가 연결되는 시스템", "en": "Systems that connect real-world hardware with software" },
+      { "ko": "실패·지연·중복이 발생하는 분산 시스템", "en": "Distributed systems with failure, delay, and duplication" },
+      { "ko": "작은 팀의 반복 작업을 제품과 자동화로 전환하는 문제", "en": "Turning a small team's repetitive work into product and automation" }
+    ],
+    "goodFitRoles": [
+      "Product Engineer",
+      "Mobile Engineer",
+      "Android Engineer",
+      "Multimodal / Media Engineer",
+      "Full-stack Product Engineer",
+      "Founding Engineer"
+    ],
+    "preference": {
+      "ko": "기능 구현 범위가 지나치게 분리된 역할보다, 사용자 문제와 시스템 전체 흐름을 함께 소유할 수 있는 환경을 선호합니다.",
+      "en": "I prefer environments where I can own the user problem and the whole system flow, rather than roles narrowly scoped to isolated feature work."
+    }
+  }
+}

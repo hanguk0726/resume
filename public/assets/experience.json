@@ -1,186 +1,141 @@
 {
-	"experiences": [
-		{
-			"category": {
-				"en": "Career",
-				"ko": "경력"
-			},
-			"entries": [
-				{
-					"company": {
-						"en": "REVITA",
-						"ko": "REVITA"
-					},
-					"location": {
-						"en": "Yongsan, Seoul",
-						"ko": "서울 용산"
-					},
-					"period": "2025.10 ~",
-					"position": {
-						"en": "Product Engineer",
-						"ko": "프로덕트 엔지니어"
-					}
-				},
-				{
-					"company": {
-						"en": "freelance",
-						"ko": "프리랜서"
-					},
-					"location": {
-						"en": "not specified",
-						"ko": "자유"
-					},
-					"period": "2025.02 - 2025.06",
-					"position": {
-						"en": "Android Developer",
-						"ko": "Android 개발자"
-					}
-				},
-				{
-					"company": {
-						"en": "Phylaxis",
-						"ko": "필락시스"
-					},
-					"location": {
-						"en": "Jung-gu, Seoul",
-						"ko": "서울 중구"
-					},
-					"period": "2023.10 - 2024.01",
-					"position": {
-						"en": "Backend Go Developer",
-						"ko": "Go 개발자"
-					}
-				},
-				{
-					"company": {
-						"en": "Togi",
-						"ko": "토기"
-					},
-					"location": {
-						"en": "Yeouido, Seoul",
-						"ko": "서울 여의도"
-					},
-					"period": "2022.01 - 2023.02",
-					"position": {
-						"en": "Android Developer",
-						"ko": "Android 개발자"
-					}
-				},
-				{
-					"company": {
-						"en": "Snaptag",
-						"ko": "스냅태그"
-					},
-					"location": {
-						"en": "Pangyo, Gyeonggi",
-						"ko": "경기 판교"
-					},
-					"period": "2021.03 - 2021.06",
-					"position": {
-						"en": "Android & Backend Developer",
-						"ko": "Android 개발자, 백엔드 개발자"
-					}
-				}
-			]
-		},
-		{
-			"category": {
-				"en": "Bootcamp",
-				"ko": "부트캠프"
-			},
-			"entries": [
-				{
-					"company": {
-						"en": "Cloud",
-						"ko": "클라우드"
-					},
-					"location": {
-						"en": "Seocho-gu, Seoul",
-						"ko": "서울 서초구"
-					},
-					"period": "2020.05 - 2020.10",
-					"position": {
-						"en": "Korea Radio Promotion Association",
-						"ko": "한국전파진흥협회"
-					}
-				},
-				{
-					"company": {
-						"en": "Java Web",
-						"ko": "자바 웹"
-					},
-					"location": {
-						"en": "Jongno sam-ga, Seoul",
-						"ko": "서울 종로삼가"
-					},
-					"period": "2019.10 - 2020.03",
-					"position": {
-						"en": "Tjoeun Academy, Education",
-						"ko": "더조은 아카데미, 교육"
-					}
-				}
-			]
-		},
-		{
-			"category": {
-				"en": "Education",
-				"ko": "교육"
-			},
-			"entries": [
-				{
-					"company": {
-						"en": "Uiduc University",
-						"ko": "위덕 대학교"
-					},
-					"location": {
-						"en": "Gyeongju, Gyeongbuk",
-						"ko": "경상북도 경주"
-					},
-					"period": "2012.03 - 2018.03",
-					"position": {
-						"en": "Dropped out, Information and Communication Engineering",
-						"ko": "정보통신공학과 중퇴"
-					}
-				}
-			]
-		},
-		{
-			"category": {
-				"en": "Languages",
-				"ko": "어학"
-			},
-			"entries": [
-				{
-					"company": {
-						"en": "EF Language School",
-						"ko": "EF 어학원"
-					},
-					"location": {
-						"en": "Toronto, Canada",
-						"ko": "캐나다 토론토"
-					},
-					"period": "2017.01 - 2017.06",
-					"position": {
-						"en": "English",
-						"ko": "영어"
-					}
-				},
-				{
-					"company": {
-						"en": "Meric Japanese School",
-						"ko": "메릭 일본어 학원"
-					},
-					"location": {
-						"en": "Osaka, Japan",
-						"ko": "일본 오사카"
-					},
-					"period": "2015.01 - 2015.06",
-					"position": {
-						"en": "Japanese",
-						"ko": "일본어"
-					}
-				}
-			]
-		}
-	]
+  "experiences": [
+    {
+      "category": { "ko": "경력", "en": "Career" },
+      "entries": [
+        {
+          "company": "REVITA",
+          "title": { "ko": "프로덕트 엔지니어", "en": "Product Engineer" },
+          "start": "2025.10",
+          "end": null,
+          "location": { "ko": "서울 용산", "en": "Yongsan, Seoul" },
+          "employmentType": "full-time",
+          "summary": {
+            "ko": "모바일 앱, 웹, 백오피스와 현장 장비 제어 백엔드를 개발.",
+            "en": "Building the mobile apps, web, back-office, and field-device control backend."
+          },
+          "responsibilities": [
+            { "ko": "React Native 기반 Android·iOS 앱", "en": "React Native Android & iOS apps" },
+            { "ko": "Next.js 웹과 백오피스", "en": "Next.js web and back-office" },
+            { "ko": "MQTT·LoRa 기반 IoT 제어", "en": "MQTT/LoRa-based IoT control" },
+            { "ko": "관측성과 운영 자동화", "en": "Observability and operations automation" }
+          ],
+          "relatedProjectSlugs": ["revita"]
+        },
+        {
+          "company": "Freelance",
+          "title": { "ko": "Android 개발자", "en": "Android Developer" },
+          "start": "2025.02",
+          "end": "2025.06",
+          "location": { "ko": "프로젝트 계약", "en": "Project contract" },
+          "employmentType": "freelance",
+          "summary": {
+            "ko": "OpenGL·MediaCodec 기반 Android 영상 편집기를 개발.",
+            "en": "Built an OpenGL/MediaCodec Android video editor."
+          },
+          "responsibilities": [
+            { "ko": "영상 디코딩·합성·인코딩 파이프라인 설계·구현", "en": "Designed and built the decode/compose/encode pipeline" },
+            { "ko": "EGLSurface로 렌더 프레임을 인코더에 직접 전달", "en": "Passed render frames to the encoder via EGLSurface" }
+          ],
+          "relatedProjectSlugs": ["android-video-editor"]
+        },
+        {
+          "company": "Phylaxis",
+          "title": { "ko": "백엔드 Go 개발자", "en": "Backend Go Developer" },
+          "start": "2023.10",
+          "end": "2024.01",
+          "location": { "ko": "서울 중구", "en": "Jung-gu, Seoul" },
+          "employmentType": "full-time",
+          "summary": {
+            "ko": "Go 기반 리버스 프록시의 캐시·RateLimit·로그·보안 기능을 개발.",
+            "en": "Built cache, rate limit, log, and security features in a Go reverse proxy."
+          },
+          "responsibilities": [
+            { "ko": "RateLimit과 LRU 캐시·TTL 관리", "en": "Rate limit and LRU cache / TTL management" },
+            { "ko": "SQLi·XSS 방어용 입력 분석", "en": "Input analysis for SQLi/XSS defense" },
+            { "ko": "Kafka·ClickHouse 로그·통계 처리", "en": "Kafka/ClickHouse logs and statistics" }
+          ],
+          "relatedProjectSlugs": ["phylaxis"]
+        },
+        {
+          "company": "Togispace",
+          "title": { "ko": "Android 개발자", "en": "Android Developer" },
+          "start": "2022.01",
+          "end": "2023.02",
+          "location": { "ko": "서울 여의도", "en": "Yeouido, Seoul" },
+          "employmentType": "full-time",
+          "summary": {
+            "ko": "Kotlin·Jetpack Compose 기반 상용 B2C 앱을 단독 개발·운영.",
+            "en": "Sole developer and operator of a commercial B2C app on Kotlin/Jetpack Compose."
+          },
+          "responsibilities": [
+            { "ko": "Clean Architecture와 멀티모듈 구조 구축", "en": "Built a Clean Architecture, multi-module structure" },
+            { "ko": "인증·카메라·PDF·WebView·다국어 지원", "en": "Auth, camera, PDF, WebView, and i18n" },
+            { "ko": "반복 피벗 속 앱 상태 관리 개선", "en": "Improved app state management through repeated pivots" }
+          ],
+          "relatedProjectSlugs": ["togispace"]
+        },
+        {
+          "company": "Snaptag",
+          "title": { "ko": "Android · 백엔드 개발자", "en": "Android & Backend Developer" },
+          "start": "2021.03",
+          "end": "2021.06",
+          "location": { "ko": "경기 판교", "en": "Pangyo, Gyeonggi" },
+          "employmentType": "full-time",
+          "summary": {
+            "ko": "Android 카메라 프레임 처리와 JNI·C++ 모듈 연동.",
+            "en": "Android camera frame processing and JNI/C++ module integration."
+          },
+          "responsibilities": [
+            { "ko": "카메라 캡처부터 정보 추출까지 최적화", "en": "Optimized from camera capture to information extraction" },
+            { "ko": "카메라 프레임을 JNI로 C++ 모듈에 전달", "en": "Passed camera frames to a C++ module via JNI" }
+          ],
+          "relatedProjectSlugs": ["snaptag"]
+        }
+      ]
+    },
+    {
+      "category": { "ko": "부트캠프", "en": "Bootcamp" },
+      "entries": [
+        {
+          "company": "Cloud — Korea Radio Promotion Association",
+          "title": { "ko": "클라우드 교육 과정", "en": "Cloud training program" },
+          "start": "2020.05",
+          "end": "2020.10",
+          "location": { "ko": "서울 서초구", "en": "Seocho-gu, Seoul" },
+          "employmentType": "education",
+          "summary": { "ko": "", "en": "" },
+          "responsibilities": [],
+          "relatedProjectSlugs": []
+        },
+        {
+          "company": "Java Web — Tjoeun Academy",
+          "title": { "ko": "자바 웹 개발 교육", "en": "Java web development training" },
+          "start": "2019.10",
+          "end": "2020.03",
+          "location": { "ko": "서울 종로", "en": "Jongno, Seoul" },
+          "employmentType": "education",
+          "summary": { "ko": "", "en": "" },
+          "responsibilities": [],
+          "relatedProjectSlugs": []
+        }
+      ]
+    },
+    {
+      "category": { "ko": "교육", "en": "Education" },
+      "entries": [
+        {
+          "company": "Uiduc University",
+          "title": { "ko": "정보통신공학과 (중퇴)", "en": "Information & Communication Engineering (dropped out)" },
+          "start": "2012.03",
+          "end": "2018.03",
+          "location": { "ko": "경북 경주", "en": "Gyeongju, Gyeongbuk" },
+          "employmentType": "education",
+          "summary": { "ko": "", "en": "" },
+          "responsibilities": [],
+          "relatedProjectSlugs": []
+        }
+      ]
+    }
+  ]
 }

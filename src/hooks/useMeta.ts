@@ -1,44 +1,36 @@
-// app/hooks/useMeta.ts
 import { useEffect } from "react";
+import type { Lang } from "../types";
 
-interface MetaTag {
-  title?: string;
-  name?: string;
-  property?: string;
-  content?: string;
+interface MetaInput {
+  lang: Lang;
+  title: string;
+  description: string;
 }
 
-export function useMeta(metaTags: MetaTag[]) {
+function upsertMeta(
+  attr: "name" | "property",
+  key: string,
+  content: string
+): void {
+  const selector = `meta[${attr}="${key}"]`;
+  let el = document.head.querySelector<HTMLMetaElement>(selector);
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(attr, key);
+    document.head.appendChild(el);
+  }
+  el.content = content;
+}
+
+// Keeps the document title, <html lang>, and description/OG meta in sync with
+// the active language. Updates the tags injected at build time in place rather
+// than duplicating them.
+export function useMeta({ lang, title, description }: MetaInput): void {
   useEffect(() => {
-    // 제목 설정
-    const titleTag = metaTags.find((tag) => tag.title);
-    if (titleTag?.title) {
-      document.title = titleTag.title;
-    }
-
-    // 기존 meta 태그 제거
-    const existingMeta = document.querySelectorAll(
-      'meta[name="description"], meta[name="keywords"], meta[property^="og:"]'
-    );
-    existingMeta.forEach((tag) => tag.remove());
-
-    // 새 meta 태그 추가
-    metaTags.forEach(({ name, property, content }) => {
-      if (!content) return;
-
-      const meta = document.createElement("meta");
-      if (name) meta.name = name;
-      if (property) meta.setAttribute("property", property);
-      meta.content = content;
-      document.head.appendChild(meta);
-    });
-
-    // 컴포넌트 언마운트 시 정리
-    return () => {
-      const addedMeta = document.querySelectorAll(
-        'meta[name="description"], meta[name="keywords"], meta[property^="og:"]'
-      );
-      addedMeta.forEach((tag) => tag.remove());
-    };
-  }, [metaTags]);
+    document.title = title;
+    document.documentElement.lang = lang;
+    upsertMeta("name", "description", description);
+    upsertMeta("property", "og:title", title);
+    upsertMeta("property", "og:description", description);
+  }, [lang, title, description]);
 }
