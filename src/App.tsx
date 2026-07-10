@@ -1,14 +1,15 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./routes/home";
 import "./index.css";
-import About from "./routes/about";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/resume" element={<Home />} />
-        <Route path="/resume/about" element={<About />} />
-        {/* 다른 경로가 있으면 여기에 추가 */}
+        {/* The portfolio is now a single page; keep the old /about link working. */}
+        <Route path="/resume/about" element={<Navigate to="/resume" replace />} />
+        <Route path="*" element={<Navigate to="/resume" replace />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,85 +1,50 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom"; // react-router-dom 훅
-import Header from "../components/Header";
-import ProjectCard from "../components/ProjectCard";
+import { useLang } from "../i18n";
+import { useContent } from "../hooks/useContent";
 import { useMeta } from "../hooks/useMeta";
+import Nav from "../components/Nav";
+import Hero from "../components/Hero";
+import Capabilities from "../components/Capabilities";
+import Outcomes from "../components/Outcomes";
+import FeaturedProjects from "../components/FeaturedProjects";
+import Career from "../components/Career";
+import Archive from "../components/Archive";
+import Interests from "../components/Interests";
+import Contact from "../components/Contact";
+
 export default function Home() {
-  const [projects, setProjects] = useState<any[]>([]);
-  const [searchParams] = useSearchParams();
-  const lang = searchParams.get("lang") || "ko";
+  const { lang, setLang } = useLang();
+  const content = useContent();
 
-  useMeta([
-    { title: "Projects - HanGuk Shin" },
-    { name: "description", content: "Resume of HanGuk Shin." },
-    { name: "keywords", content: "Dev, Resume, HanGuk Shin" },
-    { property: "og:title", content: "About - HanGuk Shin" },
-    { property: "og:description", content: "Resume of HanGuk Shin." },
-    { property: "og:type", content: "website" },
-  ]);
-  useEffect(() => {
-    const loadJson = async () => {
-      try {
-        const response = await fetch("/resume/assets/projects.json");
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error("Error loading JSON:", error);
-      }
-    };
-    loadJson();
-  }, []);
+  const title = content
+    ? `${content.site.name[lang]} | ${content.site.headline[lang]}`
+    : "HanGuk Shin";
+  const description = content ? content.site.valueProp[lang] : "";
 
-  const handleNavClick = (projectTitle: string) => {
-    const element = document.getElementById(projectTitle);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
+  useMeta({ lang, title, description });
+
+  if (!content) {
+    return <div className="min-h-screen bg-white" aria-busy="true" />;
+  }
+
+  const { site, projects, experiences } = content;
 
   return (
-    <div className="bg-gray-100">
-      {/* 고정된 내비 */}
-      <div
-        className="fixed left-0 top-0 w-64 h-full bg-gray-100 shadow-lg overflow-y-auto p-4 z-10
-                hidden lg:block"
-      >
-        <div className="space-y-2 mt-16">
-          {projects.map((project) => (
-            <div key={project.title}>
-              <button
-                onClick={() => handleNavClick(project.title)}
-                className="text-gray-600 hover:text-blue-600 transition-colors text-left w-full"
-              >
-                {project.title}
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 메인 콘텐츠 - 전체 화면 너비 기준 중앙 정렬 */}
-      <div className="flex justify-center bg-gray-100 min-h-screen">
-        <div className="px-4 py-6 max-w-3xl mx-auto font-sans text-gray-800 w-[600px] leading-relaxed text-[17px]">
-          <Header />
-
-          <div>
-            <h1 className="text-3xl font-bold text-left mb-8">
-              {lang === "ko" ? "프로젝트" : "Projects"}
-            </h1>
-
-            <div className="space-y-6">
-              {projects.map((project) => (
-                <div key={project.title} id={project.title}>
-                  <ProjectCard project={project} lang={lang} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white text-slate-800">
+      <Nav
+        site={site}
+        lang={lang}
+        onToggleLang={() => setLang(lang === "ko" ? "en" : "ko")}
+      />
+      <main>
+        <Hero site={site} lang={lang} />
+        <Capabilities site={site} lang={lang} />
+        <Outcomes site={site} lang={lang} />
+        <FeaturedProjects projects={projects} lang={lang} />
+        <Career experiences={experiences} lang={lang} />
+        <Archive projects={projects} lang={lang} />
+        <Interests site={site} lang={lang} />
+        <Contact site={site} lang={lang} />
+      </main>
     </div>
   );
 }
