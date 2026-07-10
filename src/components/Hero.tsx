@@ -30,24 +30,29 @@ interface Props {
 
 export default function Hero({ site, lang }: Props) {
   return (
-    <section id="top" className="mx-auto max-w-3xl px-5 pb-14 pt-14 sm:pt-20">
-      <p className="text-sm font-medium uppercase tracking-widest text-blue-600">
+    <section id="top" className="journal-container scroll-mt-16 pb-16 pt-14 sm:pb-20 sm:pt-20">
+      <div className="mb-7 flex items-center gap-3" aria-hidden="true">
+        <span className="section-kicker">00 / Profile</span>
+        <span className="h-px flex-1 bg-[var(--line)]" />
+        <span className="h-2 w-2 bg-[var(--accent)]" />
+      </div>
+      <p className="meta-label max-w-2xl leading-relaxed">
         {site.headline[lang]}
       </p>
-      <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+      <h1 className="display-title mt-3 text-5xl leading-none sm:text-6xl">
         {site.name[lang]}
       </h1>
-      <p className="mt-5 text-lg font-medium leading-relaxed text-slate-800">
+      <p className="mt-6 max-w-2xl font-[family-name:var(--display)] text-xl font-semibold leading-relaxed text-[var(--ink)] sm:text-2xl">
         {site.valueProp[lang]}
       </p>
-      <p className="mt-4 leading-relaxed text-slate-600">{site.intro[lang]}</p>
+      <p className="mt-4 max-w-2xl leading-7 text-[var(--muted)]">{site.intro[lang]}</p>
 
-      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500">
+      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] text-[var(--faint)]">
         <span className="inline-flex items-center gap-1.5">
           <MapPin size={15} strokeWidth={1.75} />
           {site.meta.location[lang]}
         </span>
-        <span className="hidden sm:inline text-slate-300">·</span>
+        <span className="hidden text-[var(--line)] sm:inline">/</span>
         <span>{site.meta.languages[lang]}</span>
       </div>
 
@@ -65,8 +70,8 @@ export default function Hero({ site, lang }: Props) {
               {...(download ? { download: "" } : {})}
               className={
                 isPrimary
-                  ? "inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
-                  : "inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-600"
+                  ? "primary-cta"
+                  : "secondary-cta"
               }
             >
               {ctaIcon(cta.kind)}

@@ -9,29 +9,31 @@ interface Props {
 export default function Outcomes({ site, lang }: Props) {
   return (
     <Section id="outcomes" title={lang === "ko" ? "대표 성과" : "Signature Impact"}>
-      <ul className="space-y-4">
+      <ul className="border-b border-[var(--line)]">
         {site.signatureOutcomes.map((o, i) => {
           const hasMetric = o.before && o.after;
           return (
             <li
               key={i}
-              className="rounded-xl border border-slate-200 bg-white p-5 sm:flex sm:items-start sm:gap-5"
+              className="rule-row grid gap-3 sm:grid-cols-[9.5rem_1fr] sm:gap-6"
             >
               {hasMetric ? (
-                <div className="mb-3 shrink-0 sm:mb-0">
-                  <div className="flex items-baseline gap-2 rounded-lg bg-blue-50 px-3 py-2 text-blue-700">
-                    <span className="text-sm text-slate-400 line-through">{o.before}</span>
-                    <span className="text-lg font-bold">→ {o.after}</span>
+                <div className="shrink-0">
+                  <div className="flex items-baseline gap-2 font-mono text-[var(--accent)] sm:block">
+                    <span className="text-xs text-[var(--faint)] line-through">{o.before}</span>
+                    <span className="text-xl font-bold sm:mt-1 sm:block">→ {o.after}</span>
                   </div>
                 </div>
-              ) : null}
+              ) : (
+                <span className="section-kicker">0{i + 1}</span>
+              )}
               <div className="min-w-0">
-                <h3 className="font-semibold text-slate-900">{o.label[lang]}</h3>
-                <p className="mt-1 leading-relaxed text-slate-600">{o.context[lang]}</p>
+                <h3 className="font-[family-name:var(--display)] text-lg font-semibold text-[var(--ink)]">{o.label[lang]}</h3>
+                <p className="mt-1.5 leading-relaxed text-[var(--muted)]">{o.context[lang]}</p>
                 {o.projectSlug ? (
                   <a
                     href={`#project-${o.projectSlug}`}
-                    className="mt-2 inline-block text-sm text-blue-600 hover:underline"
+                    className="text-link mt-2 inline-block font-mono text-xs"
                   >
                     {lang === "ko" ? "관련 프로젝트 →" : "Related project →"}
                   </a>

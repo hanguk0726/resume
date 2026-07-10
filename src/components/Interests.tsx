@@ -15,24 +15,24 @@ export default function Interests({ site, lang }: Props) {
     >
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <h3 className="text-sm font-semibold text-slate-900">
+          <h3 className="font-[family-name:var(--display)] text-lg font-semibold text-[var(--ink)]">
             {lang === "ko" ? "관심 있는 문제" : "Problems I care about"}
           </h3>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-slate-600">
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-[var(--muted)] marker:text-[var(--accent)]">
             {interests.problems.map((p) => (
               <li key={p.en}>{p[lang]}</li>
             ))}
           </ul>
         </div>
         <div>
-          <h3 className="text-sm font-semibold text-slate-900">
+          <h3 className="font-[family-name:var(--display)] text-lg font-semibold text-[var(--ink)]">
             {lang === "ko" ? "잘 맞는 역할" : "Good-fit roles"}
           </h3>
           <ul className="mt-3 flex flex-wrap gap-1.5">
             {interests.goodFitRoles.map((role) => (
               <li
                 key={role}
-                className="rounded-md border border-slate-200 px-2.5 py-1 text-xs text-slate-600"
+                className="tech-token"
               >
                 {role}
               </li>
@@ -40,7 +40,7 @@ export default function Interests({ site, lang }: Props) {
           </ul>
         </div>
       </div>
-      <p className="mt-6 border-l-2 border-blue-200 pl-4 italic text-slate-600">
+      <p className="mt-7 border-l-2 border-[var(--accent)] pl-4 font-[family-name:var(--display)] text-lg italic leading-relaxed text-[var(--muted)]">
         {interests.preference[lang]}
       </p>
     </Section>

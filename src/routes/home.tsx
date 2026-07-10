@@ -23,19 +23,19 @@ export default function Home() {
   useMeta({ lang, title, description });
 
   if (!content) {
-    return <div className="min-h-screen bg-white" aria-busy="true" />;
+    return <div className="journal-shell min-h-screen" aria-busy="true" />;
   }
 
   const { site, projects, experiences } = content;
 
   return (
-    <div className="min-h-screen bg-white text-slate-800">
+    <div className="journal-shell min-h-screen">
       <Nav
         site={site}
         lang={lang}
         onToggleLang={() => setLang(lang === "ko" ? "en" : "ko")}
       />
-      <main>
+      <main className="overflow-x-clip">
         <Hero site={site} lang={lang} />
         <Capabilities site={site} lang={lang} />
         <Outcomes site={site} lang={lang} />

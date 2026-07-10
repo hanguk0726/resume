@@ -13,20 +13,20 @@ export default function Capabilities({ site, lang }: Props) {
 
   return (
     <Section id="capabilities" title={lang === "ko" ? "핵심 역량" : "Core Capabilities"}>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2">
         {site.capabilities.map((cap) => (
           <div
             key={cap.id}
-            className="rounded-xl border border-slate-200 bg-white p-5"
+            className="paper-panel p-5 sm:p-6"
           >
-            <h3 className="text-base font-semibold text-slate-900">
+            <h3 className="font-[family-name:var(--display)] text-lg font-semibold text-[var(--ink)]">
               {cap.title[lang]}
             </h3>
             <ul className="mt-3 flex flex-wrap gap-1.5">
               {cap.items.map((item) => (
                 <li
                   key={item.en}
-                  className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600"
+                  className="tech-token"
                 >
                   {item[lang]}
                 </li>
@@ -36,12 +36,12 @@ export default function Capabilities({ site, lang }: Props) {
         ))}
       </div>
 
-      <div className="mt-5">
+      <div className="mt-6 border-l-2 border-[var(--accent)] pl-4">
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="inline-flex items-center gap-1.5 text-sm text-slate-500 transition-colors hover:text-blue-600"
+          className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[var(--muted)] transition-colors hover:text-[var(--accent)]"
         >
           <ChevronDown
             size={16}
@@ -55,7 +55,7 @@ export default function Capabilities({ site, lang }: Props) {
             {site.fullTechStack.map((tech) => (
               <li
                 key={tech}
-                className="rounded-md border border-slate-200 px-2 py-1 text-xs text-slate-500"
+                className="tech-token"
               >
                 {tech}
               </li>

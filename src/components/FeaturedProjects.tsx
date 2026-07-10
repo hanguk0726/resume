@@ -9,42 +9,42 @@ function ProjectCard({ project, lang }: { project: Project; lang: Lang }) {
   return (
     <article
       id={`project-${project.slug}`}
-      className="scroll-mt-20 rounded-2xl border border-slate-200 bg-white p-6 sm:p-7"
+      className="scroll-mt-20 border-t-2 border-[var(--ink)] py-7 sm:py-9"
     >
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h3 className="text-xl font-bold text-slate-900">{project.title}</h3>
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
+        <h3 className="display-title text-2xl sm:text-3xl">{project.title}</h3>
         <span
           className={
             project.type === "personal"
-              ? "rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs text-slate-500"
-              : "rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-xs text-blue-600"
+              ? "border border-[var(--line)] px-1.5 py-0.5 font-mono text-[10px] uppercase text-[var(--muted)]"
+              : "border border-[var(--accent)] px-1.5 py-0.5 font-mono text-[10px] uppercase text-[var(--accent-dark)]"
           }
         >
           {typeLabel(project.type, lang)}
         </span>
-        <span className="inline-flex items-center gap-1 text-sm text-slate-400">
+        <span className="inline-flex items-center gap-1 font-mono text-[11px] text-[var(--faint)]">
           <Calendar size={14} strokeWidth={1.75} />
           {periodLabel(project.period, lang)}
         </span>
       </div>
 
-      <p className="mt-3 font-medium leading-relaxed text-slate-800">
+      <p className="mt-4 font-[family-name:var(--display)] text-lg font-semibold leading-relaxed text-[var(--ink)]">
         {project.summary[lang]}
       </p>
 
       {project.role ? (
-        <p className="mt-2 text-sm text-slate-600">
-          <span className="font-semibold text-slate-500">{t("역할", "Role")}: </span>
+        <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
+          <span className="meta-label mr-1">{t("역할", "Role")}</span>
           {project.role[lang]}
         </p>
       ) : null}
 
       {project.problems?.length ? (
         <div className="mt-4">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+          <h4 className="meta-label">
             {t("해결한 문제", "Problem")}
           </h4>
-          <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-slate-600">
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[var(--muted)] marker:text-[var(--accent)]">
             {project.problems.map((p) => (
               <li key={p.en}>{p[lang]}</li>
             ))}
@@ -54,10 +54,10 @@ function ProjectCard({ project, lang }: { project: Project; lang: Lang }) {
 
       {project.contributions?.length ? (
         <div className="mt-4">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+          <h4 className="meta-label">
             {t("핵심 기여", "Contribution")}
           </h4>
-          <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-slate-700">
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed text-[var(--ink)] marker:text-[var(--accent)]">
             {project.contributions.map((c) => (
               <li key={c.en}>{c[lang]}</li>
             ))}
@@ -67,23 +67,23 @@ function ProjectCard({ project, lang }: { project: Project; lang: Lang }) {
 
       {project.outcomes?.length ? (
         <div className="mt-4">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+          <h4 className="meta-label">
             {t("결과", "Outcome")}
           </h4>
           <ul className="mt-2 space-y-1.5">
             {project.outcomes.map((o) => (
               <li key={o.label.en} className="flex flex-wrap items-baseline gap-2 text-sm">
                 {o.before && o.after ? (
-                  <span className="rounded bg-blue-50 px-1.5 py-0.5 font-semibold text-blue-700">
+                  <span className="border-b border-[var(--accent)] font-mono font-semibold text-[var(--accent-dark)]">
                     {o.before} → {o.after}
                   </span>
                 ) : (
-                  <span className="text-blue-600">▹</span>
+                  <span className="text-[var(--accent)]">▹</span>
                 )}
-                <span className="text-slate-700">
+                <span className="text-[var(--ink)]">
                   {o.label[lang]}
                   {o.detail ? (
-                    <span className="text-slate-500"> — {o.detail[lang]}</span>
+                    <span className="text-[var(--muted)]"> — {o.detail[lang]}</span>
                   ) : null}
                 </span>
               </li>
@@ -96,7 +96,7 @@ function ProjectCard({ project, lang }: { project: Project; lang: Lang }) {
         {project.techStacks.map((tech) => (
           <span
             key={tech}
-            className="rounded-md bg-slate-100 px-2 py-1 text-xs text-slate-600"
+            className="tech-token"
           >
             {tech}
           </span>
@@ -111,7 +111,7 @@ function ProjectCard({ project, lang }: { project: Project; lang: Lang }) {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm text-blue-600 hover:underline"
+              className="text-link inline-flex items-center gap-1 font-mono text-xs"
             >
               <ExternalLink size={14} strokeWidth={1.75} />
               {link.label}
@@ -132,7 +132,7 @@ export default function FeaturedProjects({ projects, lang }: Props) {
   const featured = projects.filter((p) => p.featured);
   return (
     <Section id="featured" title={lang === "ko" ? "대표 프로젝트" : "Featured Work"}>
-      <div className="space-y-6">
+      <div className="space-y-4">
         {featured.map((project) => (
           <ProjectCard key={project.slug} project={project} lang={lang} />
         ))}

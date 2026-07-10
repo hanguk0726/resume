@@ -1,4 +1,3 @@
-import { Globe } from "lucide-react";
 import type { Lang, Site } from "../types";
 
 interface Props {
@@ -26,16 +25,25 @@ export default function Nav({ site, lang, onToggleLang }: Props) {
         ];
 
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/85 backdrop-blur">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-5 py-3">
-        <a href="#top" className="font-semibold tracking-tight text-slate-900">
-          {site.name[lang]}
+    <header
+      role="banner"
+      className="sticky top-0 z-20 border-b border-[var(--line)] bg-[color:var(--paper)]/90 backdrop-blur-md"
+    >
+      <nav className="journal-container flex min-h-14 items-center justify-between gap-4 py-2">
+        <a
+          href="#top"
+          className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--ink)] transition-colors hover:text-[var(--accent)]"
+        >
+          {site.name[lang]}<span className="ml-1 text-[var(--accent)]">/</span>
         </a>
-        <div className="flex items-center gap-5">
-          <ul className="hidden items-center gap-5 text-sm text-slate-600 md:flex">
+        <div className="flex min-w-0 items-center gap-4 sm:gap-5">
+          <ul className="hidden items-center gap-4 font-mono text-[11px] text-[var(--muted)] md:flex">
             {sections.map((s) => (
               <li key={s.id}>
-                <a href={`#${s.id}`} className="transition-colors hover:text-blue-600">
+                <a
+                  href={`#${s.id}`}
+                  className="border-b border-transparent pb-0.5 transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                >
                   {s.label}
                 </a>
               </li>
@@ -44,11 +52,10 @@ export default function Nav({ site, lang, onToggleLang }: Props) {
           <button
             type="button"
             onClick={onToggleLang}
-            className="flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition-colors hover:border-blue-300 hover:text-blue-600"
+            className="shrink-0 border border-[var(--line)] bg-[var(--paper-raised)]/50 px-2.5 py-1.5 font-mono text-[11px] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
             aria-label={lang === "ko" ? "Switch to English" : "한국어로 전환"}
           >
-            <Globe size={15} strokeWidth={1.75} />
-            {lang === "ko" ? "EN" : "한국어"}
+            {lang === "ko" ? "KO → EN" : "EN → KO"}
           </button>
         </div>
       </nav>

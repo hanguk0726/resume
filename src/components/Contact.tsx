@@ -17,12 +17,13 @@ export default function Contact({ site, lang }: Props) {
   ];
 
   return (
-    <section id="contact" className="border-t border-slate-100 bg-slate-50">
-      <div className="mx-auto max-w-3xl px-5 py-14 text-center">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+    <section id="contact" className="scroll-mt-16 border-t border-[var(--ink)] bg-[var(--paper-deep)]/80">
+      <div className="journal-container py-16 text-center">
+        <span className="section-kicker">07 / Contact</span>
+        <h2 className="display-title mt-2 text-3xl sm:text-4xl">
           {lang === "ko" ? "연락하기" : "Get in touch"}
         </h2>
-        <p className="mx-auto mt-3 max-w-md text-slate-600">
+        <p className="mx-auto mt-3 max-w-md leading-relaxed text-[var(--muted)]">
           {lang === "ko"
             ? "제품을 함께 만들거나 협업할 기회에 열려 있습니다."
             : "Open to building products together and to collaboration."}
@@ -34,14 +35,14 @@ export default function Contact({ site, lang }: Props) {
               href={l.href}
               {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               {...(l.download ? { download: "" } : {})}
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:text-blue-600"
+              className="secondary-cta"
             >
               {l.icon}
               {l.label}
             </a>
           ))}
         </div>
-        <p className="mt-10 text-xs text-slate-400">
+        <p className="mt-10 font-mono text-[10px] uppercase tracking-wider text-[var(--faint)]">
           © {site.name.en} · {site.headline.en}
         </p>
       </div>
