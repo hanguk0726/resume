@@ -37,7 +37,7 @@ export default function Nav({ site, lang, onToggleLang }: Props) {
           {site.name[lang]}<span className="ml-1 text-[var(--accent)]">/</span>
         </a>
         <div className="flex min-w-0 items-center gap-4 sm:gap-5">
-          <ul className="hidden items-center gap-4 font-mono text-[11px] text-[var(--muted)] md:flex">
+          <ul className="hidden items-center gap-4 font-mono text-xs text-[var(--muted)] md:flex">
             {sections.map((s) => (
               <li key={s.id}>
                 <a
@@ -52,7 +52,7 @@ export default function Nav({ site, lang, onToggleLang }: Props) {
           <button
             type="button"
             onClick={onToggleLang}
-            className="shrink-0 border border-[var(--line)] bg-[var(--paper-raised)]/50 px-2.5 py-1.5 font-mono text-[11px] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            className="shrink-0 border border-[var(--line)] bg-[var(--paper-raised)]/50 px-2.5 py-1.5 font-mono text-xs font-semibold text-[var(--ink)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
             aria-label={lang === "ko" ? "Switch to English" : "한국어로 전환"}
           >
             {lang === "ko" ? "KO → EN" : "EN → KO"}

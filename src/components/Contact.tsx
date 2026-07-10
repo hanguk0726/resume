@@ -42,7 +42,7 @@ export default function Contact({ site, lang }: Props) {
             </a>
           ))}
         </div>
-        <p className="mt-10 font-mono text-[10px] uppercase tracking-wider text-[var(--faint)]">
+        <p className="mt-10 font-mono text-xs uppercase tracking-wider text-[var(--faint)]">
           © {site.name.en} · {site.headline.en}
         </p>
       </div>

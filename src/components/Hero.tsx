@@ -36,7 +36,7 @@ export default function Hero({ site, lang }: Props) {
         <span className="h-px flex-1 bg-[var(--line)]" />
         <span className="h-2 w-2 bg-[var(--accent)]" />
       </div>
-      <p className="meta-label max-w-2xl leading-relaxed">
+      <p className="meta-label hero-role max-w-2xl leading-relaxed">
         {site.headline[lang]}
       </p>
       <h1 className="display-title mt-3 text-5xl leading-none sm:text-6xl">
@@ -47,7 +47,7 @@ export default function Hero({ site, lang }: Props) {
       </p>
       <p className="mt-4 max-w-2xl leading-7 text-[var(--muted)]">{site.intro[lang]}</p>
 
-      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] text-[var(--faint)]">
+      <div className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-2 font-mono text-xs text-[var(--faint)]">
         <span className="inline-flex items-center gap-1.5">
           <MapPin size={15} strokeWidth={1.75} />
           {site.meta.location[lang]}

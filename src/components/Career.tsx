@@ -25,7 +25,7 @@ export default function Career({ experiences, lang }: Props) {
                     <span className="text-[var(--line)]">/</span>
                     <span className="text-[var(--ink)]">{e.title[lang]}</span>
                   </div>
-                  <div className="mt-1 font-mono text-[11px] text-[var(--faint)]">
+                  <div className="mt-1 font-mono text-xs text-[var(--faint)]">
                     {periodLabel(e, lang)} · {e.location[lang]}
                   </div>
                   {e.summary[lang] ? (

@@ -16,13 +16,13 @@ function ProjectCard({ project, lang }: { project: Project; lang: Lang }) {
         <span
           className={
             project.type === "personal"
-              ? "border border-[var(--line)] px-1.5 py-0.5 font-mono text-[10px] uppercase text-[var(--muted)]"
-              : "border border-[var(--accent)] px-1.5 py-0.5 font-mono text-[10px] uppercase text-[var(--accent-dark)]"
+              ? "border border-[var(--line)] px-1.5 py-0.5 font-mono text-xs uppercase text-[var(--muted)]"
+              : "border border-[var(--accent)] px-1.5 py-0.5 font-mono text-xs uppercase text-[var(--accent-dark)]"
           }
         >
           {typeLabel(project.type, lang)}
         </span>
-        <span className="inline-flex items-center gap-1 font-mono text-[11px] text-[var(--faint)]">
+        <span className="inline-flex items-center gap-1 font-mono text-xs text-[var(--faint)]">
           <Calendar size={14} strokeWidth={1.75} />
           {periodLabel(project.period, lang)}
         </span>

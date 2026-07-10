@@ -27,7 +27,7 @@ export default function Archive({ projects, lang }: Props) {
           <div key={p.slug} className="paper-panel p-4 sm:p-5">
             <div className="flex items-baseline justify-between gap-2">
               <h3 className="font-[family-name:var(--display)] text-lg font-semibold text-[var(--ink)]">{p.title}</h3>
-              <span className="shrink-0 font-mono text-[10px] text-[var(--faint)]">{yearLabel(p.period)}</span>
+              <span className="shrink-0 font-mono text-xs text-[var(--faint)]">{yearLabel(p.period)}</span>
             </div>
             <p className="mt-1.5 text-sm leading-relaxed text-[var(--muted)]">{p.summary[lang]}</p>
             <div className="mt-2 flex flex-wrap gap-1">
