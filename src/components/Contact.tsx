@@ -1,5 +1,6 @@
-import { FileText, Github, Mail, PenLine } from "lucide-react";
+import { FileText, Github, PenLine } from "lucide-react";
 import type { Lang, Site } from "../types";
+import EmailCopyButton from "./EmailCopyButton";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -10,7 +11,6 @@ interface Props {
 
 export default function Contact({ site, lang }: Props) {
   const links = [
-    { icon: <Mail size={16} strokeWidth={1.75} />, label: site.email, href: `mailto:${site.email}`, external: false, download: false },
     { icon: <Github size={16} strokeWidth={1.75} />, label: "GitHub", href: site.github, external: true, download: false },
     { icon: <PenLine size={16} strokeWidth={1.75} />, label: "Medium", href: site.medium, external: true, download: false },
     { icon: <FileText size={16} strokeWidth={1.75} />, label: lang === "ko" ? "이력서 PDF" : "Resume (PDF)", href: `${BASE}${site.resume[lang]}`, external: false, download: true },
@@ -29,6 +29,12 @@ export default function Contact({ site, lang }: Props) {
             : "Open to building products together and to collaboration."}
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <EmailCopyButton
+            email={site.email}
+            lang={lang}
+            label={site.email}
+            className="secondary-cta"
+          />
           {links.map((l) => (
             <a
               key={l.label}

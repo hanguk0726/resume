@@ -9,7 +9,7 @@ export type Localized = Record<Lang, string>;
 export interface CtaLink {
   kind: "projects" | "resume" | "github" | "email" | "medium" | "external";
   label: Localized;
-  href: string; // "#featured" for in-page, mailto:, or URL. resume href resolved per-lang at render.
+  href: string; // URL or in-page anchor. Empty for app-resolved resume/email actions.
 }
 
 export interface Capability {

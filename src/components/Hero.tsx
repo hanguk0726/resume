@@ -1,5 +1,6 @@
-import { ArrowRight, FileText, Github, Mail, MapPin } from "lucide-react";
+import { ArrowRight, FileText, Github, MapPin } from "lucide-react";
 import type { CtaLink, Lang, Site } from "../types";
+import EmailCopyButton from "./EmailCopyButton";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -16,8 +17,6 @@ function ctaIcon(kind: CtaLink["kind"]) {
       return <FileText size={16} strokeWidth={1.75} />;
     case "github":
       return <Github size={16} strokeWidth={1.75} />;
-    case "email":
-      return <Mail size={16} strokeWidth={1.75} />;
     default:
       return null;
   }
@@ -58,8 +57,22 @@ export default function Hero({ site, lang }: Props) {
 
       <div className="mt-8 flex flex-wrap gap-3">
         {site.ctas.map((cta, i) => {
-          const href = ctaHref(cta, site, lang);
           const isPrimary = i === 0;
+          const className = isPrimary ? "primary-cta" : "secondary-cta";
+
+          if (cta.kind === "email") {
+            return (
+              <EmailCopyButton
+                key={cta.kind}
+                email={site.email}
+                lang={lang}
+                label={cta.label[lang]}
+                className={className}
+              />
+            );
+          }
+
+          const href = ctaHref(cta, site, lang);
           const external = cta.kind === "github" || cta.kind === "external";
           const download = cta.kind === "resume";
           return (
@@ -68,11 +81,7 @@ export default function Hero({ site, lang }: Props) {
               href={href}
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               {...(download ? { download: "" } : {})}
-              className={
-                isPrimary
-                  ? "primary-cta"
-                  : "secondary-cta"
-              }
+              className={className}
             >
               {ctaIcon(cta.kind)}
               {cta.label[lang]}

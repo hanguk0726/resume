@@ -45,8 +45,8 @@
     },
     {
       "kind": "email",
-      "label": { "ko": "이메일", "en": "Email" },
-      "href": "mailto:hanguk0726@gmail.com"
+      "label": { "ko": "이메일 복사", "en": "Copy email" },
+      "href": ""
     }
   ],
   "capabilities": [
