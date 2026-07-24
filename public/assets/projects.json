@@ -146,6 +146,42 @@
     "links": []
   },
   {
+    "slug": "avatar-vision",
+    "title": "Avatar Vision",
+    "type": "personal",
+    "featured": true,
+    "period": { "start": "2023.02", "end": "2023.05" },
+    "summary": {
+      "ko": "ffmpeg 없이 Flutter와 Rust로 만든 영상 일기 앱 — 웹캠·마이크 입력을 디코딩해 MP4로 muxing.",
+      "en": "A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4."
+    },
+    "role": {
+      "ko": "개인 프로젝트 — Flutter UI와 Rust 미디어 백엔드를 직접 설계하고 구현했습니다.",
+      "en": "Personal project — designed and built the Flutter UI and the Rust media backend myself."
+    },
+    "problems": [
+      { "ko": "ffmpeg 같은 무거운 의존성 없이 영상을 기록·저장해야 함", "en": "Video had to be recorded and saved without a heavy dependency like ffmpeg" },
+      { "ko": "웹캠과 마이크 입력을 함께 캡처해 하나의 파일로 합쳐야 함", "en": "Webcam and microphone input had to be captured and combined into a single file" },
+      { "ko": "Flutter UI와 네이티브 미디어 처리를 연결해야 함", "en": "The Flutter UI had to be wired to native media processing" }
+    ],
+    "contributions": [
+      { "ko": "Flutter로 영상 일기 앱 UI를 구축", "en": "Built the video-diary app UI in Flutter" },
+      { "ko": "Rust로 웹캠·마이크 입력 캡처와 디코딩 파이프라인을 구현", "en": "Implemented webcam/mic capture and the decoding pipeline in Rust" },
+      { "ko": "ffmpeg 없이 오디오·비디오 스트림을 MP4 컨테이너로 muxing", "en": "Muxed audio and video streams into an MP4 container without ffmpeg" },
+      { "ko": "Flutter와 Rust를 FFI로 연결", "en": "Bridged Flutter and Rust over FFI" }
+    ],
+    "outcomes": [
+      { "label": { "ko": "ffmpeg 의존성 없이 자체 미디어 파이프라인으로 MP4 저장", "en": "Saved MP4 through a self-built media pipeline with no ffmpeg dependency" } }
+    ],
+    "techStacks": ["Flutter", "Dart", "Rust", "FFI"],
+    "keywords": ["Media", "Encoding", "Decoding", "MP4"],
+    "capabilities": ["media-realtime"],
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/hanguk0726/Avatar-Vision" },
+      { "label": "Medium", "url": "https://medium.com/@hangukshin/building-a-video-diary-app-written-in-flutter-and-rust-without-ffmpeg-8eb97a97fb49" }
+    ]
+  },
+  {
     "slug": "vocalbridge",
     "title": "VocalBridge",
     "type": "personal",
@@ -177,24 +213,6 @@
     "keywords": ["ReactNative", "WebRTC", "STT", "Translation", "TTS"],
     "capabilities": ["media-realtime", "mobile"],
     "links": [{ "label": "GitHub", "url": "https://github.com/hanguk0726/VocalBridge" }]
-  },
-  {
-    "slug": "avatar-vision",
-    "title": "Avatar Vision",
-    "type": "personal",
-    "featured": false,
-    "period": { "start": "2023.02", "end": "2023.05" },
-    "summary": {
-      "ko": "ffmpeg 없이 Flutter와 Rust로 만든 영상 일기 앱 — 웹캠·마이크 입력을 디코딩해 MP4로 muxing.",
-      "en": "A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4."
-    },
-    "techStacks": ["Flutter", "Rust"],
-    "keywords": ["Media", "Encoding", "Decoding", "MP4"],
-    "capabilities": ["media-realtime"],
-    "links": [
-      { "label": "GitHub", "url": "https://github.com/hanguk0726/Avatar-Vision" },
-      { "label": "Medium", "url": "https://medium.com/@hangukshin/building-a-video-diary-app-written-in-flutter-and-rust-without-ffmpeg-8eb97a97fb49" }
-    ]
   },
   {
     "slug": "crowdfunding",
