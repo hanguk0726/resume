@@ -146,10 +146,50 @@
     "links": []
   },
   {
+    "slug": "avatar-vision",
+    "title": "Avatar Vision",
+    "type": "personal",
+    "featured": true,
+    "period": { "start": "2023.02", "end": "2023.05" },
+    "summary": {
+      "ko": "ffmpeg 없이 Flutter와 Rust로 만든 영상 일기 앱 — 웹캠·마이크 입력을 디코딩해 MP4로 muxing.",
+      "en": "A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4."
+    },
+    "role": {
+      "ko": "개인 프로젝트 — Flutter 데스크톱 UI와 Rust 미디어 파이프라인 전체를 설계하고 구현했습니다 (Windows).",
+      "en": "Personal project — designed and built the whole Flutter desktop UI and Rust media pipeline (Windows)."
+    },
+    "problems": [
+      { "ko": "ffmpeg 같은 무거운 의존성 없이 웹캠·마이크 입력을 MP4로 저장해야 함", "en": "Webcam and mic input had to be saved as MP4 without a heavy dependency like ffmpeg" },
+      { "ko": "실시간 미러링과 인코딩이 같은 프레임 스트림을 공유하면서 서로 속도를 늦추면 안 됨", "en": "Live mirroring and encoding had to share one frame stream without slowing each other down" },
+      { "ko": "기기마다 웹캠 프레임 포맷이 다름 (MJPEG·NV12·YUV)", "en": "Webcam frame formats differed by device (MJPEG, NV12, YUV)" },
+      { "ko": "MP4 오디오 트랙은 AAC를 요구하지만, 사용한 Rust 포팅 MP4 muxer에는 오디오 기능이 없었음", "en": "MP4 needs an AAC audio track, but the Rust-ported MP4 muxer had no audio support" }
+    ],
+    "contributions": [
+      { "ko": "nokhwa로 웹캠, cpal로 마이크(PCM)를 캡처하고, irondash 메시지 채널·네이티브 텍스처로 Flutter와 Rust를 연결해 실시간 프리뷰 렌더링", "en": "Captured the webcam with nokhwa and mic PCM with cpal, wiring Flutter and Rust over irondash message channels and a native texture for the live preview" },
+      { "ko": "미러링은 스레드 풀에서 프레임을 병렬 디코딩해 최신 프레임만 렌더링(늦은 프레임 폐기), 인코딩은 타임스탬프 비교 배칭으로 24fps 수집", "en": "Mirroring decoded frames in a parallel thread pool and rendered only the newest (dropping late frames); encoding batched frames to 24fps by comparing timestamps" },
+      { "ko": "RGBA→YUV(I420) 변환 후 openh264로 H.264 인코딩 — 인덱스 순서 보장 큐로 병렬 인코딩 중 프레임 순서를 유지하고, 프리뷰 종료 시 워커를 2→8로 확장", "en": "Converted RGBA→YUV (I420) and encoded H.264 with openh264 — an index-ordered queue kept frame order across parallel workers, scaling them 2→8 once the preview shut off" },
+      { "ko": "원본 C 코드를 분석해 Rust 포팅 muxer(minimp4)에 오디오 트랙을 연결하고, fdk-aac로 PCM→AAC 인코딩해 H.264와 MP4로 muxing", "en": "Read the original C muxer to wire an audio track into the Rust-ported minimp4, encoding PCM to AAC with fdk-aac and muxing it with the H.264 into MP4" },
+      { "ko": "Logitech C922의 MJPEG·NV12, ThinkPad 내장 카메라의 YUV 등 기기별 프레임 포맷 변환 로직 대응", "en": "Handled per-device frame formats — MJPEG/NV12 on a Logitech C922, YUV on a ThinkPad's embedded camera" },
+      { "ko": "커스텀 페인터 음성 파형 시각화, media_kit 기반 자체 플레이어 UI, 인코딩 중 썸네일 추출, ObjectBox 저장으로 데스크톱 UX 구성", "en": "Desktop UX with a custom-painter sound-wave visual, a from-scratch player UI on media_kit, thumbnails extracted during encoding, and ObjectBox storage" }
+    ],
+    "outcomes": [
+      { "label": { "ko": "ffmpeg 없이 캡처→인코딩→muxing 전 구간을 자체 파이프라인으로 구현", "en": "Capture → encode → mux fully covered by a self-built pipeline, no ffmpeg" }, "detail": { "ko": "nokhwa·cpal·openh264·fdk-aac·minimp4 조합만으로 영상 일기 저장을 완성.", "en": "Completed video-diary saving with nokhwa, cpal, openh264, fdk-aac, and minimp4 alone." } },
+      { "label": { "ko": "해결 과정을 minimp4.rs·nokhwa 업스트림 PR 2건으로 환원", "en": "Fed the fixes back upstream as two PRs to minimp4.rs and nokhwa" }, "detail": { "ko": "같은 문제를 겪을 사람들을 위해 오디오 muxing·카메라 캡처 해법을 공유.", "en": "Shared the audio-muxing and camera-capture solutions for others hitting the same walls." } }
+    ],
+    "techStacks": ["Flutter", "Dart", "Rust", "OpenH264", "fdk-aac", "minimp4", "irondash", "nokhwa", "cpal"],
+    "keywords": ["Media", "Encoding", "H264", "AAC", "MP4", "FFI", "ParallelProcessing", "OpenSource"],
+    "capabilities": ["media-realtime"],
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/hanguk0726/Avatar-Vision" },
+      { "label": "Medium", "url": "https://medium.com/@hangukshin/building-a-video-diary-app-written-in-flutter-and-rust-without-ffmpeg-8eb97a97fb49" }
+    ]
+  },
+  {
     "slug": "vocalbridge",
     "title": "VocalBridge",
     "type": "personal",
-    "featured": true,
+    "featured": false,
     "period": { "start": "2025.08", "end": "2025.08" },
     "summary": {
       "ko": "React Native와 WebRTC로 실시간 음성을 STT·번역·TTS로 연결한 프로토타입.",
@@ -177,24 +217,6 @@
     "keywords": ["ReactNative", "WebRTC", "STT", "Translation", "TTS"],
     "capabilities": ["media-realtime", "mobile"],
     "links": [{ "label": "GitHub", "url": "https://github.com/hanguk0726/VocalBridge" }]
-  },
-  {
-    "slug": "avatar-vision",
-    "title": "Avatar Vision",
-    "type": "personal",
-    "featured": false,
-    "period": { "start": "2023.02", "end": "2023.05" },
-    "summary": {
-      "ko": "ffmpeg 없이 Flutter와 Rust로 만든 영상 일기 앱 — 웹캠·마이크 입력을 디코딩해 MP4로 muxing.",
-      "en": "A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4."
-    },
-    "techStacks": ["Flutter", "Rust"],
-    "keywords": ["Media", "Encoding", "Decoding", "MP4"],
-    "capabilities": ["media-realtime"],
-    "links": [
-      { "label": "GitHub", "url": "https://github.com/hanguk0726/Avatar-Vision" },
-      { "label": "Medium", "url": "https://medium.com/@hangukshin/building-a-video-diary-app-written-in-flutter-and-rust-without-ffmpeg-8eb97a97fb49" }
-    ]
   },
   {
     "slug": "crowdfunding",

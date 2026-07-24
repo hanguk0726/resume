@@ -88,21 +88,24 @@ Starting from Android-native apps and media processing, I've widened my scope in
   - 14 months operating a B2C app
 - Tech: Kotlin, Jetpack Compose
 
-### VocalBridge (2025.08 – 2025.08) — personal
+### Avatar Vision (2023.02 – 2023.05) — personal
 
-**A prototype linking real-time voice through STT, translation, and TTS over React Native and WebRTC.**
+**A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4.**
 
-- Role: Personal project — built the app and the full pipeline.
-- Problems: Real-time voice had to be streamed from mobile / STT → translation → TTS had to be chained into one pipeline / Waveform-animation data had to be processed natively
+- Role: Personal project — designed and built the whole Flutter desktop UI and Rust media pipeline (Windows).
+- Problems: Webcam and mic input had to be saved as MP4 without a heavy dependency like ffmpeg / Live mirroring and encoding had to share one frame stream without slowing each other down / Webcam frame formats differed by device (MJPEG, NV12, YUV) / MP4 needs an AAC audio track, but the Rust-ported MP4 muxer had no audio support
 - Contributions:
-  - Built the UI with React Native and Expo
-  - Streamed audio over WebRTC
-  - Assembled an STT → translation → TTS pipeline (Korean, English, Japanese)
-  - Processed voice-waveform animation data natively
+  - Captured the webcam with nokhwa and mic PCM with cpal, wiring Flutter and Rust over irondash message channels and a native texture for the live preview
+  - Mirroring decoded frames in a parallel thread pool and rendered only the newest (dropping late frames); encoding batched frames to 24fps by comparing timestamps
+  - Converted RGBA→YUV (I420) and encoded H.264 with openh264 — an index-ordered queue kept frame order across parallel workers, scaling them 2→8 once the preview shut off
+  - Read the original C muxer to wire an audio track into the Rust-ported minimp4, encoding PCM to AAC with fdk-aac and muxing it with the H.264 into MP4
+  - Handled per-device frame formats — MJPEG/NV12 on a Logitech C922, YUV on a ThinkPad's embedded camera
+  - Desktop UX with a custom-painter sound-wave visual, a from-scratch player UI on media_kit, thumbnails extracted during encoding, and ObjectBox storage
 - Outcomes:
-  - Three-language real-time voice translation prototype
-- Tech: React Native, Expo, TypeScript, WebRTC, FastAPI, Supabase
-- Links: GitHub https://github.com/hanguk0726/VocalBridge
+  - Capture → encode → mux fully covered by a self-built pipeline, no ffmpeg — Completed video-diary saving with nokhwa, cpal, openh264, fdk-aac, and minimp4 alone.
+  - Fed the fixes back upstream as two PRs to minimp4.rs and nokhwa — Shared the audio-muxing and camera-capture solutions for others hitting the same walls.
+- Tech: Flutter, Dart, Rust, OpenH264, fdk-aac, minimp4, irondash, nokhwa, cpal
+- Links: GitHub https://github.com/hanguk0726/Avatar-Vision , Medium https://medium.com/@hangukshin/building-a-video-diary-app-written-in-flutter-and-rust-without-ffmpeg-8eb97a97fb49
 
 ## Experience
 
@@ -126,7 +129,7 @@ Starting from Android-native apps and media processing, I've widened my scope in
 - **l1npengtul/nokhwa#105** — Fixed YUV-to-RGB image decoding · GitHub PR · merged 2023.02 · https://github.com/l1npengtul/nokhwa/pull/105
 
 ## Project archive
-- **Avatar Vision** (2023.02 – 2023.05) — A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4.
+- **VocalBridge** (2025.08 – 2025.08) — A prototype linking real-time voice through STT, translation, and TTS over React Native and WebRTC.
 - **CrowdFunding** (2024.01 – 2024.03) — Crowdfunding on a smart contract — campaign creation, funding, and claim, syncing frontend CRUD with on-chain transactions.
 - **Realtime Chat** (2021.01 – 2021.02) — Multi-channel real-time messaging with a websocket pool, read receipts, and magic-link login.
 - **Plantimer** (2021.09 – 2021.10) — A productivity app that schedules tasks as a progress-bar timer, continuing via notifications when closed.
