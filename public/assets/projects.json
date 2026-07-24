@@ -189,7 +189,7 @@
     "slug": "vocalbridge",
     "title": "VocalBridge",
     "type": "personal",
-    "featured": true,
+    "featured": false,
     "period": { "start": "2025.08", "end": "2025.08" },
     "summary": {
       "ko": "React Native와 WebRTC로 실시간 음성을 STT·번역·TTS로 연결한 프로토타입.",
