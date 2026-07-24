@@ -156,25 +156,27 @@
       "en": "A video-diary app in Flutter and Rust without ffmpeg — decoding webcam/mic input and muxing to MP4."
     },
     "role": {
-      "ko": "개인 프로젝트 — Flutter UI와 Rust 미디어 백엔드를 직접 설계하고 구현했습니다.",
-      "en": "Personal project — designed and built the Flutter UI and the Rust media backend myself."
+      "ko": "개인 프로젝트 — Flutter 데스크톱 UI와 Rust 미디어 파이프라인 전체를 설계하고 구현했습니다 (Windows).",
+      "en": "Personal project — designed and built the whole Flutter desktop UI and Rust media pipeline (Windows)."
     },
     "problems": [
-      { "ko": "ffmpeg 같은 무거운 의존성 없이 영상을 기록·저장해야 함", "en": "Video had to be recorded and saved without a heavy dependency like ffmpeg" },
-      { "ko": "웹캠과 마이크 입력을 함께 캡처해 하나의 파일로 합쳐야 함", "en": "Webcam and microphone input had to be captured and combined into a single file" },
-      { "ko": "Flutter UI와 네이티브 미디어 처리를 연결해야 함", "en": "The Flutter UI had to be wired to native media processing" }
+      { "ko": "ffmpeg 같은 무거운 의존성 없이 웹캠·마이크 입력을 MP4로 저장해야 함", "en": "Webcam and mic input had to be saved as MP4 without a heavy dependency like ffmpeg" },
+      { "ko": "카메라 프레임을 UI 실시간 프리뷰와 인코딩 파이프라인에 동시에 공급해야 함", "en": "Camera frames had to feed the live UI preview and the encoding pipeline at once" },
+      { "ko": "인코딩을 병렬화하면서도 프레임 순서를 보장해야 함", "en": "Encoding had to be parallelized while keeping frames in order" },
+      { "ko": "Flutter와 Rust 네이티브 코드 사이의 브릿지가 필요함", "en": "Flutter and native Rust code had to be bridged" }
     ],
     "contributions": [
-      { "ko": "Flutter로 영상 일기 앱 UI를 구축", "en": "Built the video-diary app UI in Flutter" },
-      { "ko": "Rust로 웹캠·마이크 입력 캡처와 디코딩 파이프라인을 구현", "en": "Implemented webcam/mic capture and the decoding pipeline in Rust" },
-      { "ko": "ffmpeg 없이 오디오·비디오 스트림을 MP4 컨테이너로 muxing", "en": "Muxed audio and video streams into an MP4 container without ffmpeg" },
-      { "ko": "Flutter와 Rust를 FFI로 연결", "en": "Bridged Flutter and Rust over FFI" }
+      { "ko": "nokhwa로 웹캠, cpal로 마이크(PCM)를 캡처하고 irondash 네이티브 텍스처로 Flutter UI에 실시간 프리뷰 렌더링", "en": "Captured the webcam with nokhwa and mic PCM with cpal, rendering a live preview into Flutter via an irondash native texture" },
+      { "ko": "프레임을 RGBA→YUV(I420)로 변환해 openh264로 H.264 인코딩, minimp4로 오디오와 muxing해 MP4 저장", "en": "Converted frames RGBA→YUV (I420), encoded H.264 with openh264, and muxed with audio into MP4 via minimp4" },
+      { "ko": "tokio 워커 풀과 rayon으로 프레임 변환·인코딩을 병렬화하고, 인덱스 기반 순서 보장 큐(OrdQueue)로 병렬 처리 중 프레임 순서 유지", "en": "Parallelized frame conversion and encoding with a tokio worker pool and rayon, keeping frame order with an index-based ordered queue (OrdQueue)" },
+      { "ko": "타임스탬프 기반 배칭으로 24fps 프레임을 수집하고, 프리뷰가 꺼지면 인코딩 워커를 2→8로 동적 확장", "en": "Batched frames toward 24fps by timestamp, scaling encoding workers 2→8 once the preview shuts off" },
+      { "ko": "media_kit 재생·ObjectBox 저장 기반의 Flutter 데스크톱 앱 구성", "en": "Built the Flutter desktop app around media_kit playback and ObjectBox storage" }
     ],
     "outcomes": [
-      { "label": { "ko": "ffmpeg 의존성 없이 자체 미디어 파이프라인으로 MP4 저장", "en": "Saved MP4 through a self-built media pipeline with no ffmpeg dependency" } }
+      { "label": { "ko": "ffmpeg 없이 캡처→인코딩→muxing 전 구간을 자체 파이프라인으로 구현", "en": "Capture → encode → mux fully covered by a self-built pipeline, no ffmpeg" }, "detail": { "ko": "Rust 크레이트 조합(nokhwa·cpal·openh264·minimp4)만으로 영상 일기 저장을 완성.", "en": "Completed video-diary saving with a combination of Rust crates (nokhwa, cpal, openh264, minimp4) alone." } }
     ],
-    "techStacks": ["Flutter", "Dart", "Rust", "FFI"],
-    "keywords": ["Media", "Encoding", "Decoding", "MP4"],
+    "techStacks": ["Flutter", "Dart", "Rust", "OpenH264", "irondash", "nokhwa", "cpal", "tokio", "rayon"],
+    "keywords": ["Media", "Encoding", "H264", "MP4", "FFI", "ParallelProcessing"],
     "capabilities": ["media-realtime"],
     "links": [
       { "label": "GitHub", "url": "https://github.com/hanguk0726/Avatar-Vision" },
