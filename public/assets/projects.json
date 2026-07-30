@@ -21,8 +21,7 @@
     ],
     "contributions": [
       { "ko": "React Native·Next.js·Python·PostgreSQL 기반으로 제품 전반을 구현", "en": "Built the product end to end on React Native, Next.js, Python, and PostgreSQL" },
-      { "ko": "원격 밸브 제어를 상태 머신으로 모델링 — 장비가 실제로 응답하기 전에는 완료로 처리하지 않아 서버 상태와 물리 상태의 불일치를 차단", "en": "Modeled remote valve control as a state machine — nothing is marked done before the device actually responds, blocking server/physical state divergence", "pdf": true },
-      { "ko": "타임아웃·안전 스윕·주기 모니터링으로 정체된 세션을 올바른 상태로 밀어붙이는 복구 경로 마련", "en": "Added recovery via timeouts, a safety sweep, and per-minute monitoring that nudges stalled sessions back toward correctness" },
+      { "ko": "명령과 응답이 언제든 유실되는 LoRa·MQTT 환경을 전제로 밸브 제어 상태 머신을 설계 — 응답이 끝내 없으면 타임아웃·안전 스윕이 상태를 실제 밸브에 다시 수렴시킴", "en": "Designed the valve-control state machine assuming commands and replies can vanish over LoRa/MQTT — when a reply never comes, timeouts and a safety sweep converge state back to the physical valve", "pdf": true },
       { "ko": "여러 구역이 공유하는 펌프가 빈 배관으로 도는 사고를 설계로 차단 — Make-Before-Break 전환과 멱등 펌프 시작", "en": "Designed away dry-running of the pump shared across zones — make-before-break switching and idempotent pump start", "pdf": true },
       { "ko": "OpenCV로 파노라마 생성을 이미지 스티칭에서 비디오 스캔 기반으로 전환", "en": "Switched panorama generation from image stitching to video-based scanning with OpenCV" },
       { "ko": "백오피스의 GeoTIFF 오버레이·콘텐츠 등 반복 작업을 팀 공용 워크플로로 자동화", "en": "Automated back-office repetitive work such as GeoTIFF overlays and content into shared team workflows" },
