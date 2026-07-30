@@ -27,9 +27,8 @@ Starting from Android-native apps and media processing, I've widened my scope in
 - Problems: Field devices had to be controlled remotely over an unreliable connection / Server commands and the valve's real physical state could diverge / Panorama generation was too slow to be useful on-site / A small team's repetitive work depended on individuals
 - Contributions:
   - Built the product end to end on React Native, Next.js, Python, and PostgreSQL
-  - Modeled valve control in a remote MQTT/LoRa device environment as a state machine, keeping state honestly pending until an ACK/NOTIFY arrives
-  - Added recovery via timeouts, a safety sweep, and per-minute monitoring that nudges stalled sessions back toward correctness
-  - Make-Before-Break multi-zone control to avoid deadheading a shared pump, with idempotent CAS-based pump start
+  - Designed the valve-control state machine assuming commands and replies can vanish over LoRa/MQTT — when a reply never comes, timeouts and a safety sweep converge state back to the physical valve
+  - Designed away dry-running of the pump shared across zones — make-before-break switching and idempotent pump start
   - Switched panorama generation from image stitching to video-based scanning with OpenCV
   - Automated back-office repetitive work such as GeoTIFF overlays and content into shared team workflows
   - Built tiered Sentry observability, reproduced issues on real devices, and added regression guards
@@ -53,7 +52,7 @@ Starting from Android-native apps and media processing, I've widened my scope in
   - Timeline control over multiple video and text sources
   - Encoded PCM to AAC and muxed it into the final video
 - Outcomes:
-  - Removed intermediate YUV conversion — Fed OpenGL output frames to the encoder via EGLSurface, eliminating the conversion step.
+  - GPU render output wired straight into the encoder, zero CPU copies — Direct EGLSurface hand-off removed the intermediate YUV conversion step.
   - Multi-source composition and timeline editing
 - Tech: Android, Kotlin, OpenGL ES, EGL, MediaCodec, MediaMuxer
 - Links: Medium (EN) https://medium.com/@hangukshin/my-first-experience-with-a-video-editor-android-app-using-opengl-7fb88765ad0d , Medium (KO) https://medium.com/@hangukshin/opengl%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%98%81%EC%83%81-%ED%8E%B8%EC%A7%91-%EC%95%B1-%EB%82%98%EC%9D%98-%EC%B2%AB-%EB%8F%84%EC%A0%84%EA%B8%B0-6a686ee71c0c
@@ -66,7 +65,7 @@ Starting from Android-native apps and media processing, I've widened my scope in
 - Problems: Request volume and resource usage had to be controlled / Malicious input had to be filtered / Cache between RAM and disk had to be managed / Large logs had to be collected and analyzed asynchronously
 - Contributions:
   - Rate limiting and an LRU RAM/disk cache with TTL management
-  - Parsed request headers/query/body and analyzed input to defend against SQLi and XSS
+  - Parsed every request's headers, query, and body to block SQLi/XSS at the proxy
   - Log and statistics processing with Kafka and ClickHouse
   - HAProxy integration (certs, fingerprint, load balancing) and Docker packaging and deploy
 - Tech: Go, Aerospike, ClickHouse, Kafka, HAProxy, Docker
@@ -80,7 +79,7 @@ Starting from Android-native apps and media processing, I've widened my scope in
 - Problems: The app's structure had to stay stable through fast pivots / Complex UI (gestures, nested scroll) and state management / Long-term operation and UX stability
 - Contributions:
   - Built the app on Kotlin and Jetpack Compose
-  - Clean Architecture and multi-modules so the structure survived frequent pivots, implemented event-driven and reactive
+  - A Clean Architecture, multi-module design that absorbed repeated product pivots without rewrites (event-driven, reactive)
   - Auth, camera, PDF, WebView, i18n, and network/image caching
   - Complex widgets (calendar, cropper, swipe, drag-and-drop) and app state management
   - Collaborated with other roles across the full product lifecycle
@@ -109,10 +108,10 @@ Starting from Android-native apps and media processing, I've widened my scope in
 
 ## Experience
 
-- **REVITA** — Product Engineer · Yongsan, Seoul · 2025.10 – Present — React Native Android & iOS apps; Next.js web and back-office; MQTT/LoRa-based IoT control; Observability and operations automation
-- **Freelance** — Android Developer · Project contract · 2025.02 – 2025.06 — Designed and built the decode/compose/encode pipeline; Passed render frames to the encoder via EGLSurface
+- **REVITA** — Product Engineer · Yongsan, Seoul · 2025.10 – Present — Made valve control over unreliable remote devices trustworthy with a state machine and recovery paths; Cut OpenCV panorama generation from 15+ min to ~2 min, making it usable on-site; Sentry observability and back-office automation to shrink a small team's ops load
+- **Freelance** — Android Developer · Project contract · 2025.02 – 2025.06 — Designed and built the decode/compose/encode pipeline; Wired render frames straight to the encoder via EGLSurface, no CPU copies
 - **Phylaxis** — Backend Go Developer · Jung-gu, Seoul · 2023.10 – 2024.01 — Rate limit and LRU cache / TTL management; Input analysis for SQLi/XSS defense; Kafka/ClickHouse logs and statistics
-- **Togispace** — Android Developer · Yeouido, Seoul · 2022.01 – 2023.02 — Built a Clean Architecture, multi-module structure; Auth, camera, PDF, WebView, and i18n; Improved app state management through repeated pivots
+- **Togispace** — Android Developer · Yeouido, Seoul · 2022.01 – 2023.02 — Built a Clean Architecture, multi-module structure; Kept the app structure and state manageable through repeated pivots; Auth, camera, PDF, WebView, and i18n
 - **Snaptag** — Android & Backend Developer · Pangyo, Gyeonggi · 2021.03 – 2021.06 — Optimized from camera capture to information extraction; Passed camera frames to a C++ module via JNI
 
 ### Education

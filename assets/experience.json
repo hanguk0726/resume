@@ -11,14 +11,13 @@
           "location": { "ko": "서울 용산", "en": "Yongsan, Seoul" },
           "employmentType": "full-time",
           "summary": {
-            "ko": "모바일 앱, 웹, 백오피스와 현장 장비 제어 백엔드를 개발.",
-            "en": "Building the mobile apps, web, back-office, and field-device control backend."
+            "ko": "모바일 앱부터 현장 장비 제어 백엔드까지 제품 전체를 0→1로 구축하고 운영.",
+            "en": "Building and operating the whole product 0→1, from the mobile apps to the field-device control backend."
           },
           "responsibilities": [
-            { "ko": "React Native 기반 Android·iOS 앱", "en": "React Native Android & iOS apps" },
-            { "ko": "Next.js 웹과 백오피스", "en": "Next.js web and back-office" },
-            { "ko": "MQTT·LoRa 기반 IoT 제어", "en": "MQTT/LoRa-based IoT control" },
-            { "ko": "관측성과 운영 자동화", "en": "Observability and operations automation" }
+            { "ko": "불안정한 원격 장비의 밸브 제어를 상태 머신과 복구 경로로 신뢰할 수 있게 설계", "en": "Made valve control over unreliable remote devices trustworthy with a state machine and recovery paths" },
+            { "ko": "OpenCV 파노라마 생성을 15분+에서 약 2분으로 단축해 현장 활용성 확보", "en": "Cut OpenCV panorama generation from 15+ min to ~2 min, making it usable on-site" },
+            { "ko": "Sentry 관측성과 백오피스 자동화로 소규모 팀의 운영 부담 축소", "en": "Sentry observability and back-office automation to shrink a small team's ops load" }
           ],
           "relatedProjectSlugs": ["revita"]
         },
@@ -35,7 +34,7 @@
           },
           "responsibilities": [
             { "ko": "영상 디코딩·합성·인코딩 파이프라인 설계·구현", "en": "Designed and built the decode/compose/encode pipeline" },
-            { "ko": "EGLSurface로 렌더 프레임을 인코더에 직접 전달", "en": "Passed render frames to the encoder via EGLSurface" }
+            { "ko": "렌더링 프레임을 CPU 복사 없이 EGLSurface로 인코더에 직결", "en": "Wired render frames straight to the encoder via EGLSurface, no CPU copies" }
           ],
           "relatedProjectSlugs": ["android-video-editor"]
         },
@@ -70,8 +69,8 @@
           },
           "responsibilities": [
             { "ko": "Clean Architecture와 멀티모듈 구조 구축", "en": "Built a Clean Architecture, multi-module structure" },
-            { "ko": "인증·카메라·PDF·WebView·다국어 지원", "en": "Auth, camera, PDF, WebView, and i18n" },
-            { "ko": "반복 피벗 속 앱 상태 관리 개선", "en": "Improved app state management through repeated pivots" }
+            { "ko": "반복 피벗 속 앱 구조·상태 관리 유지", "en": "Kept the app structure and state manageable through repeated pivots" },
+            { "ko": "인증·카메라·PDF·WebView·다국어 지원", "en": "Auth, camera, PDF, WebView, and i18n" }
           ],
           "relatedProjectSlugs": ["togispace"]
         },
