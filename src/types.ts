@@ -65,6 +65,7 @@ export interface Outcome {
   before?: string;
   after?: string;
   detail?: Localized;
+  pdf?: boolean; // hand-picked for the PDF's compact signal slots
 }
 
 export interface ProjectLink {
@@ -81,7 +82,9 @@ export interface Project {
   summary: Localized;
   role?: Localized;
   problems?: Localized[];
-  contributions?: Localized[];
+  // The pdf flag marks lines that add information beyond the summary — the
+  // PDF's 1-3 signal slots prefer them over plain first-item selection.
+  contributions?: (Localized & { pdf?: boolean })[];
   outcomes?: Outcome[];
   techStacks: string[];
   keywords: string[];

@@ -50,6 +50,17 @@ const t = (lang, ko, en) => (lang === "ko" ? ko : en);
 const localizedText = (value, lang) =>
   typeof value === "string" ? value : value[lang];
 
+// The PDF has room for only 1-3 signal lines per project, so mechanical
+// "first item" selection can surface lines that just repeat the summary or
+// the stack row. Items flagged `pdf: true` in projects.json are hand-picked
+// lines that add information beyond the summary; without flags the original
+// first-items fallback applies.
+const pdfMarked = (items) => (items || []).filter((item) => item.pdf);
+const pickSignals = (items, fallbackCount) => {
+  const chosen = pdfMarked(items);
+  return (chosen.length ? chosen : items || []).slice(0, fallbackCount);
+};
+
 function outcomeLine(outcome, lang) {
   const metric =
     outcome.before && outcome.after
@@ -61,8 +72,8 @@ function outcomeLine(outcome, lang) {
 
 function renderProjectLead(project, lang) {
   const signals = [
-    ...(project.outcomes || []).slice(0, 1).map((item) => outcomeLine(item, lang)),
-    ...(project.contributions || []).slice(0, 2).map((item) => esc(item[lang])),
+    ...pickSignals(project.outcomes, 1).map((item) => outcomeLine(item, lang)),
+    ...pickSignals(project.contributions, 2).map((item) => esc(item[lang])),
   ];
 
   return `<article class="project project-lead">
@@ -82,9 +93,15 @@ function renderProjectLead(project, lang) {
 }
 
 function renderProjectCard(project, lang) {
-  const signal = project.outcomes?.[0]
-    ? outcomeLine(project.outcomes[0], lang)
-    : esc(project.contributions?.[0]?.[lang] || "");
+  const flagged =
+    pdfMarked(project.outcomes)[0] || pdfMarked(project.contributions)[0];
+  const signal = flagged
+    ? flagged.label
+      ? outcomeLine(flagged, lang)
+      : esc(flagged[lang])
+    : project.outcomes?.[0]
+      ? outcomeLine(project.outcomes[0], lang)
+      : esc(project.contributions?.[0]?.[lang] || "");
 
   return `<article class="project project-card">
     <div class="row-head">
@@ -337,13 +354,22 @@ async function launchBrowser() {
   try {
     return await chromium.launch();
   } catch (bundledError) {
-    try {
-      // Official Playwright fallback for machines that provide branded Chrome
-      // but do not have the Playwright-matched Chromium revision installed.
-      return await chromium.launch({ channel: "chrome" });
-    } catch {
-      throw bundledError;
+    // Fallbacks for machines without the Playwright-matched Chromium
+    // revision: branded Chrome, then an explicit CHROMIUM_PATH executable.
+    const fallbacks = [
+      { channel: "chrome" },
+      process.env.CHROMIUM_PATH
+        ? { executablePath: process.env.CHROMIUM_PATH }
+        : null,
+    ].filter(Boolean);
+    for (const options of fallbacks) {
+      try {
+        return await chromium.launch(options);
+      } catch {
+        /* try next */
+      }
     }
+    throw bundledError;
   }
 }
 
