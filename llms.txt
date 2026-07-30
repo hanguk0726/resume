@@ -80,7 +80,7 @@ Starting from Android-native apps and media processing, I've widened my scope in
 - Problems: The app's structure had to stay stable through fast pivots / Complex UI (gestures, nested scroll) and state management / Long-term operation and UX stability
 - Contributions:
   - Built the app on Kotlin and Jetpack Compose
-  - Clean Architecture and a multi-module structure with event-driven, reactive programming
+  - Clean Architecture and multi-modules so the structure survived frequent pivots, implemented event-driven and reactive
   - Auth, camera, PDF, WebView, i18n, and network/image caching
   - Complex widgets (calendar, cropper, swipe, drag-and-drop) and app state management
   - Collaborated with other roles across the full product lifecycle
