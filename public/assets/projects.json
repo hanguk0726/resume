@@ -21,9 +21,9 @@
     ],
     "contributions": [
       { "ko": "React Native·Next.js·Python·PostgreSQL 기반으로 제품 전반을 구현", "en": "Built the product end to end on React Native, Next.js, Python, and PostgreSQL" },
-      { "ko": "MQTT·LoRa 기반 원격 장비 환경의 밸브 제어를 상태 머신으로 모델링하고, ACK·NOTIFY 이전까지 상태를 정직하게 pending으로 유지", "en": "Modeled valve control in a remote MQTT/LoRa device environment as a state machine, keeping state honestly pending until an ACK/NOTIFY arrives", "pdf": true },
+      { "ko": "원격 밸브 제어를 상태 머신으로 모델링 — 장비가 실제로 응답하기 전에는 완료로 처리하지 않아 서버 상태와 물리 상태의 불일치를 차단", "en": "Modeled remote valve control as a state machine — nothing is marked done before the device actually responds, blocking server/physical state divergence", "pdf": true },
       { "ko": "타임아웃·안전 스윕·주기 모니터링으로 정체된 세션을 올바른 상태로 밀어붙이는 복구 경로 마련", "en": "Added recovery via timeouts, a safety sweep, and per-minute monitoring that nudges stalled sessions back toward correctness" },
-      { "ko": "공유 펌프의 빈 배관 구동을 없애는 Make-Before-Break 다구역 제어와 CAS 기반 멱등 펌프 시작", "en": "Make-Before-Break multi-zone control to avoid deadheading a shared pump, with idempotent CAS-based pump start", "pdf": true },
+      { "ko": "여러 구역이 공유하는 펌프가 빈 배관으로 도는 사고를 설계로 차단 — Make-Before-Break 전환과 멱등 펌프 시작", "en": "Designed away dry-running of the pump shared across zones — make-before-break switching and idempotent pump start", "pdf": true },
       { "ko": "OpenCV로 파노라마 생성을 이미지 스티칭에서 비디오 스캔 기반으로 전환", "en": "Switched panorama generation from image stitching to video-based scanning with OpenCV" },
       { "ko": "백오피스의 GeoTIFF 오버레이·콘텐츠 등 반복 작업을 팀 공용 워크플로로 자동화", "en": "Automated back-office repetitive work such as GeoTIFF overlays and content into shared team workflows" },
       { "ko": "Sentry 기반 단계별 관측성을 구축하고, 장애를 실제 기기에서 재현한 뒤 회귀 방지 가드를 추가", "en": "Built tiered Sentry observability, reproduced issues on real devices, and added regression guards" }
@@ -68,7 +68,7 @@
       { "ko": "PCM을 AAC로 인코딩해 결과 영상에 병합", "en": "Encoded PCM to AAC and muxed it into the final video" }
     ],
     "outcomes": [
-      { "label": { "ko": "중간 YUV 변환 제거", "en": "Removed intermediate YUV conversion" }, "detail": { "ko": "OpenGL 출력 프레임을 EGLSurface로 인코더에 직접 전달해 변환 단계를 없앰.", "en": "Fed OpenGL output frames to the encoder via EGLSurface, eliminating the conversion step." } },
+      { "label": { "ko": "GPU 렌더링 결과를 CPU 복사 없이 인코더에 직결", "en": "GPU render output wired straight into the encoder, zero CPU copies" }, "detail": { "ko": "EGLSurface 직접 전달로 중간 YUV 변환 단계를 제거.", "en": "Direct EGLSurface hand-off removed the intermediate YUV conversion step." } },
       { "label": { "ko": "멀티소스 합성·타임라인 편집 지원", "en": "Multi-source composition and timeline editing" } }
     ],
     "techStacks": ["Android", "Kotlin", "OpenGL ES", "EGL", "MediaCodec", "MediaMuxer"],
@@ -101,7 +101,7 @@
     ],
     "contributions": [
       { "ko": "Rate limiting과 LRU 기반 메모리·디스크 캐시, TTL 관리", "en": "Rate limiting and an LRU RAM/disk cache with TTL management" },
-      { "ko": "요청 헤더·쿼리·본문 파싱과 SQLi·XSS 방어용 입력 분석", "en": "Parsed request headers/query/body and analyzed input to defend against SQLi and XSS", "pdf": true },
+      { "ko": "모든 요청의 헤더·쿼리·본문을 파싱해 SQLi·XSS를 프록시 단계에서 차단", "en": "Parsed every request's headers, query, and body to block SQLi/XSS at the proxy", "pdf": true },
       { "ko": "Kafka·ClickHouse 기반 로그 및 통계 처리", "en": "Log and statistics processing with Kafka and ClickHouse" },
       { "ko": "HAProxy 연동(인증서·핑거프린트·로드밸런싱)과 Docker 패키징·배포", "en": "HAProxy integration (certs, fingerprint, load balancing) and Docker packaging and deploy" }
     ],
@@ -132,7 +132,7 @@
     ],
     "contributions": [
       { "ko": "Kotlin·Jetpack Compose 기반 앱 구축", "en": "Built the app on Kotlin and Jetpack Compose" },
-      { "ko": "잦은 피벗에도 구조가 버티도록 Clean Architecture·멀티모듈로 설계하고, 이벤트 기반·반응형으로 구현", "en": "Clean Architecture and multi-modules so the structure survived frequent pivots, implemented event-driven and reactive", "pdf": true },
+      { "ko": "잦은 제품 피벗을 구조 재작성 없이 흡수한 Clean Architecture·멀티모듈 설계 (이벤트 기반·반응형)", "en": "A Clean Architecture, multi-module design that absorbed repeated product pivots without rewrites (event-driven, reactive)", "pdf": true },
       { "ko": "인증·카메라·PDF·WebView·다국어와 네트워크·이미지 캐시", "en": "Auth, camera, PDF, WebView, i18n, and network/image caching" },
       { "ko": "캘린더·크로퍼·스와이프·드래그앤드롭 등 복잡한 위젯과 앱 상태 관리", "en": "Complex widgets (calendar, cropper, swipe, drag-and-drop) and app state management" },
       { "ko": "타 직군과 협업하며 제품 생명주기 전반을 경험", "en": "Collaborated with other roles across the full product lifecycle" }
